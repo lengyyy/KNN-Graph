@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="flann"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake\;CMake Files\src\;CMake Files\src\cpp\;CMake Files\src\cpp\flann\;CMake Files\src\matlab\;CMake Files\src\python\;CMake Files\examples\;CMake Files\test\;CMake Files\doc\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="package_source">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 package_source"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="uninstall">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 uninstall"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="package">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 package"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="flann_cpp_s">
+				<Option output="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/lib/libflann_cpp_s.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DFLANN_STATIC"/>
+					<Add option="-DFLANN_USE_CUDA"/>
+					<Add option="-D_FLANN_VERSION=1.8.4"/>
+					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 flann_cpp_s"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="flann_cpp_s/fast">
+				<Option output="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/lib/libflann_cpp_s.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DFLANN_STATIC"/>
+					<Add option="-DFLANN_USE_CUDA"/>
+					<Add option="-D_FLANN_VERSION=1.8.4"/>
+					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 flann_cpp_s/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="flann_cpp">
+				<Option output="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/lib/libflann_cpp.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-D_FLANN_VERSION=1.8.4"/>
+					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 flann_cpp"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="flann_cpp/fast">
+				<Option output="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/lib/libflann_cpp.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-D_FLANN_VERSION=1.8.4"/>
+					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 flann_cpp/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="flann_s">
+				<Option output="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/lib/libflann_s.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DFLANN_STATIC"/>
+					<Add option="-D_FLANN_VERSION=1.8.4"/>
+					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 flann_s"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="flann_s/fast">
+				<Option output="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/lib/libflann_s.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DFLANN_STATIC"/>
+					<Add option="-D_FLANN_VERSION=1.8.4"/>
+					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 flann_s/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="flann">
+				<Option output="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/lib/libflann.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-D_FLANN_VERSION=1.8.4"/>
+					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 flann"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="flann/fast">
+				<Option output="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/lib/libflann.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-D_FLANN_VERSION=1.8.4"/>
+					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 flann/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/src/cpp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="examples">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/examples"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/examples/Makefile&quot;  VERBOSE=1 examples"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/examples/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/examples/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/examples/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="flann_example_c">
+				<Option output="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/bin/flann_example_c.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/examples/Makefile&quot;  VERBOSE=1 flann_example_c"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/examples/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/examples/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/examples/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="flann_example_c/fast">
+				<Option output="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/bin/flann_example_c.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/bin"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/examples/Makefile&quot;  VERBOSE=1 flann_example_c/fast"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/examples/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/examples/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/examples/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pyunit_test_nn_index.py">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 pyunit_test_nn_index.py"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="dataset_cloud.h5">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 dataset_cloud.h5"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="dataset_sift100K_byte.h5">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 dataset_sift100K_byte.h5"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tests">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 tests"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="flann_gtests">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 flann_gtests"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="dataset_sift10K.h5">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 dataset_sift10K.h5"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 test"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="dataset_sift10K_byte.h5">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 dataset_sift10K_byte.h5"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="flann_gtest">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 flann_gtest"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="dataset_sift100K.h5">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 dataset_sift100K.h5"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="dataset_brief100K.h5">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 dataset_brief100K.h5"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pyunit_test_nn.py">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 pyunit_test_nn.py"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pyunit_test_nn_autotune.py">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 pyunit_test_nn_autotune.py"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pyunit_test_index_save.py">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 pyunit_test_index_save.py"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pyunit_test_clustering.py">
+				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 pyunit_test_clustering.py"/>
+					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/examples/flann_example.c">
+			<Option target="flann_example_c"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp/flann/flann.cpp">
+			<Option target="flann_s"/>
+			<Option target="flann"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp/flann/flann.h">
+			<Option target="flann_s"/>
+			<Option target="flann"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp/flann/flann_cpp.cpp">
+			<Option target="flann_cpp_s"/>
+			<Option target="flann_cpp"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake/flann_utils.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake/uninstall_target.cmake.in">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake/flann.pc.in">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\cpp\"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/cpp/flann/config.h.in">
+			<Option virtualFolder="CMake Files\src\cpp\flann\"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/matlab/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\matlab\"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/python/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\python\"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/src/python/setup.py.tpl">
+			<Option virtualFolder="CMake Files\src\python\"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/examples/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\examples\"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\test\"/>
+		</Unit>
+		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/doc/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\doc\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

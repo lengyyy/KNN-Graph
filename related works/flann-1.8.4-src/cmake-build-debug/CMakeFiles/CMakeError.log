@@ -1,0 +1,554 @@
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_26709/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_26709.dir\build.make CMakeFiles/cmTC_26709.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_26709.dir/src.c.obj
+C:\MinGW\bin\gcc.exe   -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles\cmTC_26709.dir\src.c.obj   -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c"
+Linking C executable cmTC_26709.exe
+"C:\Program Files\JetBrains\CLion 2017.2.2\bin\cmake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_26709.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2017.2.2\bin\cmake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_26709.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_26709.dir/objects.a @CMakeFiles\cmTC_26709.dir\objects1.rsp
+C:\MinGW\bin\gcc.exe  -DOpenMP_FLAG_DETECTED -fopenmp    -Wl,--whole-archive CMakeFiles\cmTC_26709.dir/objects.a -Wl,--no-whole-archive  -o cmTC_26709.exe -Wl,--out-implib,libcmTC_26709.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_26709.dir\linklibs.rsp
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot find -lpthread
+collect2.exe: error: ld returned 1 exit status
+CMakeFiles\cmTC_26709.dir\build.make:98: recipe for target 'cmTC_26709.exe' failed
+mingw32-make.exe[1]: *** [cmTC_26709.exe] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_26709/fast' failed
+mingw32-make.exe: *** [cmTC_26709/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_4e540/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_4e540.dir\build.make CMakeFiles/cmTC_4e540.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4e540.dir/src.c.obj
+C:\MinGW\bin\gcc.exe   -DOpenMP_FLAG_DETECTED   -o CMakeFiles\cmTC_4e540.dir\src.c.obj   -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c"
+C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c: In function 'main':
+C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c:7:3: error: 'breaks_on_purpose' undeclared (first use in this function)
+   breaks_on_purpose
+   ^~~~~~~~~~~~~~~~~
+C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c:7:3: note: each undeclared identifier is reported only once for each function it appears in
+C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c:9:1: error: expected ';' before '}' token
+ }
+ ^
+CMakeFiles\cmTC_4e540.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_4e540.dir/src.c.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_4e540.dir/src.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_4e540/fast' failed
+mingw32-make.exe: *** [cmTC_4e540/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_d83c8/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_d83c8.dir\build.make CMakeFiles/cmTC_d83c8.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d83c8.dir/src.c.obj
+C:\MinGW\bin\gcc.exe   -DOpenMP_FLAG_DETECTED -fopenmp=libomp   -o CMakeFiles\cmTC_d83c8.dir\src.c.obj   -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c"
+gcc.exe: error: unrecognized command line option '-fopenmp=libomp'; did you mean '-fopenmp-simd'?
+CMakeFiles\cmTC_d83c8.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_d83c8.dir/src.c.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_d83c8.dir/src.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_d83c8/fast' failed
+mingw32-make.exe: *** [cmTC_d83c8/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_7b6c3/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_7b6c3.dir\build.make CMakeFiles/cmTC_7b6c3.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7b6c3.dir/src.c.obj
+C:\MinGW\bin\gcc.exe   -DOpenMP_FLAG_DETECTED /openmp   -o CMakeFiles\cmTC_7b6c3.dir\src.c.obj   -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c"
+gcc.exe: error: /openmp: No such file or directory
+CMakeFiles\cmTC_7b6c3.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_7b6c3.dir/src.c.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_7b6c3.dir/src.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_7b6c3/fast' failed
+mingw32-make.exe: *** [cmTC_7b6c3/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_ba4ac/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_ba4ac.dir\build.make CMakeFiles/cmTC_ba4ac.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ba4ac.dir/src.c.obj
+C:\MinGW\bin\gcc.exe   -DOpenMP_FLAG_DETECTED -Qopenmp   -o CMakeFiles\cmTC_ba4ac.dir\src.c.obj   -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c"
+gcc.exe: error: unrecognized command line option '-Qopenmp'; did you mean '-fopenmp'?
+CMakeFiles\cmTC_ba4ac.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_ba4ac.dir/src.c.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_ba4ac.dir/src.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_ba4ac/fast' failed
+mingw32-make.exe: *** [cmTC_ba4ac/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_2f9e6/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_2f9e6.dir\build.make CMakeFiles/cmTC_2f9e6.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2f9e6.dir/src.c.obj
+C:\MinGW\bin\gcc.exe   -DOpenMP_FLAG_DETECTED -openmp   -o CMakeFiles\cmTC_2f9e6.dir\src.c.obj   -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c"
+C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c: In function 'main':
+C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c:7:3: error: 'breaks_on_purpose' undeclared (first use in this function)
+   breaks_on_purpose
+   ^~~~~~~~~~~~~~~~~
+C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c:7:3: note: each undeclared identifier is reported only once for each function it appears in
+C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c:9:1: error: expected ';' before '}' token
+ }
+ ^
+CMakeFiles\cmTC_2f9e6.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_2f9e6.dir/src.c.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_2f9e6.dir/src.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_2f9e6/fast' failed
+mingw32-make.exe: *** [cmTC_2f9e6/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_35620/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_35620.dir\build.make CMakeFiles/cmTC_35620.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_35620.dir/src.c.obj
+C:\MinGW\bin\gcc.exe   -DOpenMP_FLAG_DETECTED -xopenmp   -o CMakeFiles\cmTC_35620.dir\src.c.obj   -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c"
+gcc.exe: error: language openmp not recognized
+gcc.exe: error: language openmp not recognized
+CMakeFiles\cmTC_35620.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_35620.dir/src.c.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_35620.dir/src.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_35620/fast' failed
+mingw32-make.exe: *** [cmTC_35620/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_63068/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_63068.dir\build.make CMakeFiles/cmTC_63068.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_63068.dir/src.c.obj
+C:\MinGW\bin\gcc.exe   -DOpenMP_FLAG_DETECTED +Oopenmp   -o CMakeFiles\cmTC_63068.dir\src.c.obj   -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c"
+gcc.exe: error: +Oopenmp: No such file or directory
+CMakeFiles\cmTC_63068.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_63068.dir/src.c.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_63068.dir/src.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_63068/fast' failed
+mingw32-make.exe: *** [cmTC_63068/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_50eb4/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_50eb4.dir\build.make CMakeFiles/cmTC_50eb4.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_50eb4.dir/src.c.obj
+C:\MinGW\bin\gcc.exe   -DOpenMP_FLAG_DETECTED -qsmp   -o CMakeFiles\cmTC_50eb4.dir\src.c.obj   -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c"
+gcc.exe: error: unrecognized command line option '-qsmp'
+CMakeFiles\cmTC_50eb4.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_50eb4.dir/src.c.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_50eb4.dir/src.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_50eb4/fast' failed
+mingw32-make.exe: *** [cmTC_50eb4/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_7cf05/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_7cf05.dir\build.make CMakeFiles/cmTC_7cf05.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7cf05.dir/src.c.obj
+C:\MinGW\bin\gcc.exe   -DOpenMP_FLAG_DETECTED -mp   -o CMakeFiles\cmTC_7cf05.dir\src.c.obj   -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.c"
+gcc.exe: error: unrecognized command line option '-mp'; did you mean '-p'?
+CMakeFiles\cmTC_7cf05.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_7cf05.dir/src.c.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_7cf05.dir/src.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_7cf05/fast' failed
+mingw32-make.exe: *** [cmTC_7cf05/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_f5346/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_f5346.dir\build.make CMakeFiles/cmTC_f5346.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f5346.dir/src.cxx.obj
+C:\MinGW\bin\g++.exe    -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles\cmTC_f5346.dir\src.cxx.obj -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx"
+Linking CXX executable cmTC_f5346.exe
+"C:\Program Files\JetBrains\CLion 2017.2.2\bin\cmake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_f5346.dir\link.txt --verbose=1
+"C:\Program Files\JetBrains\CLion 2017.2.2\bin\cmake\bin\cmake.exe" -E remove -f CMakeFiles\cmTC_f5346.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\cmTC_f5346.dir/objects.a @CMakeFiles\cmTC_f5346.dir\objects1.rsp
+C:\MinGW\bin\g++.exe  -DOpenMP_FLAG_DETECTED -fopenmp    -Wl,--whole-archive CMakeFiles\cmTC_f5346.dir/objects.a -Wl,--no-whole-archive  -o cmTC_f5346.exe -Wl,--out-implib,libcmTC_f5346.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_f5346.dir\linklibs.rsp
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot find -lpthread
+collect2.exe: error: ld returned 1 exit status
+CMakeFiles\cmTC_f5346.dir\build.make:98: recipe for target 'cmTC_f5346.exe' failed
+mingw32-make.exe[1]: *** [cmTC_f5346.exe] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_f5346/fast' failed
+mingw32-make.exe: *** [cmTC_f5346/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_b8c58/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_b8c58.dir\build.make CMakeFiles/cmTC_b8c58.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b8c58.dir/src.cxx.obj
+C:\MinGW\bin\g++.exe    -DOpenMP_FLAG_DETECTED   -o CMakeFiles\cmTC_b8c58.dir\src.cxx.obj -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx"
+C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx: In function 'int main()':
+C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx:7:3: error: 'breaks_on_purpose' was not declared in this scope
+   breaks_on_purpose
+   ^~~~~~~~~~~~~~~~~
+CMakeFiles\cmTC_b8c58.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_b8c58.dir/src.cxx.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_b8c58.dir/src.cxx.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_b8c58/fast' failed
+mingw32-make.exe: *** [cmTC_b8c58/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_42f30/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_42f30.dir\build.make CMakeFiles/cmTC_42f30.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_42f30.dir/src.cxx.obj
+C:\MinGW\bin\g++.exe    -DOpenMP_FLAG_DETECTED -fopenmp=libomp   -o CMakeFiles\cmTC_42f30.dir\src.cxx.obj -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx"
+g++.exe: error: unrecognized command line option '-fopenmp=libomp'; did you mean '-fopenmp-simd'?
+CMakeFiles\cmTC_42f30.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_42f30.dir/src.cxx.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_42f30.dir/src.cxx.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_42f30/fast' failed
+mingw32-make.exe: *** [cmTC_42f30/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_cce20/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_cce20.dir\build.make CMakeFiles/cmTC_cce20.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_cce20.dir/src.cxx.obj
+C:\MinGW\bin\g++.exe    -DOpenMP_FLAG_DETECTED /openmp   -o CMakeFiles\cmTC_cce20.dir\src.cxx.obj -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx"
+g++.exe: error: /openmp: No such file or directory
+CMakeFiles\cmTC_cce20.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_cce20.dir/src.cxx.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_cce20.dir/src.cxx.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_cce20/fast' failed
+mingw32-make.exe: *** [cmTC_cce20/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_cc61a/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_cc61a.dir\build.make CMakeFiles/cmTC_cc61a.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_cc61a.dir/src.cxx.obj
+C:\MinGW\bin\g++.exe    -DOpenMP_FLAG_DETECTED -Qopenmp   -o CMakeFiles\cmTC_cc61a.dir\src.cxx.obj -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx"
+g++.exe: error: unrecognized command line option '-Qopenmp'; did you mean '-fopenmp'?
+CMakeFiles\cmTC_cc61a.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_cc61a.dir/src.cxx.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_cc61a.dir/src.cxx.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_cc61a/fast' failed
+mingw32-make.exe: *** [cmTC_cc61a/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_91030/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_91030.dir\build.make CMakeFiles/cmTC_91030.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_91030.dir/src.cxx.obj
+C:\MinGW\bin\g++.exe    -DOpenMP_FLAG_DETECTED -openmp   -o CMakeFiles\cmTC_91030.dir\src.cxx.obj -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx"
+C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx: In function 'int main()':
+C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx:7:3: error: 'breaks_on_purpose' was not declared in this scope
+   breaks_on_purpose
+   ^~~~~~~~~~~~~~~~~
+CMakeFiles\cmTC_91030.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_91030.dir/src.cxx.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_91030.dir/src.cxx.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_91030/fast' failed
+mingw32-make.exe: *** [cmTC_91030/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_44b79/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_44b79.dir\build.make CMakeFiles/cmTC_44b79.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_44b79.dir/src.cxx.obj
+C:\MinGW\bin\g++.exe    -DOpenMP_FLAG_DETECTED -xopenmp   -o CMakeFiles\cmTC_44b79.dir\src.cxx.obj -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx"
+g++.exe: error: language openmp not recognized
+g++.exe: error: language openmp not recognized
+CMakeFiles\cmTC_44b79.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_44b79.dir/src.cxx.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_44b79.dir/src.cxx.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_44b79/fast' failed
+mingw32-make.exe: *** [cmTC_44b79/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_4d964/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_4d964.dir\build.make CMakeFiles/cmTC_4d964.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4d964.dir/src.cxx.obj
+C:\MinGW\bin\g++.exe    -DOpenMP_FLAG_DETECTED +Oopenmp   -o CMakeFiles\cmTC_4d964.dir\src.cxx.obj -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx"
+g++.exe: error: +Oopenmp: No such file or directory
+CMakeFiles\cmTC_4d964.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_4d964.dir/src.cxx.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_4d964.dir/src.cxx.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_4d964/fast' failed
+mingw32-make.exe: *** [cmTC_4d964/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_cac45/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_cac45.dir\build.make CMakeFiles/cmTC_cac45.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_cac45.dir/src.cxx.obj
+C:\MinGW\bin\g++.exe    -DOpenMP_FLAG_DETECTED -qsmp   -o CMakeFiles\cmTC_cac45.dir\src.cxx.obj -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx"
+g++.exe: error: unrecognized command line option '-qsmp'
+CMakeFiles\cmTC_cac45.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_cac45.dir/src.cxx.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_cac45.dir/src.cxx.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_cac45/fast' failed
+mingw32-make.exe: *** [cmTC_cac45/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/MinGW/bin/mingw32-make.exe" "cmTC_bc7dd/fast"
+C:/MinGW/bin/mingw32-make.exe -f CMakeFiles\cmTC_bc7dd.dir\build.make CMakeFiles/cmTC_bc7dd.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_bc7dd.dir/src.cxx.obj
+C:\MinGW\bin\g++.exe    -DOpenMP_FLAG_DETECTED -mp   -o CMakeFiles\cmTC_bc7dd.dir\src.cxx.obj -c "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\flann-1.8.4-src\cmake-build-debug\CMakeFiles\CMakeTmp\src.cxx"
+g++.exe: error: unrecognized command line option '-mp'; did you mean '-p'?
+CMakeFiles\cmTC_bc7dd.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_bc7dd.dir/src.cxx.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_bc7dd.dir/src.cxx.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/flann-1.8.4-src/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:125: recipe for target 'cmTC_bc7dd/fast' failed
+mingw32-make.exe: *** [cmTC_bc7dd/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
