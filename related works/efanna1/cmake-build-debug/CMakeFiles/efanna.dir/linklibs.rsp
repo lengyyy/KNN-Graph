@@ -1,1 +1,0 @@
--O3 -march=native -fopenmp -Wall -lboost_timer -lboost_chrono -lboost_system -DINFO -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

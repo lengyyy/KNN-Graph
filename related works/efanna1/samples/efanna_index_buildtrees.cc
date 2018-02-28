@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
-#include <malloc.h>
+#include <stdlib.h>
 
 using namespace efanna;
 using namespace std;

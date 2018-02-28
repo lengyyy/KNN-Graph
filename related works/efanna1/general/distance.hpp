@@ -287,7 +287,7 @@ class L2DistanceAVX: public Distance<T> {
 public:
     typedef T ResultType;
     /**
-     * 
+     *
      * We use msse intrinstic here, we should ensure data align.
      */
 #define AVX_L2SQR(addr1, addr2, dest, tmp1, tmp2) \
@@ -312,7 +312,7 @@ ResultType compare(const T* a, const T* b, size_t size) const{
     ResultType ret = 0.0;
     sum = _mm256_loadu_ps(unpack);
     if(DR){AVX_L2SQR(e_l, e_r, sum, l0, r0);}
-    
+
     for (unsigned i = 0; i < DD; i += 16, l += 16, r += 16) {
 	AVX_L2SQR(l, r, sum, l0, r0);
 	AVX_L2SQR(l + 8, r + 8, sum, l1, r1);
@@ -367,7 +367,7 @@ ResultType compare(const T* a, const T* b, size_t size) const{
     	ResultType ret = 0.0;
     	sum = _mm256_loadu_ps(unpack);
     	if(DR){AVX_L2DOT(e_l, e_r, sum, l0, r0);}
-    
+
     	for (unsigned i = 0; i < DD; i += 16, l += 16, r += 16) {
 	    AVX_L2DOT(l, r, sum, l0, r0);
 	    AVX_L2DOT(l + 8, r + 8, sum, l1, r1);

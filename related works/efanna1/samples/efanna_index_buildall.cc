@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
-#include <malloc.h>
+#include <stdlib.h>
 #include "../general/matrix.hpp"
 #include "../algorithm/kdtreeub_index.hpp"
 
@@ -51,7 +51,7 @@ int main(int argc, char** argv){
   int S = atoi(argv[10]);
 
   //srand(time(NULL));
-  FIndex<float> index(dataset, new L2DistanceAVX<float>(), efanna::KDTreeUbIndexParams(true, trees ,mlevel ,epochs,checkK,L, kNN, trees, S));
+  FIndex<float> index(dataset, new L2Distance<float>(), efanna::KDTreeUbIndexParams(true, trees ,mlevel ,epochs,checkK,L, kNN, trees, S));
   clock_t s,f;
   s = clock();
   index.buildIndex();

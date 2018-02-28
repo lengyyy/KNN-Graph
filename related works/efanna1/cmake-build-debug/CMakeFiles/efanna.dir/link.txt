@@ -1,3 +1,1 @@
-"C:\Program Files\JetBrains\CLion 2017.2.2\bin\cmake\bin\cmake.exe" -E remove -f CMakeFiles\efanna.dir/objects.a
-C:\MinGW\bin\ar.exe cr CMakeFiles\efanna.dir/objects.a @CMakeFiles\efanna.dir\objects1.rsp
-C:\MinGW\bin\g++.exe -Wall -DINFO -g   -Wl,--whole-archive CMakeFiles\efanna.dir/objects.a -Wl,--no-whole-archive  -o efanna.exe -Wl,--out-implib,libefanna.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\efanna.dir\linklibs.rsp
+/usr/local/Cellar/gcc/7.3.0/bin/g++-7  -Wall -DINFO -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o  -o efanna -O3 -march=native -fopenmp -Wall -lboost_timer -lboost_chrono -lboost_system -DINFO 

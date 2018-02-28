@@ -1,9 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.obj"
+  "CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o"
   "efanna.pdb"
-  "efanna.exe"
-  "efanna.exe.manifest"
-  "libefanna.dll.a"
+  "efanna"
 )
 
 # Per-language clean rules from dependency scanning.
