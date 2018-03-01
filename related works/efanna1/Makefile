@@ -1,15 +1,15 @@
-GXX=g++-7 -std=c++11
+GXX=g++ -std=c++11
 #OPTM=-O3 -msse2 -msse4 -fopenmp
 OPTM=-O3 -march=native -fopenmp
-CPFLAGS=$(OPTM) -Wall -DINFO
-LDFLAGS=$(OPTM) -Wall -lboost_timer -lboost_chrono -lboost_system -lmysqlclient -DINFO
+CPFLAGS=$(OPTM) -DINFO
+LDFLAGS=$(OPTM) -lboost_timer -lboost_chrono -lboost_system -lmysqlclient -DINFO
 
 INCLUDES=-I./ -I./algorithm -I./general
 
-SAMPLES=$(patsubst %.cc, %, $(wildcard samples/*.cc samples_hashing/*.cc))
+SAMPLES=$(patsubst %.cc, %, $(wildcard samples/*.cc samples_hashing/*.cc mysql/*.cc))
 SAMPLE_OBJS=$(foreach sample, $(SAMPLES), $(sample).o)
 
-HEADERS=$(wildcard ./*.hpp ./*/*.hpp)
+HEADERS=$(wildcard ./*.hpp ./*/*.hpp ./*/*.h)
 
 #EFNN is currently header only, so only samples will be compiled
 

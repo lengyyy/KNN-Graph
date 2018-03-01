@@ -3,7 +3,6 @@
 #include <fstream>
 #include <ctime>
 #include <stdlib.h>
-#include "mysql/MyDB.h"
 #include "../general/matrix.hpp"
 #include "../algorithm/kdtreeub_index.hpp"
 
@@ -70,10 +69,10 @@ int main(int argc, char** argv){
   index.saveGraph(argv[2]);
   index.saveTrees(argv[3]);
 
-  //if(argv[11]=="y")
-  //db.addRecord("KNNG",myInfo);
+ // if(argv[11]=="y")
+  db.addRecord("KNNG",myInfo);
   for(auto key : myInfo){
-    cout<<key.first<<": "<<key.second;
+    cout<<key.first<<": "<<key.second<<endl;
   }
 
   return 0;
