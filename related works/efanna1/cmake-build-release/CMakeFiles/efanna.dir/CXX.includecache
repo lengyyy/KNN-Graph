@@ -144,9 +144,9 @@ map
 string
 -
 
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/algorithm/kdtreeub_index.hpp
+C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/algorithm/kdtreeub_index.hpp
 algorithm/base_index.hpp
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/algorithm/algorithm/base_index.hpp
+C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/algorithm/algorithm/base_index.hpp
 fstream
 -
 ctime
@@ -160,7 +160,7 @@ queue
 boost/dynamic_bitset.hpp
 -
 
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/general/distance.hpp
+C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/general/distance.hpp
 stdlib.h
 -
 vector
@@ -174,7 +174,7 @@ cmath
 iostream
 -
 
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/general/matrix.hpp
+C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/general/matrix.hpp
 cstddef
 -
 algorithm
@@ -186,9 +186,9 @@ vector
 iostream
 -
 distance.hpp
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/general/distance.hpp
+C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/general/distance.hpp
 
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/samples/efanna_index_buildall.cc
+C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/samples/efanna_index_buildall.cc
 efanna.hpp
 -
 iostream
@@ -200,9 +200,9 @@ ctime
 malloc.h
 -
 ../general/matrix.hpp
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/general/matrix.hpp
+C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/general/matrix.hpp
 ../algorithm/kdtreeub_index.hpp
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/algorithm/kdtreeub_index.hpp
+C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/algorithm/kdtreeub_index.hpp
 
 C:/local/boost_1_66_0/boost/assert.hpp
 boost/config.hpp

@@ -11,10 +11,10 @@ CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.obj
  ../general/distance.hpp
  ../general/matrix.hpp
  ../general/params.hpp
- C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/algorithm/kdtreeub_index.hpp
- C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/general/distance.hpp
- C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/general/matrix.hpp
- C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/samples/efanna_index_buildall.cc
+ C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/algorithm/kdtreeub_index.hpp
+ C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/general/distance.hpp
+ C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/general/matrix.hpp
+ C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/samples/efanna_index_buildall.cc
  C:/local/boost_1_66_0/boost/assert.hpp
  C:/local/boost_1_66_0/boost/config.hpp
  C:/local/boost_1_66_0/boost/config/compiler/borland.hpp

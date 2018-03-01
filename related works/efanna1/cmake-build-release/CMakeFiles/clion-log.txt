@@ -1,5 +1,5 @@
-"C:\Program Files\JetBrains\CLion 2017.2.2\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - MinGW Makefiles" "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\efanna"
+"C:\Program Files\JetBrains\CLion 2017.2.2\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - MinGW Makefiles" "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\efanna1"
 -- Boost version: 1.66.0
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/cmake-build-release
+-- Build files have been written to: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release

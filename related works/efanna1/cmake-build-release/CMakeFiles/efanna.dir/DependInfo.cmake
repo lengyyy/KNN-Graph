@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/samples/efanna_index_buildall.cc" "C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna/cmake-build-release/CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.obj"
+  "C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/samples/efanna_index_buildall.cc" "C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

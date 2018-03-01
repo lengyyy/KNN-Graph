@@ -23,6 +23,6 @@ include_directories(${PROJECT_SOURCE_DIR} ${PROJECT_SOURCE_DIR}/* ${PROJECT_SOUR
 set(SOURCE_FILES ${SOURCES} ${HEADERS})
 add_executable(efanna samples/efanna_index_buildall.cc)
 
-target_link_libraries(efanna ${LDFLAGS})
+#target_link_libraries(efanna ${LDFLAGS})
 #add_executable(efanna efanna_index_buildgraph.cc)
 #add_executable(efanna efanna_index_buildtrees.cc)
