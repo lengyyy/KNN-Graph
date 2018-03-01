@@ -8,30 +8,6 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-<<<<<<< HEAD
-				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="efanna">
-				<Option output="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/efanna.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release"/>
-=======
 				<Option working_dir="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-release"/>
 				<Option type="4"/>
 				<MakeCommands>
@@ -64,36 +40,11 @@
 			<Target title="efanna">
 				<Option output="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-release/efanna" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-release"/>
->>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DHAS_BOOST"/>
-<<<<<<< HEAD
-					<Add directory="C:/local/boost_1_66_0"/>
-					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1"/>
-					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/*"/>
-					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/*/*"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 efanna"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="efanna/fast">
-				<Option output="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/efanna.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release"/>
-=======
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1"/>
 					<Add directory="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/*"/>
@@ -115,48 +66,11 @@
 			<Target title="efanna/fast">
 				<Option output="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-release/efanna" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-release"/>
->>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add option="-DHAS_BOOST"/>
-<<<<<<< HEAD
-					<Add directory="C:/local/boost_1_66_0"/>
-					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1"/>
-					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/*"/>
-					<Add directory="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/*/*"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/mingw32"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include/c++/backward"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../include"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/include-fixed"/>
-					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/6.3.0/../../../../mingw32/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 efanna/fast"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="rebuild_cache">
-				<Option working_dir="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="C:/MinGW/bin/mingw32-make.exe -f &quot;C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-		</Build>
-		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/samples/efanna_index_buildall.cc">
-			<Option target="efanna"/>
-		</Unit>
-		<Unit filename="C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/CMakeLists.txt">
-=======
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1"/>
 					<Add directory="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/*"/>
@@ -180,7 +94,6 @@
 			<Option target="efanna"/>
 		</Unit>
 		<Unit filename="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/CMakeLists.txt">
->>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

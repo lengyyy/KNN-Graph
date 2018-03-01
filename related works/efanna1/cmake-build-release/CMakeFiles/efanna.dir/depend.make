@@ -13,6 +13,7 @@ CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: ../general/params.hpp
 CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: ../algorithm/kdtreeub_index.hpp
 CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: ../general/distance.hpp
 CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: ../general/matrix.hpp
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: ../mysql/MyDB.h
 CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: ../samples/efanna_index_buildall.cc
 CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/boost/assert.hpp
 CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/boost/config.hpp
@@ -259,4 +260,17 @@ CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/boo
 CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/boost/static_assert.hpp
 CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/boost/throw_exception.hpp
 CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/boost/utility/addressof.hpp
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/mysql/binary_log_types.h
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/mysql/my_alloc.h
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/mysql/my_command.h
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/mysql/my_list.h
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/mysql/mysql.h
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/mysql/mysql/client_plugin.h
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/mysql/mysql/plugin_auth_common.h
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/mysql/mysql/psi/psi_base.h
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/mysql/mysql/psi/psi_memory.h
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/mysql/mysql_com.h
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/mysql/mysql_time.h
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/mysql/mysql_version.h
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: /usr/local/include/mysql/typelib.h
 

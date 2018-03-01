@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# Install script for directory: C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1
-=======
 # Install script for directory: /Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1
->>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,9 +35,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-<<<<<<< HEAD
-file(WRITE "C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/cmake-build-release/${CMAKE_INSTALL_MANIFEST}"
-=======
 file(WRITE "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-release/${CMAKE_INSTALL_MANIFEST}"
->>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

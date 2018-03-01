@@ -48,17 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-<<<<<<< HEAD
-CMAKE_SOURCE_DIR = "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\efanna1"
-
-# The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\efanna1\cmake-build-release"
-=======
 CMAKE_SOURCE_DIR = "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1"
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-release"
->>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,15 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-<<<<<<< HEAD
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\efanna1\cmake-build-release\CMakeFiles" "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\efanna1\cmake-build-release\CMakeFiles\progress.marks"
-	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\efanna1\cmake-build-release\CMakeFiles" 0
-=======
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-release/CMakeFiles" "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-release/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-release/CMakeFiles" 0
->>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
 .PHONY : all
 
 # The main clean target

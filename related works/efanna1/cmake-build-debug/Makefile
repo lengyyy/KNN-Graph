@@ -48,17 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-<<<<<<< HEAD
-CMAKE_SOURCE_DIR = "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\efanna1"
-
-# The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\efanna1\cmake-build-debug"
-=======
 CMAKE_SOURCE_DIR = "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1"
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-debug"
->>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,15 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-<<<<<<< HEAD
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\efanna1\cmake-build-debug\CMakeFiles" "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\efanna1\cmake-build-debug\CMakeFiles\progress.marks"
-	$(MAKE) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\markz\Desktop\KNN-Graph\KNN-Graph\related works\efanna1\cmake-build-debug\CMakeFiles" 0
-=======
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-debug/CMakeFiles" "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-debug/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-debug/CMakeFiles" 0
->>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
 .PHONY : all
 
 # The main clean target
@@ -136,32 +123,32 @@ efanna/fast:
 	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/build
 .PHONY : efanna/fast
 
-samples/efanna_index_buildall.o: samples/efanna_index_buildall.cc.o
+samples/efanna_index_buildgraph.o: samples/efanna_index_buildgraph.cc.o
 
-.PHONY : samples/efanna_index_buildall.o
+.PHONY : samples/efanna_index_buildgraph.o
 
 # target to build an object file
-samples/efanna_index_buildall.cc.o:
-	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o
-.PHONY : samples/efanna_index_buildall.cc.o
+samples/efanna_index_buildgraph.cc.o:
+	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildgraph.cc.o
+.PHONY : samples/efanna_index_buildgraph.cc.o
 
-samples/efanna_index_buildall.i: samples/efanna_index_buildall.cc.i
+samples/efanna_index_buildgraph.i: samples/efanna_index_buildgraph.cc.i
 
-.PHONY : samples/efanna_index_buildall.i
+.PHONY : samples/efanna_index_buildgraph.i
 
 # target to preprocess a source file
-samples/efanna_index_buildall.cc.i:
-	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.i
-.PHONY : samples/efanna_index_buildall.cc.i
+samples/efanna_index_buildgraph.cc.i:
+	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildgraph.cc.i
+.PHONY : samples/efanna_index_buildgraph.cc.i
 
-samples/efanna_index_buildall.s: samples/efanna_index_buildall.cc.s
+samples/efanna_index_buildgraph.s: samples/efanna_index_buildgraph.cc.s
 
-.PHONY : samples/efanna_index_buildall.s
+.PHONY : samples/efanna_index_buildgraph.s
 
 # target to generate assembly for a file
-samples/efanna_index_buildall.cc.s:
-	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.s
-.PHONY : samples/efanna_index_buildall.cc.s
+samples/efanna_index_buildgraph.cc.s:
+	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildgraph.cc.s
+.PHONY : samples/efanna_index_buildgraph.cc.s
 
 # Help Target
 help:
@@ -172,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... efanna"
-	@echo "... samples/efanna_index_buildall.o"
-	@echo "... samples/efanna_index_buildall.i"
-	@echo "... samples/efanna_index_buildall.s"
+	@echo "... samples/efanna_index_buildgraph.o"
+	@echo "... samples/efanna_index_buildgraph.i"
+	@echo "... samples/efanna_index_buildgraph.s"
 .PHONY : help
 
 

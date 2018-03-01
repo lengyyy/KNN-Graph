@@ -144,15 +144,9 @@ map
 string
 -
 
-<<<<<<< HEAD
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/algorithm/kdtreeub_index.hpp
-algorithm/base_index.hpp
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/algorithm/algorithm/base_index.hpp
-=======
 /Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/algorithm/kdtreeub_index.hpp
 algorithm/base_index.hpp
 /Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/algorithm/algorithm/base_index.hpp
->>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
 fstream
 -
 ctime
@@ -166,11 +160,7 @@ queue
 boost/dynamic_bitset.hpp
 -
 
-<<<<<<< HEAD
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/general/distance.hpp
-=======
 /Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/general/distance.hpp
->>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
 stdlib.h
 -
 vector
@@ -184,11 +174,7 @@ cmath
 iostream
 -
 
-<<<<<<< HEAD
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/general/matrix.hpp
-=======
 /Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/general/matrix.hpp
->>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
 cstddef
 -
 algorithm
@@ -200,15 +186,15 @@ vector
 iostream
 -
 distance.hpp
-<<<<<<< HEAD
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/general/distance.hpp
-
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/samples/efanna_index_buildall.cc
-=======
 /Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/general/distance.hpp
 
+/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/mysql/MyDB.h
+mysql/mysql.h
+-
+string.h
+-
+
 /Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/samples/efanna_index_buildall.cc
->>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
 efanna.hpp
 -
 iostream
@@ -220,15 +206,11 @@ ctime
 stdlib.h
 -
 ../general/matrix.hpp
-<<<<<<< HEAD
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/general/matrix.hpp
-../algorithm/kdtreeub_index.hpp
-C:/Users/markz/Desktop/KNN-Graph/KNN-Graph/related works/efanna1/algorithm/kdtreeub_index.hpp
-=======
 /Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/general/matrix.hpp
 ../algorithm/kdtreeub_index.hpp
 /Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/algorithm/kdtreeub_index.hpp
->>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
+../mysql/MyDB.h
+/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/mysql/MyDB.h
 
 /usr/local/include/boost/assert.hpp
 boost/config.hpp
@@ -2583,4 +2565,68 @@ boost/current_function.hpp
 /usr/local/include/boost/utility/addressof.hpp
 boost/core/addressof.hpp
 -
+
+/usr/local/include/mysql/binary_log_types.h
+
+/usr/local/include/mysql/my_alloc.h
+mysql/psi/psi_memory.h
+/usr/local/include/mysql/mysql/psi/psi_memory.h
+
+/usr/local/include/mysql/my_command.h
+
+/usr/local/include/mysql/my_list.h
+
+/usr/local/include/mysql/mysql.h
+sys/types.h
+-
+windows.h
+-
+winsock2.h
+-
+mysql_version.h
+/usr/local/include/mysql/mysql_version.h
+mysql_com.h
+/usr/local/include/mysql/mysql_com.h
+mysql_time.h
+/usr/local/include/mysql/mysql_time.h
+my_list.h
+/usr/local/include/mysql/my_list.h
+mysql/client_plugin.h
+/usr/local/include/mysql/mysql/client_plugin.h
+typelib.h
+/usr/local/include/mysql/typelib.h
+my_alloc.h
+/usr/local/include/mysql/my_alloc.h
+
+/usr/local/include/mysql/mysql/client_plugin.h
+stdarg.h
+-
+stdlib.h
+-
+plugin_auth_common.h
+/usr/local/include/mysql/mysql/plugin_auth_common.h
+
+/usr/local/include/mysql/mysql/plugin_auth_common.h
+windows.h
+-
+
+/usr/local/include/mysql/mysql/psi/psi_base.h
+
+/usr/local/include/mysql/mysql/psi/psi_memory.h
+psi_base.h
+/usr/local/include/mysql/mysql/psi/psi_base.h
+
+/usr/local/include/mysql/mysql_com.h
+binary_log_types.h
+/usr/local/include/mysql/binary_log_types.h
+my_command.h
+/usr/local/include/mysql/my_command.h
+
+/usr/local/include/mysql/mysql_time.h
+
+/usr/local/include/mysql/mysql_version.h
+
+/usr/local/include/mysql/typelib.h
+my_alloc.h
+/usr/local/include/mysql/my_alloc.h
 
