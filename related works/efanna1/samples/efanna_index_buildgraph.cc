@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
-#include <malloc.h>
+#include <stdlib.h>
 #include <boost/timer/timer.hpp>
 
 using namespace efanna;

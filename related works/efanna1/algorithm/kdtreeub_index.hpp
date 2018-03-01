@@ -377,7 +377,7 @@ public:
 			resultSize = K;
 
 
-#pragma omp parallel for
+//#pragma omp parallel for
 		for(unsigned int cur = 0; cur < query.get_rows(); cur++){
 			boost::dynamic_bitset<> tbflag(features_.get_rows(), false);
 			boost::dynamic_bitset<> newflag(features_.get_rows(), true);
@@ -513,7 +513,7 @@ public:
 			bSorted = false;
 		}
 
-#pragma omp parallel for
+//#pragma omp parallel for
 		for(unsigned int cur = 0; cur < query.get_rows(); cur++){
 			std::mt19937 rng(1998);
 			boost::dynamic_bitset<> flags(features_.get_rows(), false);
@@ -1220,9 +1220,9 @@ protected:
 			tree_roots_.push_back(node);
 			ActiveSet.push_back(node);
 		}
-#pragma omp parallel for
+//#pragma omp parallel for
 		for(unsigned i = 0; i < N; i++)indices[i] = i;
-#pragma omp parallel for
+//#pragma omp parallel for
 		for(unsigned i = 0; i < (unsigned)TreeNum; i++){
 			std::vector<unsigned>& myids = LeafLists[i];
 			myids.resize(N);
@@ -1231,7 +1231,7 @@ protected:
 		}
 		omp_init_lock(&rootlock);
 		while(!ActiveSet.empty() && ActiveSet.size() < 1100){
-#pragma omp parallel for
+//#pragma omp parallel for
 			for(unsigned i = 0; i < ActiveSet.size(); i++){
 				Node* node = ActiveSet[i];
 				unsigned mid;
@@ -1263,7 +1263,7 @@ protected:
 			std::copy(NewSet.begin(), NewSet.end(),ActiveSet.begin());
 			NewSet.clear();
 		}
-#pragma omp parallel for
+//#pragma omp parallel for
 		for(unsigned i = 0; i < ActiveSet.size(); i++){
 			Node* node = ActiveSet[i];
 			//omp_set_lock(&rootlock);
@@ -1308,9 +1308,9 @@ protected:
 			tree_roots_.push_back(node);
 			ActiveSet.push_back(node);
 		}
-#pragma omp parallel for
+//#pragma omp parallel for
 		for(unsigned i = 0; i < N; i++)indices[i] = i;
-#pragma omp parallel for
+//#pragma omp parallel for
 		for(unsigned i = 0; i < (unsigned)TreeNum; i++){
 			std::vector<unsigned>& myids = LeafLists[i];
 			myids.resize(N);
@@ -1319,7 +1319,7 @@ protected:
 		}
 		omp_init_lock(&rootlock);
 		while(!ActiveSet.empty() && ActiveSet.size() < 1100){
-#pragma omp parallel for
+//#pragma omp parallel for
 			for(unsigned i = 0; i < ActiveSet.size(); i++){
 				Node* node = ActiveSet[i];
 				unsigned mid;
@@ -1351,7 +1351,7 @@ protected:
 			std::copy(NewSet.begin(), NewSet.end(),ActiveSet.begin());
 			NewSet.clear();
 		}
-#pragma omp parallel for
+//#pragma omp parallel for
 		for(unsigned i = 0; i < ActiveSet.size(); i++){
 			Node* node = ActiveSet[i];
 			//omp_set_lock(&rootlock);
@@ -1368,13 +1368,13 @@ protected:
 			getMergeLevelNodeList(tree_roots_[i], i ,0);
 		}
 
-#pragma omp parallel for	
+//#pragma omp parallel for
 		for(size_t i = 0; i < mlNodeList.size(); i++){
 			mergeSubGraphs(mlNodeList[i].second, mlNodeList[i].first);
 		}
 
 
-#pragma omp parallel
+//#pragma omp parallel
 		{
 #ifdef _OPENMP
 			std::mt19937 rng(seed ^ omp_get_thread_num());
@@ -1383,7 +1383,7 @@ protected:
 #endif
 			std::vector<unsigned> random(params_.S + 1);
 
-#pragma omp for
+//#pragma omp for
 			for (unsigned n = 0; n < N; ++n) {
 				auto &nhood = nhoods[n];
 				Points &pool = nhood.pool;

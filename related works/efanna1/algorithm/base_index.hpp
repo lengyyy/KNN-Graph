@@ -328,7 +328,7 @@ SearchParams SP;
     void join(){
       size_t dim = features_.get_cols();
       size_t cc = 0;
-#pragma omp parallel for default(shared) schedule(dynamic, 100) reduction(+:cc)
+//#pragma omp parallel for default(shared) schedule(dynamic, 100) reduction(+:cc)
       for(size_t i = 0; i < nhoods.size(); i++){
         size_t uu = 0;
         nhoods[i].found = false;
@@ -379,7 +379,7 @@ SearchParams SP;
           nhoods[i].radius = nhoods[i].pool.back().dist;
       }
       //find longest new
-#pragma omp parallel for
+//#pragma omp parallel for
       for(size_t i = 0; i < nhoods.size(); i++){
         if(nhoods[i].found){
           unsigned maxl = nhoods[i].Range + params_.S < nhoods[i].L ? nhoods[i].Range + params_.S : nhoods[i].L;
@@ -393,7 +393,7 @@ SearchParams SP;
         }
         nhoods[i].radiusM = nhoods[i].pool[nhoods[i].Range-1].dist;
       }
-#pragma omp parallel for
+//#pragma omp parallel for
       for (unsigned n = 0; n < nhoods.size(); ++n) {
           Neighbor &nhood = nhoods[n];
           std::vector<unsigned> &nn_new = nhood.nn_new;
@@ -484,7 +484,7 @@ std::cout << "saving graph" << std::endl;
 	unsigned N = features_.get_rows();
 	unsigned D = features_.get_cols();
 	norms.resize(N);
-#pragma omp parallel for
+//#pragma omp parallel for
         for (unsigned n = 0; n < N; ++n) {
 	    norms[n] = distance_->norm(features_.get_row(n),D);
 	}

@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(efanna)
 
+set(CMAKE_CXX_COMPILER "/usr/local/Cellar/gcc/7.3.0/bin/g++-7")
 set(CMAKE_CXX_STANDARD 11)
 set(OPTM "-O3 -march=native -fopenmp")
 set(CPFLAGS ${OPTM} "-Wall -DINFO")
@@ -23,6 +24,11 @@ include_directories(${PROJECT_SOURCE_DIR} ${PROJECT_SOURCE_DIR}/* ${PROJECT_SOUR
 set(SOURCE_FILES ${SOURCES} ${HEADERS})
 add_executable(efanna samples/efanna_index_buildall.cc)
 
+<<<<<<< HEAD
 #target_link_libraries(efanna ${LDFLAGS})
+=======
+
+target_link_libraries(efanna ${LDFLAGS})
+>>>>>>> e3810648ef00047bde1bae47f283ab056a85b4c2
 #add_executable(efanna efanna_index_buildgraph.cc)
 #add_executable(efanna efanna_index_buildtrees.cc)
