@@ -123,32 +123,32 @@ efanna/fast:
 	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/build
 .PHONY : efanna/fast
 
-samples/efanna_index_buildgraph.o: samples/efanna_index_buildgraph.cc.o
+samples/test.o: samples/test.cpp.o
 
-.PHONY : samples/efanna_index_buildgraph.o
+.PHONY : samples/test.o
 
 # target to build an object file
-samples/efanna_index_buildgraph.cc.o:
-	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildgraph.cc.o
-.PHONY : samples/efanna_index_buildgraph.cc.o
+samples/test.cpp.o:
+	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/test.cpp.o
+.PHONY : samples/test.cpp.o
 
-samples/efanna_index_buildgraph.i: samples/efanna_index_buildgraph.cc.i
+samples/test.i: samples/test.cpp.i
 
-.PHONY : samples/efanna_index_buildgraph.i
+.PHONY : samples/test.i
 
 # target to preprocess a source file
-samples/efanna_index_buildgraph.cc.i:
-	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildgraph.cc.i
-.PHONY : samples/efanna_index_buildgraph.cc.i
+samples/test.cpp.i:
+	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/test.cpp.i
+.PHONY : samples/test.cpp.i
 
-samples/efanna_index_buildgraph.s: samples/efanna_index_buildgraph.cc.s
+samples/test.s: samples/test.cpp.s
 
-.PHONY : samples/efanna_index_buildgraph.s
+.PHONY : samples/test.s
 
 # target to generate assembly for a file
-samples/efanna_index_buildgraph.cc.s:
-	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildgraph.cc.s
-.PHONY : samples/efanna_index_buildgraph.cc.s
+samples/test.cpp.s:
+	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/test.cpp.s
+.PHONY : samples/test.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... efanna"
-	@echo "... samples/efanna_index_buildgraph.o"
-	@echo "... samples/efanna_index_buildgraph.i"
-	@echo "... samples/efanna_index_buildgraph.s"
+	@echo "... samples/test.o"
+	@echo "... samples/test.i"
+	@echo "... samples/test.s"
 .PHONY : help
 
 

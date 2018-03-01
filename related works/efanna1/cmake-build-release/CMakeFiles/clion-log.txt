@@ -1,5 +1,16 @@
 /Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1"
 -- Boost version: 1.66.0
 -- Configuring done
+CMake Error at CMakeLists.txt:25 (add_executable):
+  Cannot find source file:
+
+    samples/efanna_index_builgraph.cc
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .m .M .mm .h .hh .h++ .hm .hpp
+  .hxx .in .txx
+
+
+CMake Error: CMake can not determine linker language for target: efanna
+CMake Error: Cannot determine link language for target "efanna".
 -- Generating done
 -- Build files have been written to: /Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-release

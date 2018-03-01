@@ -6,11 +6,16 @@
     > Personal Blog: http://songlee24.github.io
  ************************************************************************/
 #ifndef __MYBD_H__
+#define __MYBD_H__
+//#ifndef _MAC
+//#include "/usr/local/Cellar/mysql/5.7.21/include/mysql/mysql.h"
+//#endif
+//#ifndef linux
 #include<mysql/mysql.h>
-#include <string.h>
-
+//#endif
+#include <vector>
+#include <unordered_map>
 using namespace std;
-string var;
 
 class MyDB
 {

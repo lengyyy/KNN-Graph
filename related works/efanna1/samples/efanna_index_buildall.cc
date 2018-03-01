@@ -3,9 +3,9 @@
 #include <fstream>
 #include <ctime>
 #include <stdlib.h>
+#include "mysql/MyDB.h"
 #include "../general/matrix.hpp"
 #include "../algorithm/kdtreeub_index.hpp"
-#include "../mysql/MyDB.h"
 
 using namespace efanna;
 using namespace std;
@@ -42,7 +42,7 @@ int main(int argc, char** argv){
   size_t points_num;
   int dim;
   load_data(argv[1], data_load, points_num,dim);
-  myInfo["dataset"]=argv[0];
+  myInfo["dataset"]=argv[1];
   myInfo["n"]=to_string(points_num);
   myInfo["d"]=to_string(dim);
   //size_t q_num;
@@ -66,12 +66,15 @@ int main(int argc, char** argv){
   index.buildIndex();
 
   f = clock();
-  cout<<"Index building time : "<<(f-s)*1.0/CLOCKS_PER_SEC<<" seconds"<<endl; myInfo["t_build_total"]=(f-s)*1.0/CLOCKS_PER_SEC;
+  cout<<"Index building time : "<<(f-s)*1.0/CLOCKS_PER_SEC<<" seconds"<<endl; myInfo["t_build_total"]=((f-s)*1.0/CLOCKS_PER_SEC);
   index.saveGraph(argv[2]);
   index.saveTrees(argv[3]);
 
-  if(argv[11]=="y")
-  db.addRecord("KNNG",myInfo);
+  //if(argv[11]=="y")
+  //db.addRecord("KNNG",myInfo);
+  for(auto key : myInfo){
+    cout<<key.first<<": "<<key.second;
+  }
 
   return 0;
 }

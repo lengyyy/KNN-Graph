@@ -3,8 +3,10 @@
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
   <component name="CidrRootsConfiguration">
     <sourceRoots>
+      <file path="$PROJECT_DIR$" />
       <file path="$PROJECT_DIR$/algorithm" />
       <file path="$PROJECT_DIR$/general" />
+      <file path="$PROJECT_DIR$/mysql" />
       <file path="$PROJECT_DIR$/samples" />
     </sourceRoots>
   </component>

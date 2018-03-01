@@ -39,6 +39,8 @@ general/params.hpp
 ../general/params.hpp
 algorithm/init_indices.hpp
 ../algorithm/init_indices.hpp
+mysql/MyDB.h
+../mysql/MyDB.h
 
 ../algorithm/base_index.hpp
 general/params.hpp
@@ -144,57 +146,15 @@ map
 string
 -
 
-/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/algorithm/kdtreeub_index.hpp
-algorithm/base_index.hpp
-/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/algorithm/algorithm/base_index.hpp
-fstream
--
-ctime
--
-string.h
--
-random
--
-queue
--
-boost/dynamic_bitset.hpp
--
-
-/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/general/distance.hpp
-stdlib.h
--
-vector
--
-set
--
-x86intrin.h
--
-cmath
--
-iostream
--
-
-/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/general/matrix.hpp
-cstddef
--
-algorithm
--
-stdexcept
--
-vector
--
-iostream
--
-distance.hpp
-/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/general/distance.hpp
-
-/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/mysql/MyDB.h
+../mysql/MyDB.h
 mysql/mysql.h
 -
+efanna.hpp
+../mysql/efanna.hpp
 string.h
 -
 
-/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/samples/efanna_index_buildall.cc
+/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/samples/efanna_index_buildtrees.cc
 efanna.hpp
 -
 iostream
@@ -205,12 +165,6 @@ ctime
 -
 stdlib.h
 -
-../general/matrix.hpp
-/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/general/matrix.hpp
-../algorithm/kdtreeub_index.hpp
-/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/algorithm/kdtreeub_index.hpp
-../mysql/MyDB.h
-/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/mysql/MyDB.h
 
 /usr/local/include/boost/assert.hpp
 boost/config.hpp

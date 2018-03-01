@@ -5,7 +5,12 @@
     > Created Time: 2014年05月04日 星期日 23时37分08秒
     > Personal Blog: http://songlee24.github.io
  ************************************************************************/
-#include "../include/lib.h"
+
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include "MyDB.h"
+
 using namespace std;
 
 MyDB::MyDB()

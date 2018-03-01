@@ -123,32 +123,32 @@ efanna/fast:
 	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/build
 .PHONY : efanna/fast
 
-samples/efanna_index_buildall.o: samples/efanna_index_buildall.cc.o
+samples/efanna_index_buildtrees.o: samples/efanna_index_buildtrees.cc.o
 
-.PHONY : samples/efanna_index_buildall.o
+.PHONY : samples/efanna_index_buildtrees.o
 
 # target to build an object file
-samples/efanna_index_buildall.cc.o:
-	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o
-.PHONY : samples/efanna_index_buildall.cc.o
+samples/efanna_index_buildtrees.cc.o:
+	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o
+.PHONY : samples/efanna_index_buildtrees.cc.o
 
-samples/efanna_index_buildall.i: samples/efanna_index_buildall.cc.i
+samples/efanna_index_buildtrees.i: samples/efanna_index_buildtrees.cc.i
 
-.PHONY : samples/efanna_index_buildall.i
+.PHONY : samples/efanna_index_buildtrees.i
 
 # target to preprocess a source file
-samples/efanna_index_buildall.cc.i:
-	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.i
-.PHONY : samples/efanna_index_buildall.cc.i
+samples/efanna_index_buildtrees.cc.i:
+	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.i
+.PHONY : samples/efanna_index_buildtrees.cc.i
 
-samples/efanna_index_buildall.s: samples/efanna_index_buildall.cc.s
+samples/efanna_index_buildtrees.s: samples/efanna_index_buildtrees.cc.s
 
-.PHONY : samples/efanna_index_buildall.s
+.PHONY : samples/efanna_index_buildtrees.s
 
 # target to generate assembly for a file
-samples/efanna_index_buildall.cc.s:
-	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.s
-.PHONY : samples/efanna_index_buildall.cc.s
+samples/efanna_index_buildtrees.cc.s:
+	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.s
+.PHONY : samples/efanna_index_buildtrees.cc.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... efanna"
-	@echo "... samples/efanna_index_buildall.o"
-	@echo "... samples/efanna_index_buildall.i"
-	@echo "... samples/efanna_index_buildall.s"
+	@echo "... samples/efanna_index_buildtrees.o"
+	@echo "... samples/efanna_index_buildtrees.i"
+	@echo "... samples/efanna_index_buildtrees.s"
 .PHONY : help
 
 

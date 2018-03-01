@@ -5,6 +5,7 @@
 #include "general/matrix.hpp"
 #include "general/params.hpp"
 #include "algorithm/init_indices.hpp"
+#include "mysql/MyDB.h"
 namespace efanna{
 template <typename DataType>
 class FIndex{
