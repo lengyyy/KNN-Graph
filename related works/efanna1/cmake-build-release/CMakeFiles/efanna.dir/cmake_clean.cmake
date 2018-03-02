@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o"
+  "CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o"
   "efanna.pdb"
   "efanna"
 )

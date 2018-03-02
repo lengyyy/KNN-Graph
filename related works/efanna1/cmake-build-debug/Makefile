@@ -123,32 +123,32 @@ efanna/fast:
 	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/build
 .PHONY : efanna/fast
 
-samples/test.o: samples/test.cpp.o
+samples/efanna_index_buildall.o: samples/efanna_index_buildall.cc.o
 
-.PHONY : samples/test.o
+.PHONY : samples/efanna_index_buildall.o
 
 # target to build an object file
-samples/test.cpp.o:
-	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/test.cpp.o
-.PHONY : samples/test.cpp.o
+samples/efanna_index_buildall.cc.o:
+	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o
+.PHONY : samples/efanna_index_buildall.cc.o
 
-samples/test.i: samples/test.cpp.i
+samples/efanna_index_buildall.i: samples/efanna_index_buildall.cc.i
 
-.PHONY : samples/test.i
+.PHONY : samples/efanna_index_buildall.i
 
 # target to preprocess a source file
-samples/test.cpp.i:
-	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/test.cpp.i
-.PHONY : samples/test.cpp.i
+samples/efanna_index_buildall.cc.i:
+	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.i
+.PHONY : samples/efanna_index_buildall.cc.i
 
-samples/test.s: samples/test.cpp.s
+samples/efanna_index_buildall.s: samples/efanna_index_buildall.cc.s
 
-.PHONY : samples/test.s
+.PHONY : samples/efanna_index_buildall.s
 
 # target to generate assembly for a file
-samples/test.cpp.s:
-	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/test.cpp.s
-.PHONY : samples/test.cpp.s
+samples/efanna_index_buildall.cc.s:
+	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.s
+.PHONY : samples/efanna_index_buildall.cc.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... efanna"
-	@echo "... samples/test.o"
-	@echo "... samples/test.i"
-	@echo "... samples/test.s"
+	@echo "... samples/efanna_index_buildall.o"
+	@echo "... samples/efanna_index_buildall.i"
+	@echo "... samples/efanna_index_buildall.s"
 .PHONY : help
 
 

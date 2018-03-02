@@ -57,38 +57,38 @@ include CMakeFiles/efanna.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/efanna.dir/flags.make
 
-CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o: CMakeFiles/efanna.dir/flags.make
-CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o: ../samples/efanna_index_buildtrees.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-release/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o"
-	/usr/local/Cellar/gcc/7.3.0/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o -c "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/samples/efanna_index_buildtrees.cc"
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: CMakeFiles/efanna.dir/flags.make
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o: ../samples/efanna_index_buildall.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-release/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o"
+	/usr/local/Cellar/gcc/7.3.0/bin/g++-7  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o -c "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/samples/efanna_index_buildall.cc"
 
-CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.i"
-	/usr/local/Cellar/gcc/7.3.0/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/samples/efanna_index_buildtrees.cc" > CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.i
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.i"
+	/usr/local/Cellar/gcc/7.3.0/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/samples/efanna_index_buildall.cc" > CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.i
 
-CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.s"
-	/usr/local/Cellar/gcc/7.3.0/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/samples/efanna_index_buildtrees.cc" -o CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.s
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.s"
+	/usr/local/Cellar/gcc/7.3.0/bin/g++-7 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/samples/efanna_index_buildall.cc" -o CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.s
 
-CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o.requires:
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o.requires:
 
-.PHONY : CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o.requires
+.PHONY : CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o.requires
 
-CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o.provides: CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o.requires
-	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o.provides.build
-.PHONY : CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o.provides
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o.provides: CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o.requires
+	$(MAKE) -f CMakeFiles/efanna.dir/build.make CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o.provides.build
+.PHONY : CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o.provides
 
-CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o.provides.build: CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o
+CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o.provides.build: CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o
 
 
 # Object files for target efanna
 efanna_OBJECTS = \
-"CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o"
+"CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o"
 
 # External object files for target efanna
 efanna_EXTERNAL_OBJECTS =
 
-efanna: CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o
+efanna: CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o
 efanna: CMakeFiles/efanna.dir/build.make
 efanna: CMakeFiles/efanna.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/cmake-build-release/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable efanna"
@@ -99,7 +99,7 @@ CMakeFiles/efanna.dir/build: efanna
 
 .PHONY : CMakeFiles/efanna.dir/build
 
-CMakeFiles/efanna.dir/requires: CMakeFiles/efanna.dir/samples/efanna_index_buildtrees.cc.o.requires
+CMakeFiles/efanna.dir/requires: CMakeFiles/efanna.dir/samples/efanna_index_buildall.cc.o.requires
 
 .PHONY : CMakeFiles/efanna.dir/requires
 

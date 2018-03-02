@@ -7,12 +7,7 @@
  ************************************************************************/
 #ifndef __MYBD_H__
 #define __MYBD_H__
-//#ifndef _MAC
-//#include "/usr/local/Cellar/mysql/5.7.21/include/mysql/mysql.h"
-//#endif
-//#ifndef linux
 #include<mysql/mysql.h>
-//#endif
 #include <vector>
 #include <unordered_map>
 using namespace std;

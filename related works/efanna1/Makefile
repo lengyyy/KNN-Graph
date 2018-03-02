@@ -1,4 +1,4 @@
-GXX=g++ -std=c++11
+GXX=g++-7 -std=c++11
 #OPTM=-O3 -msse2 -msse4 -fopenmp
 OPTM=-O3 -march=native -fopenmp
 CPFLAGS=$(OPTM) -DINFO

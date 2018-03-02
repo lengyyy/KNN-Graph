@@ -1,2 +1,10 @@
 .DS_Store 
 */.DS_Store 
+*.o
+.idea/
+*.fvecs
+*.ivecs
+*.graph
+*.trees
+/related works/efanna1/cmake-build-debug/*
+/related works/efanna1/cmake-build-release/*

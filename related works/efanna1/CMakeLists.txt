@@ -21,7 +21,7 @@ file(GLOB HEADERS "*.hpp */*.hpp mysql/MyDB.h")
 include_directories(${PROJECT_SOURCE_DIR} ${PROJECT_SOURCE_DIR}/* ${PROJECT_SOURCE_DIR}/*/*)
 
 set(SOURCE_FILES ${SOURCES} ${HEADERS})
-add_executable(efanna samples/test.cpp)
+add_executable(efanna samples/efanna_index_buildall.cc)
 
 #target_link_libraries(efanna ${LDFLAGS} mysqlclient)
 #add_executable(efanna efanna_index_buildgraph.cc)

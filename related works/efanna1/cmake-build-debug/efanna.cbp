@@ -90,7 +90,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/samples/test.cpp">
+		<Unit filename="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/samples/efanna_index_buildall.cc">
 			<Option target="efanna"/>
 		</Unit>
 		<Unit filename="/Users/lengyue/Desktop/knn g 2/KNN-Graph/related works/efanna1/CMakeLists.txt">
