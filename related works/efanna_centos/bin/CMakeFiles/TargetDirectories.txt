@@ -1,3 +1,0 @@
-/home/LengYue/Repository/KNN-Graph/related works/efanna/bin/CMakeFiles/edit_cache.dir
-/home/LengYue/Repository/KNN-Graph/related works/efanna/bin/CMakeFiles/rebuild_cache.dir
-/home/LengYue/Repository/KNN-Graph/related works/efanna/bin/CMakeFiles/efanna.dir

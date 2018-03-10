@@ -1,2 +1,0 @@
-C:\MinGW\bin\ar.exe qc ..\..\lib\libflann_cpp_s.a  CMakeFiles/flann_cpp_s.dir/flann/flann_cpp.cpp.obj
-C:\MinGW\bin\ranlib.exe ..\..\lib\libflann_cpp_s.a
