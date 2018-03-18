@@ -1,0 +1,1 @@
+/bin/c++   -O3 -march=native -fopenmp -lprofiler -ltcmalloc   -lprofiler -ltcmalloc CMakeFiles/efanna.dir/samples/efanna_index_buildall_and_evaluate.cc.o  -o efanna -O3 -march=native -fopenmp -L /usr/lib64/mysql -lmysqlclient -lpthread -lz -lm -lssl -lcrypto -ldl -lboost_timer -lboost_chrono -lboost_system 
