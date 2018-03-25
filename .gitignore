@@ -6,5 +6,9 @@
 *.ivecs
 *.graph
 *.trees
-/related works/efanna1/cmake-build-debug/*
-/related works/efanna1/cmake-build-release/*
+cmake*/
+bin/
+/cmake-build-debug/
+/cmake-build-release/
+/cmake/
+
