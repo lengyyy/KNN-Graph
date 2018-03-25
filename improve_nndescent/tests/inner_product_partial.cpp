@@ -73,7 +73,7 @@ int main(int argc, char **argv) {
 //    }
 
 #ifdef linux
-    ProfilerStart("my.prof_ip");
+    ProfilerStart("my.prof_ip_p");
 #endif
 
     auto s_init = std::chrono::high_resolution_clock::now();
@@ -102,12 +102,14 @@ int main(int argc, char **argv) {
     data_load = efanna2e::data_align(data_load, points_num, dim);//one must align the data before build
 
     std::vector<float> p_square(points_num);
+    std::vector<float> p_size(points_num);
     vector<float>  p_bar(points_num);
     vector<float>  q_bar(points_num);
     efanna2e::DistanceFastL2* distance_norm = new efanna2e::DistanceFastL2();
     for (size_t i = 0; i < points_num; i++) {
         float ps = distance_norm->norm(data_load+i*dim, dim);
         p_square[i]=ps;
+        p_size[i] = sqrt(ps);
         //q_bar[i] = sqrt(1+4*ps);
         //p_bar[i] = sqrt(ps*ps+ps);
     }
@@ -118,7 +120,7 @@ int main(int argc, char **argv) {
     efanna2e::IndexKDtree init_index(dim, points_num, efanna2e::INNER_PRODUCT, nullptr);
 
     //init_index.Build2(points_num, data_load, paras, p_square,p_bar,q_bar);
-    init_index.Build4_p(points_num, data_load, paras, p_square);
+    init_index.Build4_p(points_num, data_load, paras, p_square,p_size);
 
     auto e_init = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff_init = e_init - s_init;
@@ -132,7 +134,7 @@ int main(int argc, char **argv) {
     index.final_graph_ = init_index.final_graph_; //pass the init graph without Save and Load
 //    index.Load(init_graph_filename);
     auto s = std::chrono::high_resolution_clock::now();
-    index.RefineGraph4_p(data_load, paras,p_square);
+    index.RefineGraph4_p(data_load, paras,p_square,p_size);
     auto e = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = e - s;
     std::cout << "Refine time: " << diff.count() << "s\n";

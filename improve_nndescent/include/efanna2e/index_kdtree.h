@@ -92,7 +92,7 @@ class IndexKDtree : public Index {
   virtual void Build(size_t n, const float *data, const Parameters &parameters) override;
     void Build2(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_bar, std::vector<float> &q_bar );
     void Build3(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square );
-    void Build4_p(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square );
+    void Build4_p(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size  );
 
   virtual void Search(
       const float *query,
@@ -153,7 +153,7 @@ typedef std::set<Candidate > CandidateHeap; //for inner product!
   void mergeSubGraphs(size_t treeid, Node* node);
     void mergeSubGraphs2(size_t treeid, Node* node, std::vector<float> &p_square, std::vector<float> &p_bar, std::vector<float> &q_bar );
     void mergeSubGraphs3(size_t treeid, Node* node, std::vector<float> &p_square );
-    void mergeSubGraphs4_p(size_t treeid, Node* node, std::vector<float> &p_square );
+    void mergeSubGraphs4_p(size_t treeid, Node* node, std::vector<float> &p_square , std::vector<float> &p_size);
   void DFSbuild(Node* node, std::mt19937& rng, unsigned* indices, unsigned count, unsigned offset);
   void DFStest(unsigned level, unsigned dim, Node* node);
 };

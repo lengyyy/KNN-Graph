@@ -221,11 +221,11 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
 		  return node;
   }
 
-    void IndexKDtree::mergeSubGraphs4_p(size_t treeid, Node* node, std::vector<float> &p_square ){
+    void IndexKDtree::mergeSubGraphs4_p(size_t treeid, Node* node, std::vector<float> &p_square, std::vector<float> &p_size ){
 
         if(node->Lchild != NULL && node->Rchild != NULL){
-            mergeSubGraphs4_p(treeid, node->Lchild,p_square);
-            mergeSubGraphs4_p(treeid, node->Rchild,p_square);
+            mergeSubGraphs4_p(treeid, node->Lchild,p_square,p_size);
+            mergeSubGraphs4_p(treeid, node->Rchild,p_square,p_size);
 
             size_t numL = node->Lchild->EndIdx - node->Lchild->StartIdx;
             size_t numR = node->Rchild->EndIdx - node->Rchild->StartIdx;
@@ -250,11 +250,9 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                     for (size_t i = j + 1; i < end; i++) {
                         size_t feature_id = LeafLists[treeid][j];
                         size_t tmpfea = LeafLists[treeid][i];
-                        float fea_size = p_square[feature_id];
-                        float tmp_size = p_square[tmpfea];
-                        float twice_pq_size = 2*sqrt(fea_size)*sqrt(tmp_size);
-                        float ub1 = -fea_size+twice_pq_size;
-                        float ub2 = -tmp_size+twice_pq_size;
+                        float twice_pq_size = 2*p_size[feature_id]*p_size[tmpfea];
+                        float ub1 = -p_square[feature_id]+twice_pq_size;
+                        float ub2 = -p_square[tmpfea]+twice_pq_size;
 
                         float twice_ip = 0;
 //                       float twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
@@ -264,12 +262,12 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                             LockGuard g(graph_[tmpfea].lock);
                             if (knn_graph[tmpfea].size() < K){
                                 twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
-                                float dist1 = twice_ip-fea_size;
+                                float dist1 = twice_ip-p_square[feature_id];
                                 Candidate c1(feature_id, dist1);
                                 knn_graph[tmpfea].insert(c1);
                             } else if (ub1 > knn_graph[tmpfea].begin()->distance){
                                 twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
-                                float dist1 = twice_ip-fea_size;
+                                float dist1 = twice_ip-p_square[feature_id];
                                 if (dist1 > knn_graph[tmpfea].begin()->distance){
                                     Candidate c1(feature_id, dist1);
                                     knn_graph[tmpfea].insert(c1);
@@ -283,12 +281,12 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                             LockGuard g(graph_[feature_id].lock);
                             if (knn_graph[feature_id].size() < K){
                                 if (twice_ip==0) twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
-                                float dist2 = twice_ip-tmp_size;
+                                float dist2 = twice_ip-p_square[tmpfea];
                                 Candidate c1(tmpfea, dist2);
                                 knn_graph[feature_id].insert(c1);
                             }else if (ub2 > knn_graph[feature_id].begin()->distance){
                                 if (twice_ip==0) twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
-                                float dist2 = twice_ip-tmp_size;
+                                float dist2 = twice_ip-p_square[tmpfea];
                                 if (dist2 > knn_graph[feature_id].begin()->distance) {
                                     Candidate c1(tmpfea, dist2);
                                     knn_graph[feature_id].insert(c1);
@@ -310,11 +308,9 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                 Node* leaf = SearchToLeaf(root, feature_id);
                 for(size_t i = leaf->StartIdx; i < leaf->EndIdx; i++){
                     size_t tmpfea = LeafLists[treeid][i];
-                    float fea_size = p_square[feature_id];
-                    float tmp_size = p_square[tmpfea];
-                    float twice_pq_size = 2*sqrt(fea_size)*sqrt(tmp_size);
-                    float ub1 = -fea_size+twice_pq_size;
-                    float ub2 = -tmp_size+twice_pq_size;
+                    float twice_pq_size = 2*p_size[feature_id]*p_size[tmpfea];
+                    float ub1 = -p_square[feature_id]+twice_pq_size;
+                    float ub2 = -p_square[tmpfea]+twice_pq_size;
                     float twice_ip = 0;
 //                    float twice_pq = 2*distance_->compare(data_ + tmpfea * dimension_, data_ + feature_id * dimension_, dimension_);
 //                    float dist1 = twice_pq - p_square[feature_id];
@@ -324,12 +320,12 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                         LockGuard g(graph_[tmpfea].lock);
                         if (knn_graph[tmpfea].size() < K){
                             twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
-                            float dist1 = twice_ip-fea_size;
+                            float dist1 = twice_ip-p_square[feature_id];
                             Candidate c1(feature_id, dist1);
                             knn_graph[tmpfea].insert(c1);
                         } else if (ub1 > knn_graph[tmpfea].begin()->distance){
                             twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
-                            float dist1 = twice_ip-fea_size;
+                            float dist1 = twice_ip-p_square[feature_id];
                             if (dist1 > knn_graph[tmpfea].begin()->distance){
                                 Candidate c1(feature_id, dist1);
                                 knn_graph[tmpfea].insert(c1);
@@ -343,12 +339,12 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                         LockGuard g(graph_[feature_id].lock);
                         if (knn_graph[feature_id].size() < K){
                             if (twice_ip==0) twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
-                            float dist2 = twice_ip-tmp_size;
+                            float dist2 = twice_ip-p_square[tmpfea];
                             Candidate c1(tmpfea, dist2);
                             knn_graph[feature_id].insert(c1);
                         }else if (ub2 > knn_graph[feature_id].begin()->distance){
                             if (twice_ip==0) twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
-                            float dist2 = twice_ip-tmp_size;
+                            float dist2 = twice_ip-p_square[tmpfea];
                             if (dist2 > knn_graph[feature_id].begin()->distance) {
                                 Candidate c1(tmpfea, dist2);
                                 knn_graph[feature_id].insert(c1);
@@ -696,7 +692,7 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
 	  }
   }
 
-    void IndexKDtree::Build4_p(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square ) {
+    void IndexKDtree::Build4_p(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size ) {
 
         data_ = data;
         //assert(initializer_->HasBuilt());
@@ -814,7 +810,7 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
 
 #pragma omp parallel for
         for(size_t i = 0; i < mlNodeList.size(); i++){
-            mergeSubGraphs4_p(mlNodeList[i].second, mlNodeList[i].first, p_square);
+            mergeSubGraphs4_p(mlNodeList[i].second, mlNodeList[i].first, p_square, p_size);
         }
 
 
