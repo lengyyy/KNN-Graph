@@ -28,8 +28,8 @@ IndexGraph::~IndexGraph() {}
               float ub1 = -p_square[j]+twice_pq_size;
               float ub2 = -p_square[i]+twice_pq_size;
               float twice_ip = 0;
-              if(ub1 <= graph_[i].pool.front().distance)printf("~");
-              if(ub2 <= graph_[j].pool.front().distance)printf("~");
+//              if(ub1 <= graph_[i].pool.front().distance)printf("~");
+//              if(ub2 <= graph_[j].pool.front().distance)printf("~");
               if (ub1 > graph_[i].pool.front().distance) {
                 twice_ip = 2*distance_->compare(data_ + i * dimension_, data_ + j * dimension_,dimension_);
                 float dist1 = twice_ip-p_square[j];
