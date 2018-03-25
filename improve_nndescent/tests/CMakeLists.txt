@@ -16,3 +16,7 @@ target_link_libraries(kdtree_buildall_and_evaluate ${PROJECT_NAME} -lprofiler)
 add_executable(inner_product inner_product.cpp)
 #target_link_libraries(inner_product ${PROJECT_NAME})
 target_link_libraries(inner_product ${PROJECT_NAME} -lprofiler)
+
+add_executable(inner_product_partial inner_product_partial.cpp)
+#target_link_libraries(inner_product ${PROJECT_NAME})
+target_link_libraries(inner_product_partial ${PROJECT_NAME} -lprofiler)
