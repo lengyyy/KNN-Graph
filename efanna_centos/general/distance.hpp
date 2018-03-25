@@ -321,6 +321,7 @@ ResultType compare(const T* a, const T* b, size_t size) const{
     ret = unpack[0] + unpack[1] + unpack[2] + unpack[3] + unpack[4] + unpack[5] + unpack[6] + unpack[7];
     return ret;//sqrt(ret);
 }
+
 #define AVX_L2NORM(addr, dest, tmp) \
     tmp = _mm256_loadu_ps(addr); \
     tmp = _mm256_mul_ps(tmp, tmp); \

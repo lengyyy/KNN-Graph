@@ -32,9 +32,12 @@ public:
 #endif
 #endif
 #endif
+        L2DistanceAVX<float>* dist = new L2DistanceAVX<float>();
         //std::cout<<" DD: "<<align_cols<<std::endl;
         for (size_t i = 0; i < rows; i++) {
             row_pointers_.push_back(reinterpret_cast<const T*>(data) + (align_cols * i));
+            row_pointers_p_square.push_back(dist->norm(row_pointers_.back(), align_cols));
+
         }
     }
 
@@ -69,6 +72,7 @@ public:
 private:
     size_t rows_, cols_;
     std::vector<const T*> row_pointers_;
+    std::vector<float> row_pointers_p_square;
 };
 
 }

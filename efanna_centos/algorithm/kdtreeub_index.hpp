@@ -1053,7 +1053,66 @@ public:
 				start = node->Rchild->StartIdx;
 				end = node->Rchild->EndIdx;
 			}
+			typedef std::set<Candidate<DataType>, std::less<Candidate<DataType>> > p_square_set;
             if(root->Lchild==NULL && root->Rchild==NULL){
+				for(size_t i=root->StartIdx;i < root->EndIdx; i++) {
+					DataType dist = distance_->compare(
+						features_.get_row(tmpfea), features_.get_row(feature_id), features_.get_cols());
+						Candidate<DataType> c1(i, dist);
+						p_square_set.insert(c1);
+					}
+				}
+
+//			for(size_t j=0;j <p_square_set.size(); j++) {
+//				for (size_t i = j + 1; i < root->EndIdx; i++) {
+//
+//
+//					size_t feature_id = LeafLists[treeid][j];
+//					size_t tmpfea = LeafLists[treeid][i];
+//					DataType dist = distance_->compare(
+//							features_.get_row(tmpfea), features_.get_row(feature_id), features_.get_cols());
+//
+//					{
+//						LockGuard g(*nhoods[tmpfea].lock);
+//						if (knn_graph[tmpfea].size() < params_.S || dist < knn_graph[tmpfea].begin()->distance) {
+//							Candidate<DataType> c1(feature_id, dist);
+//							knn_graph[tmpfea].insert(c1);
+//							if (knn_graph[tmpfea].size() > params_.S)
+//								knn_graph[tmpfea].erase(knn_graph[tmpfea].begin());
+//
+//
+//
+//
+//						} else if (nhoods[tmpfea].nn_new.size() < params_.S * 2) {
+//
+//							nhoods[tmpfea].nn_new.push_back(feature_id);
+//
+//						}
+//					}
+//					{
+//						LockGuard g(*nhoods[feature_id].lock);
+//						if (knn_graph[feature_id].size() < params_.S ||
+//							dist < knn_graph[feature_id].begin()->distance) {
+//							Candidate<DataType> c1(tmpfea, dist);
+//							knn_graph[feature_id].insert(c1);
+//							if (knn_graph[feature_id].size() > params_.S)
+//								knn_graph[feature_id].erase(knn_graph[feature_id].begin());
+//
+//						} else if (nhoods[feature_id].nn_new.size() < params_.S * 2) {
+//
+//							nhoods[feature_id].nn_new.push_back(tmpfea);
+//
+//						}
+//					}
+//				}
+//			}
+//
+
+
+
+			
+
+
                 for(size_t j=root->StartIdx;j < root->EndIdx; j++) {
                     for (size_t i = j + 1; i < root->EndIdx; i++) {
                         size_t feature_id = LeafLists[treeid][j];
