@@ -57,24 +57,7 @@ struct Candidate {
         return this->distance < rhs.distance;
     }
 };
-    struct id_and_square {
-        size_t row_id;
-        float square;
-        id_and_square(const size_t row_id, const float square): row_id(row_id), square(square) { }
 
-        bool operator >(const id_and_square& rhs) const {
-            if (this->square == rhs.square) {
-                return this->row_id > rhs.row_id;
-            }
-            return this->square > rhs.square;
-        }
-        bool operator <(const id_and_square& rhs) const {
-            if (this->square == rhs.square) {
-                return this->row_id < rhs.row_id;
-            }
-            return this->square < rhs.square;
-        }
-    };
 
 
 
@@ -93,6 +76,7 @@ class IndexKDtree : public Index {
     void Build2(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_bar, std::vector<float> &q_bar );
     void Build3(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square );
     void Build4_p(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size  );
+    void Build4_purn(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size  );
 
   virtual void Search(
       const float *query,
@@ -104,9 +88,10 @@ class IndexKDtree : public Index {
  protected:
   typedef std::vector<nhood> KNNGraph;
   typedef std::vector<std::vector<unsigned > > CompactGraph;
-typedef std::set<Candidate > CandidateHeap; //for inner product!
-// typedef std::set<Candidate,std::greater<Candidate> > CandidateHeap;
+   typedef std::set<Candidate > CandidateHeap; //for inner product!
+ //typedef std::set<Candidate,std::greater<Candidate> > CandidateHeap;
     typedef std::set<id_and_square,std::greater<id_and_square>> square_heap;
+    typedef vector<id_and_square> square_heap2;
 
   Index *initializer_;
   KNNGraph graph_;
@@ -135,6 +120,7 @@ typedef std::set<Candidate > CandidateHeap; //for inner product!
   std::vector< std::pair<Node*,size_t> > mlNodeList;
   std::vector<std::vector<unsigned>> LeafLists;
     map<pair<unsigned, unsigned> ,square_heap> leaf_heap;
+    map<pair<unsigned, unsigned> ,square_heap2> leaf_heap2;
   omp_lock_t rootlock;
   bool error_flag;
 
@@ -154,6 +140,7 @@ typedef std::set<Candidate > CandidateHeap; //for inner product!
     void mergeSubGraphs2(size_t treeid, Node* node, std::vector<float> &p_square, std::vector<float> &p_bar, std::vector<float> &q_bar );
     void mergeSubGraphs3(size_t treeid, Node* node, std::vector<float> &p_square );
     void mergeSubGraphs4_p(size_t treeid, Node* node, std::vector<float> &p_square , std::vector<float> &p_size);
+    void mergeSubGraphs4_purn(size_t treeid, Node* node, std::vector<float> &p_square , std::vector<float> &p_size);
   void DFSbuild(Node* node, std::mt19937& rng, unsigned* indices, unsigned count, unsigned offset);
   void DFStest(unsigned level, unsigned dim, Node* node);
 };

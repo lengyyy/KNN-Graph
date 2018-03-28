@@ -16,6 +16,25 @@
 
 namespace efanna2e {
 
+    struct id_and_square {
+        size_t row_id;
+        float square;
+        id_and_square(const size_t row_id, const float square): row_id(row_id), square(square) { }
+
+        bool operator >(const id_and_square& rhs) const {
+            if (this->square == rhs.square) {
+                return this->row_id > rhs.row_id;
+            }
+            return this->square > rhs.square;
+        }
+        bool operator <(const id_and_square& rhs) const {
+            if (this->square == rhs.square) {
+                return this->row_id < rhs.row_id;
+            }
+            return this->square < rhs.square;
+        }
+    };
+
 class Index {
  public:
   explicit Index(const size_t dimension, const size_t n, Metric metric);
@@ -44,6 +63,11 @@ class Index {
 
   inline const float *GetDataset() const { return data_; }
 
+    inline void init_times()  { purn_times=0;ip_times=0; }
+    inline void print_times()  {
+        printf("purn_times:%d\nip_times:%d\n",purn_times,ip_times);
+    }
+
     typedef std::vector<std::vector<unsigned> > CompactGraph;
     CompactGraph final_graph_;
 
@@ -53,6 +77,8 @@ class Index {
   size_t nd_;
   bool has_built;
   Distance* distance_;
+    int purn_times;
+    int ip_times;
 };
 
 }

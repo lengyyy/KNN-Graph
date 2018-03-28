@@ -57,7 +57,7 @@ void load_datai(char *filename, int *&data, unsigned &num, unsigned &dim) {// lo
 int main(int argc, char **argv) {
 
     if (argc != 11) {
-        std::cout << argv[0] << " data_file graph_truth nTress mLevel iter L S R K division" << std::endl;
+        std::cout << argv[0] << " data_file graph_truth nTress mLevel iter L S R K purn_level" << std::endl;
         exit(-1);
     }
     float *data_load = NULL;
@@ -72,8 +72,11 @@ int main(int argc, char **argv) {
 //
 //    }
 
+
+    char profname[30];
+    sprintf(profname,"%s_%s","ip.prof",argv[10]);
 #ifdef linux
-    ProfilerStart("my.prof_ip_p");
+    ProfilerStart(profname);
 #endif
 
     auto s_init = std::chrono::high_resolution_clock::now();
@@ -87,7 +90,6 @@ int main(int argc, char **argv) {
     unsigned S = (unsigned) atoi(argv[7]);
     unsigned R = (unsigned) atoi(argv[8]);
     unsigned K = (unsigned) atoi(argv[9]);
-    unsigned division = (unsigned) atoi(argv[10]);
 
     efanna2e::Parameters paras;
     paras.Set<unsigned>("K", K);
@@ -97,7 +99,6 @@ int main(int argc, char **argv) {
     paras.Set<unsigned>("R", R);
     paras.Set<unsigned>("nTrees", nTrees);
     paras.Set<unsigned>("mLevel", mLevel);
-    paras.Set<unsigned>("division", division);
 
     data_load = efanna2e::data_align(data_load, points_num, dim);//one must align the data before build
 
@@ -118,10 +119,18 @@ int main(int argc, char **argv) {
 
 //    efanna2e::IndexRandom init_index(dim, points_num);
     efanna2e::IndexKDtree init_index(dim, points_num, efanna2e::INNER_PRODUCT, nullptr);
+    init_index.init_times();
+
 
     //init_index.Build2(points_num, data_load, paras, p_square,p_bar,q_bar);
-    init_index.Build4_p(points_num, data_load, paras, p_square,p_size);
+    unsigned pl = (unsigned) atoi(argv[10]);
+    if (pl==1){
+        init_index.Build4_p(points_num, data_load, paras, p_square,p_size);
+    }else if (pl==2){
+        init_index.Build4_purn(points_num, data_load, paras, p_square,p_size);
+    }
 
+    init_index.print_times();
     auto e_init = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff_init = e_init - s_init;
     std::cout << "Init time : " << diff_init.count() << "s\n";
@@ -129,12 +138,20 @@ int main(int argc, char **argv) {
 
 
 
-
     efanna2e::IndexGraph index(dim, points_num, efanna2e::INNER_PRODUCT, (efanna2e::Index *) (&init_index));
+    index.init_times();
     index.final_graph_ = init_index.final_graph_; //pass the init graph without Save and Load
 //    index.Load(init_graph_filename);
     auto s = std::chrono::high_resolution_clock::now();
-    index.RefineGraph4_p(data_load, paras,p_square,p_size);
+    if (pl==1){
+        index.RefineGraph4_p(data_load, paras,p_square,p_size);
+    }else if (pl==2){
+        index.RefineGraph4_p(data_load, paras,p_square,p_size);
+        //index.RefineGraph4_purn(data_load, paras,p_square,p_size);
+    }
+
+    //index.RefineGraph4_purn(data_load, paras,p_square,p_size);
+    index.print_times();
     auto e = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = e - s;
     std::cout << "Refine time: " << diff.count() << "s\n";
