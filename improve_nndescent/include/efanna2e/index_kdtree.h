@@ -77,6 +77,7 @@ class IndexKDtree : public Index {
     void Build3(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square );
     void Build4_p(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size  );
     void Build4_purn(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size  );
+    void Build5(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_right_size  );
 
   virtual void Search(
       const float *query,
@@ -141,6 +142,7 @@ class IndexKDtree : public Index {
     void mergeSubGraphs3(size_t treeid, Node* node, std::vector<float> &p_square );
     void mergeSubGraphs4_p(size_t treeid, Node* node, std::vector<float> &p_square , std::vector<float> &p_size);
     void mergeSubGraphs4_purn(size_t treeid, Node* node, std::vector<float> &p_square , std::vector<float> &p_size);
+    void mergeSubGraphs5(size_t treeid, Node* node, std::vector<float> &p_square , std::vector<float> &p_right_size);
   void DFSbuild(Node* node, std::mt19937& rng, unsigned* indices, unsigned count, unsigned offset);
   void DFStest(unsigned level, unsigned dim, Node* node);
 };
