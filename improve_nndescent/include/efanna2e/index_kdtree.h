@@ -129,6 +129,7 @@ class IndexKDtree : public Index {
   int max_deepth;
   size_t TNS=10; //tree node size
   unsigned K; //KNN Graph
+    unsigned div;
 
  private:
 

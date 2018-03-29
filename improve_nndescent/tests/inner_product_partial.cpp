@@ -125,12 +125,7 @@ int main(int argc, char **argv) {
             //q_bar[i] = sqrt(1+4*ps);
             //p_bar[i] = sqrt(ps*ps+ps);
         }
-        for (size_t i = 0; i < 1000; i++) {
-            printf("%f\n",p_square[i]);
-        }
     }
-
-exit(-1);
 
 //    efanna2e::IndexRandom init_index(dim, points_num);
     efanna2e::IndexKDtree init_index(dim, points_num, efanna2e::INNER_PRODUCT, nullptr);
@@ -164,6 +159,7 @@ exit(-1);
         index.RefineGraph4_p(data_load, paras,p_square,p_size);
         //还没有实现index.RefineGraph4_purn(data_load, paras,p_square,p_size);
     }else if (pl==3){
+        index.RefineGraph4_p(data_load, paras,p_square,p_size);
        // index.RefineGraph5(data_load, paras,p_square,p_right_size);
     }
 

@@ -612,9 +612,10 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                     for (size_t i = j + 1; i < end; i++) {
                         size_t feature_id = LeafLists[treeid][j];
                         size_t tmpfea = LeafLists[treeid][i];
-                        float twice_pq_right_size = 2*p_right_size[feature_id]*p_right_size[tmpfea];
-                        float ub1 = -p_square[feature_id]+twice_pq_right_size;
-                        float ub2 = -p_square[tmpfea]+twice_pq_right_size;
+                        float twice_pq_left = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,div);
+                        float twice_pq_ub = twice_pq_left + 2*p_right_size[feature_id]*p_right_size[tmpfea];
+                        float ub1 = -p_square[feature_id]+twice_pq_ub;
+                        float ub2 = -p_square[tmpfea]+twice_pq_ub;
 
                         float twice_ip = 0;
 //                       float twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
@@ -624,12 +625,12 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                             LockGuard g(graph_[tmpfea].lock);
                             ip_times++;
                             if (knn_graph[tmpfea].size() < K){
-                                twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
+                                twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                                 float dist1 = twice_ip-p_square[feature_id];
                                 Candidate c1(feature_id, dist1);
                                 knn_graph[tmpfea].insert(c1);
                             } else if (ub1 > knn_graph[tmpfea].begin()->distance){
-                                twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
+                                twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                                 float dist1 = twice_ip-p_square[feature_id];
                                 if (dist1 > knn_graph[tmpfea].begin()->distance){
                                     Candidate c1(feature_id, dist1);
@@ -644,12 +645,12 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                             LockGuard g(graph_[feature_id].lock);
                             ip_times++;
                             if (knn_graph[feature_id].size() < K){
-                                if (twice_ip==0) twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
+                                if (twice_ip==0) twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                                 float dist2 = twice_ip-p_square[tmpfea];
                                 Candidate c1(tmpfea, dist2);
                                 knn_graph[feature_id].insert(c1);
                             }else if (ub2 > knn_graph[feature_id].begin()->distance){
-                                if (twice_ip==0) twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
+                                if (twice_ip==0) twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                                 float dist2 = twice_ip-p_square[tmpfea];
                                 if (dist2 > knn_graph[feature_id].begin()->distance) {
                                     Candidate c1(tmpfea, dist2);
@@ -672,9 +673,11 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                 Node* leaf = SearchToLeaf(root, feature_id);
                 for(size_t i = leaf->StartIdx; i < leaf->EndIdx; i++){
                     size_t tmpfea = LeafLists[treeid][i];
-                    float twice_pq_right_size = 2*p_right_size[feature_id]*p_right_size[tmpfea];
-                    float ub1 = -p_square[feature_id]+twice_pq_right_size;
-                    float ub2 = -p_square[tmpfea]+twice_pq_right_size;
+
+                    float twice_pq_left = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,div);
+                    float twice_pq_ub = twice_pq_left + 2*p_right_size[feature_id]*p_right_size[tmpfea];
+                    float ub1 = -p_square[feature_id]+twice_pq_ub;
+                    float ub2 = -p_square[tmpfea]+twice_pq_ub;
                     float twice_ip = 0;
 //                    float twice_pq = 2*distance_->compare(data_ + tmpfea * dimension_, data_ + feature_id * dimension_, dimension_);
 //                    float dist1 = twice_pq - p_square[feature_id];
@@ -684,12 +687,12 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                         LockGuard g(graph_[tmpfea].lock);
                         ip_times++;
                         if (knn_graph[tmpfea].size() < K){
-                            twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
+                            twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                             float dist1 = twice_ip-p_square[feature_id];
                             Candidate c1(feature_id, dist1);
                             knn_graph[tmpfea].insert(c1);
                         } else if (ub1 > knn_graph[tmpfea].begin()->distance){
-                            twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
+                            twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                             float dist1 = twice_ip-p_square[feature_id];
                             if (dist1 > knn_graph[tmpfea].begin()->distance){
                                 Candidate c1(feature_id, dist1);
@@ -704,12 +707,12 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                         LockGuard g(graph_[feature_id].lock);
                         ip_times++;
                         if (knn_graph[feature_id].size() < K){
-                            if (twice_ip==0) twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
+                            if (twice_ip==0) twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                             float dist2 = twice_ip-p_square[tmpfea];
                             Candidate c1(tmpfea, dist2);
                             knn_graph[feature_id].insert(c1);
                         }else if (ub2 > knn_graph[feature_id].begin()->distance){
-                            if (twice_ip==0) twice_ip = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,dimension_);
+                            if (twice_ip==0) twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                             float dist2 = twice_ip-p_square[tmpfea];
                             if (dist2 > knn_graph[feature_id].begin()->distance) {
                                 Candidate c1(tmpfea, dist2);
@@ -1390,6 +1393,7 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
         unsigned TreeNumBuild = parameters.Get<unsigned>("nTrees");
         ml = parameters.Get<unsigned>("mLevel");
         K = parameters.Get<unsigned>("K");
+        div = parameters.Get<unsigned>("div");
 
         std::vector<int> indices(N);
         LeafLists.resize(TreeNum);
