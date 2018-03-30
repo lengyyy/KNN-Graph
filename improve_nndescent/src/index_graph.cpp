@@ -19,6 +19,35 @@ IndexGraph::IndexGraph(const size_t dimension, const size_t n, Metric m, Index *
 }
 IndexGraph::~IndexGraph() {}
 
+    void IndexGraph::join5(std::vector<float> &p_square, std::vector<float> &p_right_size) {
+#pragma omp parallel for default(shared) schedule(dynamic, 100)
+      for (unsigned n = 0; n < nd_; n++) {
+        graph_[n].join([&](unsigned i, unsigned j) {
+            if(i != j){
+              float twice_pq_left = 2*distance_->compare2(data_ + i * dimension_, data_ + j * dimension_,div);
+              float twice_pq_ub = twice_pq_left + 2*p_right_size[i]*p_right_size[j];
+              float ub1 = -p_square[j]+twice_pq_ub;
+              float ub2 = -p_square[i]+twice_pq_ub;
+
+              float twice_ip = 0;
+              ip_times+=2;
+              if (ub1 > graph_[i].pool.front().distance) {
+                twice_ip = twice_pq_left + 2*distance_->compare2(data_ + i * dimension_+div, data_ + j * dimension_+div,dimension_-div);
+                float dist1 = twice_ip-p_square[j];
+                graph_[i].insert3(j, dist1);
+              } else purn_times++;
+              if (ub2> graph_[j].pool.front().distance){
+                if(twice_ip==0) twice_ip = twice_pq_left + 2*distance_->compare2(data_ + i * dimension_+div, data_ + j * dimension_+div,dimension_-div);
+                float dist2 = twice_ip-p_square[i];
+                graph_[j].insert3(i, dist2);
+              }else purn_times++;
+
+
+            }
+        });
+      }
+    }
+
     void IndexGraph::join4_purn(std::vector<float> &p_square, std::vector<float> &p_size) {
 //#pragma omp parallel for default(shared) schedule(dynamic, 100)
 //      for (unsigned n = 0; n < nd_; n++) {
@@ -123,6 +152,7 @@ void IndexGraph::join3(std::vector<float> &p_square) {
     });
   }
 }
+
     void IndexGraph::join() {
 #pragma omp parallel for default(shared) schedule(dynamic, 100)
       for (unsigned n = 0; n < nd_; n++) {
@@ -135,6 +165,7 @@ void IndexGraph::join3(std::vector<float> &p_square) {
         });
       }
     }
+
 void IndexGraph::update3(const Parameters &parameters,std::vector<float> &p_square) {
   unsigned S = parameters.Get<unsigned>("S");
   unsigned R = parameters.Get<unsigned>("R");
@@ -329,6 +360,16 @@ void IndexGraph::NNDescent(const Parameters &parameters) {
   }
 }
 
+    void IndexGraph::NNDescent5(const Parameters &parameters, std:: vector<float > &p_square, std::vector<float> &p_right_size) {
+      unsigned iter = parameters.Get<unsigned>("iter");
+      std::mt19937 rng(rand());
+      for (unsigned it = 0; it < iter; it++) {
+        join5(p_square,p_right_size);
+        update3(parameters,p_square);
+        std::cout << "iter: " << it << std::endl;
+      }
+    }
+
     void IndexGraph::NNDescent4_purn(const Parameters &parameters, std:: vector<float > &p_square, std::vector<float> &p_size) {
       unsigned iter = parameters.Get<unsigned>("iter");
       std::mt19937 rng(rand());
@@ -520,6 +561,37 @@ void IndexGraph::RefineGraph(const float* data, const Parameters &parameters) {
   has_built = true;
 
 }
+
+    void IndexGraph::RefineGraph5(const float* data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_right_size) {
+      data_ = data;
+      assert(initializer_->HasBuilt());
+
+      InitializeGraph_Refine3(parameters,p_square);
+      NNDescent5(parameters,p_square,p_right_size);
+
+      final_graph_.reserve(nd_);
+      std::cout << nd_ << std::endl;
+      unsigned K = parameters.Get<unsigned>("K");
+      div = parameters.Get<unsigned>("div");
+      for (unsigned i = 0; i < nd_; i++) {
+        std::vector<unsigned> tmp;
+        std::sort(graph_[i].pool.begin(), graph_[i].pool.end(),greater<Neighbor>());
+        for (unsigned j = 0; j < K; j++) {
+          tmp.push_back(graph_[i].pool[j].id);
+        }
+        tmp.reserve(K);
+        final_graph_.push_back(tmp);
+        std::vector<Neighbor>().swap(graph_[i].pool);
+        std::vector<unsigned>().swap(graph_[i].nn_new);
+        std::vector<unsigned>().swap(graph_[i].nn_old);
+        std::vector<unsigned>().swap(graph_[i].rnn_new);
+        std::vector<unsigned>().swap(graph_[i].rnn_new);
+      }
+      std::vector<nhood>().swap(graph_);
+      has_built = true;
+
+    }
+
     void IndexGraph::RefineGraph4_purn(const float* data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size) {
       data_ = data;
       assert(initializer_->HasBuilt());

@@ -44,6 +44,7 @@ class IndexGraph : public Index {
     void RefineGraph3(const float* data, const Parameters &parameters, std::vector<float> &p_square);
     void RefineGraph4_p(const float* data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size);
     void RefineGraph4_purn(const float* data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size);
+    void RefineGraph5(const float* data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_right_size);
 
  protected:
   typedef std::vector<nhood> KNNGraph;
@@ -53,6 +54,7 @@ class IndexGraph : public Index {
   Index *initializer_;
   KNNGraph graph_;
     typedef vector<id_and_square> square_heap2;
+    unsigned div;
 
 
 private:
@@ -63,11 +65,13 @@ private:
     void NNDescent3(const Parameters &parameters, std::vector<float> &p_square);
     void NNDescent4_p(const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size);
     void NNDescent4_purn(const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size);
+    void NNDescent5(const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_right_size);
 
   void join();
     void join3(std::vector<float> &p_square);
     void join4_p(std::vector<float> &p_square, std::vector<float> &p_size);
     void join4_purn(std::vector<float> &p_square, std::vector<float> &p_size);
+    void join5(std::vector<float> &p_square, std::vector<float> &p_right_size);
 
   void update(const Parameters &parameters);
     void update3(const Parameters &parameters,std::vector<float> &p_square);
