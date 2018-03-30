@@ -565,6 +565,7 @@ void IndexGraph::RefineGraph(const float* data, const Parameters &parameters) {
     void IndexGraph::RefineGraph5(const float* data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_right_size) {
       data_ = data;
       assert(initializer_->HasBuilt());
+      div = parameters.Get<unsigned>("div");
 
       InitializeGraph_Refine3(parameters,p_square);
       NNDescent5(parameters,p_square,p_right_size);
@@ -572,7 +573,6 @@ void IndexGraph::RefineGraph(const float* data, const Parameters &parameters) {
       final_graph_.reserve(nd_);
       std::cout << nd_ << std::endl;
       unsigned K = parameters.Get<unsigned>("K");
-      div = parameters.Get<unsigned>("div");
       for (unsigned i = 0; i < nd_; i++) {
         std::vector<unsigned> tmp;
         std::sort(graph_[i].pool.begin(), graph_[i].pool.end(),greater<Neighbor>());

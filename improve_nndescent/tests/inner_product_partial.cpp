@@ -112,17 +112,9 @@ int main(int argc, char **argv) {
 
     if (pl == 3){
         for (size_t i = 0; i < points_num; i++) {
-//            for (int div =0; div<129;div = div+1){
-//                float right = distance_norm->norm2(data_load+i*dim+div,  dim-div);
-//                float all = distance_norm->norm2(data_load+i*dim,  div)+right;
-//                printf("%f : (%f) %f/%f\n",right/all,all-right,right,all);
-//            }
-//            exit(-1);
-
             float right = distance_norm->norm2(data_load+i*dim+div,  dim-div);
             p_right_size[i]=sqrt(right);
             p_square[i] = distance_norm->norm2(data_load+i*dim,  div)+right;
-            //p_square2[i] = distance_norm->norm_partial(data_load+i*dim, dim, div, p_right_size2[i]);
         }
     } else{
         for (size_t i = 0; i < points_num; i++) {
