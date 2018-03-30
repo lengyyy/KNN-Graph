@@ -584,10 +584,9 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
     }
 
     void IndexKDtree::mergeSubGraphs5(size_t treeid, Node* node, std::vector<float> &p_square, std::vector<float> &p_right_size ){
-
         if(node->Lchild != NULL && node->Rchild != NULL){
-            mergeSubGraphs4_p(treeid, node->Lchild,p_square,p_right_size);
-            mergeSubGraphs4_p(treeid, node->Rchild,p_square,p_right_size);
+            mergeSubGraphs5(treeid, node->Lchild,p_square,p_right_size);
+            mergeSubGraphs5(treeid, node->Rchild,p_square,p_right_size);
 
             size_t numL = node->Lchild->EndIdx - node->Lchild->StartIdx;
             size_t numR = node->Rchild->EndIdx - node->Rchild->StartIdx;
@@ -612,7 +611,8 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                     for (size_t i = j + 1; i < end; i++) {
                         size_t feature_id = LeafLists[treeid][j];
                         size_t tmpfea = LeafLists[treeid][i];
-                        float twice_pq_left = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,div);
+
+                        float twice_pq_left = 2*distance_->compare2(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,div);
                         float twice_pq_ub = twice_pq_left + 2*p_right_size[feature_id]*p_right_size[tmpfea];
                         float ub1 = -p_square[feature_id]+twice_pq_ub;
                         float ub2 = -p_square[tmpfea]+twice_pq_ub;
@@ -625,12 +625,13 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                             LockGuard g(graph_[tmpfea].lock);
                             ip_times++;
                             if (knn_graph[tmpfea].size() < K){
-                                twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
+                                twice_ip = twice_pq_left + 2*distance_->compare2(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                                 float dist1 = twice_ip-p_square[feature_id];
                                 Candidate c1(feature_id, dist1);
                                 knn_graph[tmpfea].insert(c1);
+
                             } else if (ub1 > knn_graph[tmpfea].begin()->distance){
-                                twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
+                                twice_ip = twice_pq_left + 2*distance_->compare2(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                                 float dist1 = twice_ip-p_square[feature_id];
                                 if (dist1 > knn_graph[tmpfea].begin()->distance){
                                     Candidate c1(feature_id, dist1);
@@ -638,19 +639,21 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                                     if (knn_graph[tmpfea].size() > K)
                                         knn_graph[tmpfea].erase(knn_graph[tmpfea].begin());
                                 }
-                            } else purn_times++;
+                            }
+                            else purn_times++;
 
                         }
                         {
                             LockGuard g(graph_[feature_id].lock);
                             ip_times++;
                             if (knn_graph[feature_id].size() < K){
-                                if (twice_ip==0) twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
+                                if (twice_ip==0) twice_ip = twice_pq_left + 2*distance_->compare2(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                                 float dist2 = twice_ip-p_square[tmpfea];
                                 Candidate c1(tmpfea, dist2);
                                 knn_graph[feature_id].insert(c1);
+
                             }else if (ub2 > knn_graph[feature_id].begin()->distance){
-                                if (twice_ip==0) twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
+                                if (twice_ip==0) twice_ip = twice_pq_left + 2*distance_->compare2(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                                 float dist2 = twice_ip-p_square[tmpfea];
                                 if (dist2 > knn_graph[feature_id].begin()->distance) {
                                     Candidate c1(tmpfea, dist2);
@@ -658,7 +661,8 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                                     if (knn_graph[feature_id].size() > K)
                                         knn_graph[feature_id].erase(knn_graph[feature_id].begin());
                                 }
-                            } else purn_times++;
+                            }
+                            else purn_times++;
 
                         }
                     }
@@ -674,7 +678,7 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                 for(size_t i = leaf->StartIdx; i < leaf->EndIdx; i++){
                     size_t tmpfea = LeafLists[treeid][i];
 
-                    float twice_pq_left = 2*distance_->compare(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,div);
+                    float twice_pq_left = 2*distance_->compare2(data_ + feature_id * dimension_, data_ + tmpfea * dimension_,div);
                     float twice_pq_ub = twice_pq_left + 2*p_right_size[feature_id]*p_right_size[tmpfea];
                     float ub1 = -p_square[feature_id]+twice_pq_ub;
                     float ub2 = -p_square[tmpfea]+twice_pq_ub;
@@ -687,12 +691,13 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                         LockGuard g(graph_[tmpfea].lock);
                         ip_times++;
                         if (knn_graph[tmpfea].size() < K){
-                            twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
+                            twice_ip = twice_pq_left + 2*distance_->compare2(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                             float dist1 = twice_ip-p_square[feature_id];
                             Candidate c1(feature_id, dist1);
                             knn_graph[tmpfea].insert(c1);
+
                         } else if (ub1 > knn_graph[tmpfea].begin()->distance){
-                            twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
+                            twice_ip = twice_pq_left + 2*distance_->compare2(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                             float dist1 = twice_ip-p_square[feature_id];
                             if (dist1 > knn_graph[tmpfea].begin()->distance){
                                 Candidate c1(feature_id, dist1);
@@ -700,19 +705,21 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                                 if (knn_graph[tmpfea].size() > K)
                                     knn_graph[tmpfea].erase(knn_graph[tmpfea].begin());
                             }
-                        } else purn_times++;
+                        }
+                        else purn_times++;
 
                     }
                     {
                         LockGuard g(graph_[feature_id].lock);
                         ip_times++;
                         if (knn_graph[feature_id].size() < K){
-                            if (twice_ip==0) twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
+                            if (twice_ip==0) twice_ip = twice_pq_left + 2*distance_->compare2(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                             float dist2 = twice_ip-p_square[tmpfea];
                             Candidate c1(tmpfea, dist2);
                             knn_graph[feature_id].insert(c1);
+
                         }else if (ub2 > knn_graph[feature_id].begin()->distance){
-                            if (twice_ip==0) twice_ip = twice_pq_left + 2*distance_->compare(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
+                            if (twice_ip==0) twice_ip = twice_pq_left + 2*distance_->compare2(data_ + feature_id * dimension_+div, data_ + tmpfea * dimension_+div,dimension_-div);
                             float dist2 = twice_ip-p_square[tmpfea];
                             if (dist2 > knn_graph[feature_id].begin()->distance) {
                                 Candidate c1(tmpfea, dist2);
@@ -720,13 +727,13 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                                 if (knn_graph[feature_id].size() > K)
                                     knn_graph[feature_id].erase(knn_graph[feature_id].begin());
                             }
-                        } else purn_times++;
+                        }
+                        else purn_times++;
 
                     }
                 }
 
             }
-            //printf("break time:%d",break_time);
         }
     }
 
