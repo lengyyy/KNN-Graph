@@ -48,10 +48,10 @@ RM = /usr/bin/cmake3 -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/LengYue/Repository/KNN-Graph/related_works/efanna_centos
+CMAKE_SOURCE_DIR = /home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/bin
+CMAKE_BINARY_DIR = /home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/bin
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/bin/CMakeFiles /home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/bin/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/bin/CMakeFiles /home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/bin/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/bin/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/bin/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

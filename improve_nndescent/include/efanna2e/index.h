@@ -37,6 +37,8 @@ namespace efanna2e {
 
 class Index {
  public:
+    long long purn_times;
+    long long ip_times;
   explicit Index(const size_t dimension, const size_t n, Metric metric);
 
 
@@ -63,9 +65,10 @@ class Index {
 
   inline const float *GetDataset() const { return data_; }
 
+
     inline void init_times()  { purn_times=0;ip_times=0; }
     inline void print_times()  {
-        printf("purn_times:%d\nip_times:%d\n",purn_times,ip_times);
+        printf("purn_times:%lld\nip_times:%lld\n",purn_times,ip_times);
     }
 
     typedef std::vector<std::vector<unsigned> > CompactGraph;
@@ -77,8 +80,7 @@ class Index {
   size_t nd_;
   bool has_built;
   Distance* distance_;
-    int purn_times;
-    int ip_times;
+
 };
 
 }

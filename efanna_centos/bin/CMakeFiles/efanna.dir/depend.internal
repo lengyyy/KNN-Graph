@@ -14,7 +14,7 @@ CMakeFiles/efanna.dir/samples/efanna_index_buildall_and_evaluate.cc.o
  ../general/matrix.hpp
  ../general/params.hpp
  ../mysql/MyDB.hpp
- /home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/algorithm/kdtreeub_index.hpp
- /home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/general/distance.hpp
- /home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/general/matrix.hpp
- /home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/samples/efanna_index_buildall_and_evaluate.cc
+ /home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/algorithm/kdtreeub_index.hpp
+ /home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/general/distance.hpp
+ /home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/general/matrix.hpp
+ /home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/samples/efanna_index_buildall_and_evaluate.cc

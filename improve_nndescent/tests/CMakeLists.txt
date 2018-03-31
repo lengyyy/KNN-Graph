@@ -19,4 +19,5 @@ target_link_libraries(inner_product ${PROJECT_NAME} -lprofiler)
 
 add_executable(inner_product_partial inner_product_partial.cpp)
 #target_link_libraries(inner_product_partial ${PROJECT_NAME})
-target_link_libraries(inner_product_partial ${PROJECT_NAME} -lprofiler)
+#target_link_libraries(inner_product_partial ${PROJECT_NAME} -lprofiler)
+target_link_libraries(inner_product_partial ${PROJECT_NAME} -lprofiler -lmysqlclient)

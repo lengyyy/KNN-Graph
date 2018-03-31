@@ -6,6 +6,9 @@
 #include <efanna2e/index_random.h>
 #include <efanna2e/util.h>
 #include <efanna2e/index_kdtree.h>
+#include<iostream>
+#include<fstream>
+#include <mysql/MyDB.h>
 #ifdef linux
 #include<gperftools/profiler.h>
 #endif
@@ -60,9 +63,12 @@ void load_datai(char *filename, int *&data, unsigned &num, unsigned &dim) {// lo
 }
 
 int main(int argc, char **argv) {
+    unordered_map<string,string> myInfo;
+    MyDB db;
+    db.initDB("120.24.163.35", "lengyue", "123456", "experiment");
 
-    if (argc != 12) {
-        std::cout << argv[0] << " data_file graph_truth nTress mLevel iter L S R K purn_level division" << std::endl;
+    if (argc != 13) {
+        std::cout << argv[0] << " data_file graph_truth nTress mLevel iter L S R K purn_level division mysql" << std::endl;
         exit(-1);
     }
     float *data_load = NULL;
@@ -161,11 +167,16 @@ int main(int argc, char **argv) {
     }
 
     //index.RefineGraph4_purn(data_load, paras,p_square,p_size);
-    index.print_times();
+
+
     auto e = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = e - s;
     std::cout << "Refine time: " << diff.count() << "s\n";
-//    index.Save(graph_filename);
+
+    index.print_times();
+    double rate = (double)index.purn_times/index.ip_times;
+    cout <<  "purn/ip: " << rate << endl;
+
 #ifdef linux
     ProfilerStop();
 #endif
@@ -186,5 +197,30 @@ int main(int argc, char **argv) {
     }
     float accuracy = 1 - (float) cnt / (points_num * K);
     cout << K << "NN accuracy: " << accuracy << endl;
+
+
+
+
+    if(atoi(argv[12])!=0){
+        myInfo["type"]="ip";
+        myInfo["division"]=to_string(div);
+        myInfo["purn_times"]=to_string(index.purn_times);
+        myInfo["ip_times"]=to_string(index.ip_times);
+        myInfo["purn/ip"]=to_string(rate);
+        myInfo["init_time"]=to_string(diff_init.count());
+        myInfo["refine_time"]=to_string(diff.count());
+        myInfo["accuracy"]=to_string(accuracy);
+        time_t date = time(0);
+        char tmpBuf[255];
+        strftime(tmpBuf, 255, "%Y%m%d%H%M", localtime(&date));
+        myInfo["date"]=tmpBuf;
+        myInfo["exp_group"]=argv[12];
+        db.addRecord("KNNG_purn",myInfo);
+    }
+
+//    ofstream out("purn_times.txt",ios::app);
+//    out<<to_string(index.purn_times)<<endl;
+//    out.close();
+
     return 0;
 }

@@ -1,4 +1,4 @@
-# Install script for directory: /home/LengYue/Repository/KNN-Graph/related_works/efanna_centos
+# Install script for directory: /home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/bin/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/bin/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -180,9 +180,9 @@ vector
 unordered_map
 -
 
-/home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/algorithm/kdtreeub_index.hpp
+/home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/algorithm/kdtreeub_index.hpp
 algorithm/base_index.hpp
-/home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/algorithm/algorithm/base_index.hpp
+/home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/algorithm/algorithm/base_index.hpp
 fstream
 -
 ctime
@@ -198,7 +198,7 @@ boost/dynamic_bitset.hpp
 gperftools/profiler.h
 -
 
-/home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/general/distance.hpp
+/home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/general/distance.hpp
 stdlib.h
 -
 vector
@@ -212,7 +212,7 @@ cmath
 iostream
 -
 
-/home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/general/matrix.hpp
+/home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/general/matrix.hpp
 cstddef
 -
 algorithm
@@ -224,9 +224,9 @@ vector
 iostream
 -
 distance.hpp
-/home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/general/distance.hpp
+/home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/general/distance.hpp
 
-/home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/samples/efanna_index_buildall_and_evaluate.cc
+/home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/samples/efanna_index_buildall_and_evaluate.cc
 efanna.hpp
 -
 iostream
@@ -244,7 +244,7 @@ stdio.h
 string.h
 -
 ../general/matrix.hpp
-/home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/general/matrix.hpp
+/home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/general/matrix.hpp
 ../algorithm/kdtreeub_index.hpp
-/home/LengYue/Repository/KNN-Graph/related_works/efanna_centos/algorithm/kdtreeub_index.hpp
+/home/LengYue/Repository/KNNG_github/KNN-Graph/efanna_centos/algorithm/kdtreeub_index.hpp
 
