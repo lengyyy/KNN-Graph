@@ -198,24 +198,38 @@ int main(int argc, char **argv) {
     float accuracy = 1 - (float) cnt / (points_num * K);
     cout << K << "NN accuracy: " << accuracy << endl;
 
-
-
-
     if(atoi(argv[12])!=0){
-        myInfo["type"]="ip";
-        myInfo["division"]=to_string(div);
-        myInfo["purn_times"]=to_string(index.purn_times);
-        myInfo["ip_times"]=to_string(index.ip_times);
-        myInfo["purn/ip"]=to_string(rate);
-        myInfo["init_time"]=to_string(diff_init.count());
-        myInfo["refine_time"]=to_string(diff.count());
-        myInfo["accuracy"]=to_string(accuracy);
-        time_t date = time(0);
-        char tmpBuf[255];
-        strftime(tmpBuf, 255, "%Y%m%d%H%M", localtime(&date));
-        myInfo["date"]=tmpBuf;
-        myInfo["exp_group"]=argv[12];
-        db.addRecord("KNNG_purn",myInfo);
+        if (pl==3){
+            myInfo["type"]="ip";
+            myInfo["division"]=to_string(div);
+            myInfo["purn_times"]=to_string(index.purn_times);
+            myInfo["ip_times"]=to_string(index.ip_times);
+            myInfo["purn/ip"]=to_string(rate);
+            myInfo["init_time"]=to_string(diff_init.count());
+            myInfo["refine_time"]=to_string(diff.count());
+            myInfo["accuracy"]=to_string(accuracy);
+            time_t date = time(0);
+            char tmpBuf[255];
+            strftime(tmpBuf, 255, "%Y%m%d%H%M", localtime(&date));
+            myInfo["date"]=tmpBuf;
+            myInfo["exp_group"]=argv[12];
+            db.addRecord("KNNG_purn",myInfo);
+        } else if (pl==1){
+            myInfo["type"]="ip_no_div";
+            myInfo["purn_times"]=to_string(index.purn_times);
+            myInfo["ip_times"]=to_string(index.ip_times);
+            myInfo["purn/ip"]=to_string(rate);
+            myInfo["init_time"]=to_string(diff_init.count());
+            myInfo["refine_time"]=to_string(diff.count());
+            myInfo["accuracy"]=to_string(accuracy);
+            time_t date = time(0);
+            char tmpBuf[255];
+            strftime(tmpBuf, 255, "%Y%m%d%H%M", localtime(&date));
+            myInfo["date"]=tmpBuf;
+            myInfo["exp_group"]=argv[12];
+            db.addRecord("KNNG_purn",myInfo);
+        }
+
     }
 
 //    ofstream out("purn_times.txt",ios::app);

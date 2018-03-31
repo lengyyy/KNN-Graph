@@ -6,6 +6,7 @@
 #include <efanna2e/index_random.h>
 #include <efanna2e/util.h>
 #include <efanna2e/index_kdtree.h>
+#include <mysql/MyDB.h>
 #ifdef linux
 #include<gperftools/profiler.h>
 #endif
@@ -55,8 +56,11 @@ void load_datai(char *filename, int *&data, unsigned &num, unsigned &dim) {// lo
 }
 
 int main(int argc, char **argv) {
-    if (argc != 10) {
-        std::cout << argv[0] << " data_file graph_truth nTress mLevel iter L S R K" << std::endl;
+    unordered_map<string,string> myInfo;
+    MyDB db;
+    db.initDB("120.24.163.35", "lengyue", "123456", "experiment");
+    if (argc != 11) {
+        std::cout << argv[0] << " data_file graph_truth nTress mLevel iter L S R K mysql" << std::endl;
         exit(-1);
     }
     float *data_load = NULL;
@@ -128,5 +132,19 @@ int main(int argc, char **argv) {
     }
     float accuracy = 1 - (float) cnt / (points_num * K);
     cout << K << "NN accuracy: " << accuracy << endl;
+
+    if(atoi(argv[10])!=0){
+        myInfo["type"]="Euclid";
+        myInfo["init_time"]=to_string(diff_init.count());
+        myInfo["refine_time"]=to_string(diff.count());
+        myInfo["accuracy"]=to_string(accuracy);
+        time_t date = time(0);
+        char tmpBuf[255];
+        strftime(tmpBuf, 255, "%Y%m%d%H%M", localtime(&date));
+        myInfo["date"]=tmpBuf;
+        myInfo["exp_group"]=argv[10];
+        db.addRecord("KNNG_purn",myInfo);
+    }
+
     return 0;
 }
