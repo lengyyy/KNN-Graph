@@ -70,6 +70,7 @@ void MyDB::errorIntoMySQL()
 {
 	errorNum=mysql_errno(connection);
 	errorInfo=mysql_error(connection);
+	cout<<errorInfo<<endl;
 }
 
 bool MyDB::exeSQL(string sql)
@@ -156,7 +157,7 @@ bool MyDB::addRecord(string table_name, unordered_map<string, string> result){
 		id = 0;
 	else
 		id = stoi(tem[0][0])+1;
-	for(auto key : result){
+	for(auto key : result){;
 		exeSQL("insert into "+table_name+" values ("+to_string(id)+",\""+key.first+"\",\""+key.second+"\")");
 	}
 	return true;

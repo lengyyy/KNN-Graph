@@ -6,6 +6,7 @@
 #include <efanna2e/index_random.h>
 #include <efanna2e/util.h>
 #include <efanna2e/index_kdtree.h>
+#include <mysql/MyDB.h>
 #ifdef linux
 #include<gperftools/profiler.h>
 #endif
@@ -55,9 +56,11 @@ void load_datai(char *filename, int *&data, unsigned &num, unsigned &dim) {// lo
 }
 
 int main(int argc, char **argv) {
+    unordered_map<string,string> myInfo;
 
-    if (argc != 10) {
-        std::cout << argv[0] << " data_file graph_truth nTress mLevel iter L S R K" << std::endl;
+
+    if (argc != 11) {
+        std::cout << argv[0] << " data_file graph_truth nTress mLevel iter L S R K mysql" << std::endl;
         exit(-1);
     }
     float *data_load = NULL;
@@ -73,7 +76,7 @@ int main(int argc, char **argv) {
 //    }
 
 #ifdef linux
-    ProfilerStart("my.prof_ip");
+    ProfilerStart("ip_no_purn");
 #endif
 
     auto s_init = std::chrono::high_resolution_clock::now();
@@ -140,8 +143,6 @@ int main(int argc, char **argv) {
 #endif
 
 
-
-
     int *graph_truth = NULL;
     vector<std::vector<unsigned> > &final_result = index.final_graph_;
     load_datai(graph_truth_file, graph_truth, points_num, dim);
@@ -158,5 +159,21 @@ int main(int argc, char **argv) {
     }
     float accuracy = 1 - (float) cnt / (points_num * K);
     cout << K << "NN accuracy: " << accuracy << endl;
+
+    if(atoi(argv[10])!=0){
+        MyDB db;
+        db.initDB("120.24.163.35", "lengyue", "123456", "experiment");
+        myInfo["type"]="ip_no_purn";
+        myInfo["init_time"]=to_string(diff_init.count());
+        myInfo["refine_time"]=to_string(diff.count());
+        myInfo["accuracy"]=to_string(accuracy);
+        time_t date = time(0);
+        char tmpBuf[255];
+        strftime(tmpBuf, 255, "%Y%m%d%H%M", localtime(&date));
+        myInfo["date"]=tmpBuf;
+        myInfo["exp_group"]=argv[10];
+        db.addRecord("KNNG_purn2",myInfo);
+    }
+
     return 0;
 }

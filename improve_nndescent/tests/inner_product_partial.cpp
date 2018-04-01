@@ -64,8 +64,7 @@ void load_datai(char *filename, int *&data, unsigned &num, unsigned &dim) {// lo
 
 int main(int argc, char **argv) {
     unordered_map<string,string> myInfo;
-    MyDB db;
-    db.initDB("120.24.163.35", "lengyue", "123456", "experiment");
+
 
     if (argc != 13) {
         std::cout << argv[0] << " data_file graph_truth nTress mLevel iter L S R K purn_level division mysql" << std::endl;
@@ -77,7 +76,7 @@ int main(int argc, char **argv) {
 
 
     char profname[30];
-    sprintf(profname,"%s_%s","ip.prof",argv[10]);
+    sprintf(profname,"%s_%s","ip_partial",argv[10]);
 #ifdef linux
     ProfilerStart(profname);
 #endif
@@ -199,6 +198,8 @@ int main(int argc, char **argv) {
     cout << K << "NN accuracy: " << accuracy << endl;
 
     if(atoi(argv[12])!=0){
+        MyDB db;
+        db.initDB("120.24.163.35", "lengyue", "123456", "experiment");
         if (pl==3){
             myInfo["type"]="ip";
             myInfo["division"]=to_string(div);
@@ -213,7 +214,7 @@ int main(int argc, char **argv) {
             strftime(tmpBuf, 255, "%Y%m%d%H%M", localtime(&date));
             myInfo["date"]=tmpBuf;
             myInfo["exp_group"]=argv[12];
-            db.addRecord("KNNG_purn",myInfo);
+            db.addRecord("KNNG_purn2",myInfo);
         } else if (pl==1){
             myInfo["type"]="ip_no_div";
             myInfo["purn_times"]=to_string(index.purn_times);
@@ -227,7 +228,7 @@ int main(int argc, char **argv) {
             strftime(tmpBuf, 255, "%Y%m%d%H%M", localtime(&date));
             myInfo["date"]=tmpBuf;
             myInfo["exp_group"]=argv[12];
-            db.addRecord("KNNG_purn",myInfo);
+            db.addRecord("KNNG_purn2",myInfo);
         }
 
     }

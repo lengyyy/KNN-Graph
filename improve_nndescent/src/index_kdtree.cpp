@@ -196,7 +196,7 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
 	}
 
 
-  void IndexKDtree::getMergeLevelNodeList(Node* node, size_t treeid, int deepth){
+  void IndexKDtree:: getMergeLevelNodeList(Node* node, size_t treeid, int deepth){
 	  if(node->Lchild != NULL && node->Rchild != NULL && deepth < ml){
 		  deepth++;
 		  getMergeLevelNodeList(node->Lchild, treeid, deepth);

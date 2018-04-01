@@ -34,12 +34,16 @@ IndexGraph::~IndexGraph() {}
               if (ub1 > graph_[i].pool.front().distance) {
                 twice_ip = twice_pq_left + 2*distance_->compare2(data_ + i * dimension_+div, data_ + j * dimension_+div,dimension_-div);
                 float dist1 = twice_ip-p_square[j];
-                graph_[i].insert3(j, dist1);
+                  if (dist1 > graph_[i].pool.front().distance) {
+                      graph_[i].insert3(j, dist1);
+                  }
               } else purn_times++;
               if (ub2> graph_[j].pool.front().distance){
                 if(twice_ip==0) twice_ip = twice_pq_left + 2*distance_->compare2(data_ + i * dimension_+div, data_ + j * dimension_+div,dimension_-div);
                 float dist2 = twice_ip-p_square[i];
-                graph_[j].insert3(i, dist2);
+                  if (dist2> graph_[j].pool.front().distance){
+                      graph_[j].insert3(i, dist2);
+                  }
               }else purn_times++;
 
 
@@ -124,12 +128,16 @@ IndexGraph::~IndexGraph() {}
               if (ub1 > graph_[i].pool.front().distance) {
                 twice_ip = 2*distance_->compare(data_ + i * dimension_, data_ + j * dimension_,dimension_);
                 float dist1 = twice_ip-p_square[j];
-                graph_[i].insert3(j, dist1);
+                  if (dist1 > graph_[i].pool.front().distance) {
+                      graph_[i].insert3(j, dist1);
+                  }
               } else purn_times++;
               if (ub2> graph_[j].pool.front().distance){
                 if(twice_ip==0) twice_ip = 2*distance_->compare(data_ + i * dimension_, data_ + j * dimension_,dimension_);
                 float dist2 = twice_ip-p_square[i];
-                graph_[j].insert3(i, dist2);
+                  if (dist2> graph_[j].pool.front().distance){
+                      graph_[j].insert3(i, dist2);
+                  }
               }else purn_times++;
 
 
@@ -146,8 +154,12 @@ void IndexGraph::join3(std::vector<float> &p_square) {
         float twice_ip = 2*distance_->compare(data_ + i * dimension_, data_ + j * dimension_,dimension_);
         float dist1 = twice_ip-p_square[j];
         float dist2 = twice_ip-p_square[i];
-        graph_[i].insert3(j, dist1);
-        graph_[j].insert3(i, dist2);
+        if (dist1 > graph_[i].pool.front().distance) {
+          graph_[i].insert3(j, dist1);
+        }
+        if (dist2> graph_[j].pool.front().distance){
+          graph_[j].insert3(i, dist2);
+        }
       }
     });
   }
@@ -159,8 +171,12 @@ void IndexGraph::join3(std::vector<float> &p_square) {
         graph_[n].join([&](unsigned i, unsigned j) {
             if(i != j){
               float dist = distance_->compare(data_ + i * dimension_, data_ + j * dimension_, dimension_);
-              graph_[i].insert(j, dist);
-              graph_[j].insert(i, dist);
+              if (dist < graph_[i].pool.front().distance) {
+                graph_[i].insert(j, dist);
+              }
+              if (dist< graph_[j].pool.front().distance){
+                graph_[j].insert(i, dist);
+              }
             }
         });
       }
@@ -357,6 +373,7 @@ void IndexGraph::NNDescent(const Parameters &parameters) {
     //checkDup();
 //    eval_recall(control_points, acc_eval_set);
     std::cout << "iter: " << it << std::endl;
+      printf("compare_times:%lld\n",compare_times);
   }
 }
 
@@ -367,6 +384,7 @@ void IndexGraph::NNDescent(const Parameters &parameters) {
         join5(p_square,p_right_size);
         update3(parameters,p_square);
         std::cout << "iter: " << it << std::endl;
+          printf("compare_times:%lld\n",compare_times);
       }
     }
 
@@ -377,6 +395,7 @@ void IndexGraph::NNDescent(const Parameters &parameters) {
         join4_purn(p_square,p_size);
         update3(parameters,p_square);
         std::cout << "iter: " << it << std::endl;
+          printf("compare_times:%lld\n",compare_times);
       }
     }
 
@@ -387,6 +406,7 @@ void IndexGraph::NNDescent(const Parameters &parameters) {
         join4_p(p_square,p_size);
         update3(parameters,p_square);
         std::cout << "iter: " << it << std::endl;
+          printf("compare_times:%lld\n",compare_times);
       }
     }
 
@@ -403,6 +423,7 @@ void IndexGraph::NNDescent(const Parameters &parameters) {
         //checkDup();
 //    eval_recall(control_points, acc_eval_set);
         std::cout << "iter: " << it << std::endl;
+          printf("compare_times:%lld\n",compare_times);
       }
     }
 

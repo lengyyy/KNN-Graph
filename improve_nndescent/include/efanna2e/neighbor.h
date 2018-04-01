@@ -10,8 +10,10 @@
 #include <cstddef>
 #include <vector>
 #include <mutex>
+#include <efanna2e/index.h>
 
 namespace efanna2e {
+    extern long long compare_times;
 
 struct Neighbor {
     unsigned id;
@@ -58,7 +60,6 @@ struct nhood{
 
     void insert (unsigned id, float dist) {
       LockGuard guard(lock);
-      if (dist > pool.front().distance) return;
       for(unsigned i=0; i<pool.size(); i++){
         if(id == pool[i].id)return;
       }
@@ -75,7 +76,7 @@ struct nhood{
 
   void insert3 (unsigned id, float dist) {
     LockGuard guard(lock);
-    if (dist < pool.front().distance) return;
+
     for(unsigned i=0; i<pool.size(); i++){
       if(id == pool[i].id)return;//如果已经存在这个ID就不加了
     }
@@ -96,10 +97,12 @@ struct nhood{
       for (unsigned const j: nn_new) {
         if (i < j) {
           callback(i, j);
+          compare_times++;
         }
       }
       for (unsigned j: nn_old) {
         callback(i, j);
+        compare_times++;
       }
     }
   }

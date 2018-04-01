@@ -57,8 +57,7 @@ void load_datai(char *filename, int *&data, unsigned &num, unsigned &dim) {// lo
 
 int main(int argc, char **argv) {
     unordered_map<string,string> myInfo;
-    MyDB db;
-    db.initDB("120.24.163.35", "lengyue", "123456", "experiment");
+
     if (argc != 11) {
         std::cout << argv[0] << " data_file graph_truth nTress mLevel iter L S R K mysql" << std::endl;
         exit(-1);
@@ -134,6 +133,8 @@ int main(int argc, char **argv) {
     cout << K << "NN accuracy: " << accuracy << endl;
 
     if(atoi(argv[10])!=0){
+        MyDB db;
+        db.initDB("120.24.163.35", "lengyue", "123456", "experiment");
         myInfo["type"]="Euclid";
         myInfo["init_time"]=to_string(diff_init.count());
         myInfo["refine_time"]=to_string(diff.count());
@@ -143,7 +144,7 @@ int main(int argc, char **argv) {
         strftime(tmpBuf, 255, "%Y%m%d%H%M", localtime(&date));
         myInfo["date"]=tmpBuf;
         myInfo["exp_group"]=argv[10];
-        db.addRecord("KNNG_purn",myInfo);
+        db.addRecord("KNNG_purn2",myInfo);
     }
 
     return 0;
