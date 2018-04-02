@@ -230,6 +230,8 @@ namespace efanna2e{
     }
 
       float compare2(const float* a, const float* b, unsigned size) const {
+          if (size == 0)
+              return 0;
           float result = 0;
 #ifdef __GNUC__
 #ifdef __AVX__
@@ -444,6 +446,8 @@ namespace efanna2e{
       }
 
     float norm2(const float* a, unsigned size) const{
+        if (size == 0)
+            return 0;
       float result = 0;
 #ifdef __GNUC__
 #ifdef __AVX__
