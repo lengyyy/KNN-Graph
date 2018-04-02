@@ -70,6 +70,7 @@ int main(int argc, char **argv) {
     ProfilerStart(profname);
 #endif
     auto s_init = std::chrono::high_resolution_clock::now();
+
     char *graph_truth_file = argv[2];
     unsigned nTrees = (unsigned) atoi(argv[3]);
     unsigned mLevel = (unsigned) atoi(argv[4]);
@@ -93,9 +94,30 @@ int main(int argc, char **argv) {
 
 
     efanna2e::IndexKDtree init_index(dim, points_num, efanna2e::L2, nullptr);
+
+
+
     if (pl == 0){
         init_index.Build(points_num, data_load, paras);
     }else if (pl==1){
+        auto sort_start = std::chrono::high_resolution_clock::now();
+        vector<vector<unsigned >> rank;
+        rank.reserve(points_num);
+        vector<unsigned > myrank;
+        myrank.reserve(dim);
+        for (int i=0;i<dim;i++){
+            myrank.push_back(i);
+        }
+        for (size_t i = 0; i < points_num; i++) {
+            sort(myrank.begin(),myrank.end(),[&](const unsigned index1, const unsigned index2){
+                return data_load[i*dim+index1]>data_load[i*dim+index2];
+            });
+            rank.push_back(myrank);
+        }
+        auto sort_end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> sort_time = sort_end - sort_start;
+        std::cout << "Init time : " << sort_time.count() << "s\n";
+
         init_index.Build11(points_num, data_load, paras);
     }
     auto e_init = std::chrono::high_resolution_clock::now();

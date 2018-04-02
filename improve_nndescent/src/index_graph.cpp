@@ -203,6 +203,7 @@ IndexGraph::~IndexGraph() {}
                             graph_[j].insert(i, dist);
                         }
                     }
+                    //else cout<<hasDim<<endl;
 
 
                 }
