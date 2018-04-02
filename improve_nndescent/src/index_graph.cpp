@@ -196,7 +196,7 @@ IndexGraph::~IndexGraph() {}
                     dist = distance_->compare3(data_ + i * dimension_, data_ + j * dimension_,
                                                dimension_,boundary1,boundary2, hasDim,dimension_/8);
                     if (hasDim > dimension_) {
-                        if (dist < boundary2) {
+                        if (dist < boundary1) {
                             graph_[i].insert(j, dist);
                         }
                         if (dist < boundary2) {
