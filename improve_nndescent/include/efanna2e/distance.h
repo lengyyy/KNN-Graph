@@ -158,7 +158,7 @@ namespace efanna2e{
 
             sum = _mm256_loadu_ps(unpack);
 
-            hasDim = 16;
+            hasDim += 16;
             for (unsigned i = 0; i < DD; i += 16, l += 16, r += 16, hasDim+=16) {
                 AVX_L2SQR(l, r, sum, l0, r0);
                 AVX_L2SQR(l + 8, r + 8, sum, l1, r1);
