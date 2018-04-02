@@ -8,6 +8,7 @@
 #include <x86intrin.h>
 #include <iostream>
 #include <math.h>
+#include <algorithm>
 namespace efanna2e{
   enum Metric{
     L2 = 0,
@@ -19,7 +20,8 @@ namespace efanna2e{
     public:
         virtual float compare(const float* a, const float* b, unsigned length) const = 0;
         virtual float compare2(const float* a, const float* b, unsigned length) const = 0;
-        virtual float compare3(const float* a, const float* b, unsigned length,float boundary, unsigned &hasDim) const = 0;
+        virtual float compare3(const float* a, const float* b, unsigned size,float boundary1,float boundary2, unsigned &hasDim,
+                               unsigned delta) const = 0;
         virtual ~Distance() {}
     };
 
@@ -130,7 +132,8 @@ namespace efanna2e{
             return result;
         }
         float compare2(const float* a, const float* b, unsigned size) const {}
-        float compare3(const float* a, const float* b, unsigned size, float boundary, unsigned &hasDim) const {
+        float compare3(const float* a, const float* b, unsigned size, float boundary1,float boundary2, unsigned &hasDim,
+                       unsigned delta)const {
             //hasDim是刚好超过boundary的dim,或者如果没有超过boundar就是128+16
             float result = 0;
 
@@ -159,12 +162,16 @@ namespace efanna2e{
             sum = _mm256_loadu_ps(unpack);
 
             hasDim += 16;
+            float maxb=std::max(boundary1,boundary2);
             for (unsigned i = 0; i < DD; i += 16, l += 16, r += 16, hasDim+=16) {
                 AVX_L2SQR(l, r, sum, l0, r0);
                 AVX_L2SQR(l + 8, r + 8, sum, l1, r1);
                 _mm256_storeu_ps(unpack, sum);
-                result = unpack[0] + unpack[1] + unpack[2] + unpack[3] + unpack[4] + unpack[5] + unpack[6] + unpack[7];
-                if (result>=boundary) return  result;
+                if (hasDim%delta==0){
+                    result = unpack[0] + unpack[1] + unpack[2] + unpack[3] + unpack[4] + unpack[5] + unpack[6] + unpack[7];
+                    if (result>=maxb) return  result;
+                }
+
             }
             if(DR){AVX_L2SQR(e_l, e_r, sum, l0, r0);}
 
@@ -465,7 +472,8 @@ namespace efanna2e{
 #endif
           return result;
       }
-      float compare3(const float* a, const float* b, unsigned size,float boundary, unsigned &hasDim) const {}
+      float compare3(const float* a, const float* b, unsigned size, float boundary1,float boundary2, unsigned &hasDim,
+                     unsigned delta) const {}
 
 
   };

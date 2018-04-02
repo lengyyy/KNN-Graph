@@ -1098,21 +1098,6 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                         size_t tmpfea = LeafLists[treeid][i];
                         unsigned hasDim = 0;
                         float dist = 0;
-//                        if (knn_graph[tmpfea].size() >= K) {
-//                            if (knn_graph[feature_id].size() < K) {
-//                                size_t tem = feature_id;
-//                                feature_id = tmpfea;
-//                                tmpfea = tem;
-//                            } else {
-//                                float boundary1 = knn_graph[tmpfea].begin()->distance;
-//                                float boundary2 = knn_graph[feature_id].begin()->distance;
-//                                if (boundary1 <= boundary2) {
-//                                    size_t tem = feature_id;
-//                                    feature_id = tmpfea;
-//                                    tmpfea = tem;
-//                                }
-//                            }
-//                        }
 
                         {
                             LockGuard g(graph_[tmpfea].lock);
@@ -1124,33 +1109,19 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                                 knn_graph[tmpfea].insert(c1);
                             } else {
                                 dist = distance_->compare3(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
-                                                           dimension_, knn_graph[tmpfea].begin()->distance, hasDim);
+                                                           dimension_, knn_graph[tmpfea].begin()->distance,knn_graph[feature_id].begin()->distance ,hasDim, dimension_/8);
                                 if (hasDim > dimension_) {
-                                    Candidate c1(feature_id, dist);
-                                    knn_graph[tmpfea].insert(c1);
-                                    if (knn_graph[tmpfea].size() > K)
-                                        knn_graph[tmpfea].erase(knn_graph[tmpfea].begin());
+                                    if (dist<knn_graph[tmpfea].begin()->distance){
+                                        Candidate c1(feature_id, dist);
+                                        knn_graph[tmpfea].insert(c1);
+                                        if (knn_graph[tmpfea].size() > K)
+                                            knn_graph[tmpfea].erase(knn_graph[tmpfea].begin());
+                                    }
+
                                 }
                             }
                         }
-//                        {
-//                            LockGuard g(graph_[feature_id].lock);
-//                            if (knn_graph[feature_id].size() < K) {
-//                                Candidate c1(tmpfea, dist);
-//                                knn_graph[feature_id].insert(c1);
-//
-//                            } else {
-//                                if (hasDim > dimension_) {
-//                                    if (dist < knn_graph[feature_id].begin()->distance) {
-//                                        Candidate c1(tmpfea, dist);
-//                                        knn_graph[feature_id].insert(c1);
-//                                        if (knn_graph[feature_id].size() > K)
-//                                            knn_graph[feature_id].erase(knn_graph[feature_id].begin());
-//                                    }
-//                                }
-//                            }
-//                        }
-                        {//如果不提前交换，用这个
+                        {
                             LockGuard g(graph_[feature_id].lock);
                             if (knn_graph[feature_id].size() < K) {
                                 if (hasDim <= dimension_) {
@@ -1168,18 +1139,6 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                                         if (knn_graph[feature_id].size() > K)
                                             knn_graph[feature_id].erase(knn_graph[feature_id].begin());
                                     }
-                                } else if (dist < knn_graph[feature_id].begin()->distance) {//没算完
-
-                                        dist += distance_->compare3(data_ + tmpfea * dimension_ + hasDim,
-                                                                   data_ + feature_id * dimension_ + hasDim,
-                                                                   dimension_ - hasDim,knn_graph[feature_id].begin()->distance-dist,hasDim );
-                                        if (hasDim>dimension_) {
-                                            Candidate c1(tmpfea, dist);
-                                            knn_graph[feature_id].insert(c1);
-                                            if (knn_graph[feature_id].size() > K)
-                                                knn_graph[feature_id].erase(knn_graph[feature_id].begin());
-                                        }
-
                                 }
                             }
                         }
@@ -1189,66 +1148,35 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
 
             for (; start < end; start++) {
 
-                size_t feature_id_0 = LeafLists[treeid][start];
-                Node *leaf = SearchToLeaf(root, feature_id_0);
+                size_t feature_id = LeafLists[treeid][start];
+                Node *leaf = SearchToLeaf(root, feature_id);
                 for (size_t i = leaf->StartIdx; i < leaf->EndIdx; i++) {
-                    size_t feature_id = feature_id_0;
                     size_t tmpfea = LeafLists[treeid][i];
                     unsigned hasDim = 0;
                     float dist = 0;
-//                    if (knn_graph[tmpfea].size() >= K) {
-//                        if (knn_graph[feature_id].size() < K) {
-//                            size_t tem = feature_id;
-//                            feature_id = tmpfea;
-//                            tmpfea = tem;
-//                        } else {
-//                            float boundary1 = knn_graph[tmpfea].begin()->distance;
-//                            float boundary2 = knn_graph[feature_id].begin()->distance;
-//                            if (boundary1 <= boundary2) {
-//                                size_t tem = feature_id;
-//                                feature_id = tmpfea;
-//                                tmpfea = tem;
-//                            }
-//                        }
-//                    }
-
                     {
                         LockGuard g(graph_[tmpfea].lock);
                         if (knn_graph[tmpfea].size() < K) {
                             dist = distance_->compare(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
                                                       dimension_);
-                            hasDim = dimension_ + 1;
+                            hasDim = dimension_ + 16;
                             Candidate c1(feature_id, dist);
                             knn_graph[tmpfea].insert(c1);
                         } else {
                             dist = distance_->compare3(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
-                                                       dimension_, knn_graph[tmpfea].begin()->distance, hasDim);
+                                                       dimension_, knn_graph[tmpfea].begin()->distance,knn_graph[feature_id].begin()->distance ,hasDim, dimension_/8);
                             if (hasDim > dimension_) {
-                                Candidate c1(feature_id, dist);
-                                knn_graph[tmpfea].insert(c1);
-                                if (knn_graph[tmpfea].size() > K)
-                                    knn_graph[tmpfea].erase(knn_graph[tmpfea].begin());
+                                if (dist<knn_graph[tmpfea].begin()->distance){
+                                    Candidate c1(feature_id, dist);
+                                    knn_graph[tmpfea].insert(c1);
+                                    if (knn_graph[tmpfea].size() > K)
+                                        knn_graph[tmpfea].erase(knn_graph[tmpfea].begin());
+                                }
+
                             }
                         }
                     }
-//                    {
-//                        LockGuard g(graph_[feature_id].lock);
-//                        if (knn_graph[feature_id].size() < K) {
-//                            Candidate c1(tmpfea, dist);
-//                            knn_graph[feature_id].insert(c1);
-//
-//                        } else {
-//                            if (hasDim > dimension_) {
-//                                if (dist < knn_graph[feature_id].begin()->distance) {
-//                                    Candidate c1(tmpfea, dist);
-//                                    knn_graph[feature_id].insert(c1);
-//                                    if (knn_graph[feature_id].size() > K)
-//                                        knn_graph[feature_id].erase(knn_graph[feature_id].begin());
-//                                }
-//                            }
-//                        }
-//                    }
-                    {//如果不提前交换，用这个
+                    {
                         LockGuard g(graph_[feature_id].lock);
                         if (knn_graph[feature_id].size() < K) {
                             if (hasDim <= dimension_) {
@@ -1266,18 +1194,6 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                                     if (knn_graph[feature_id].size() > K)
                                         knn_graph[feature_id].erase(knn_graph[feature_id].begin());
                                 }
-                            } else if (dist < knn_graph[feature_id].begin()->distance) {//没算完
-
-                                dist += distance_->compare3(data_ + tmpfea * dimension_ + hasDim,
-                                                            data_ + feature_id * dimension_ + hasDim,
-                                                            dimension_ - hasDim,knn_graph[feature_id].begin()->distance-dist,hasDim );
-                                if (hasDim>dimension_) {
-                                    Candidate c1(tmpfea, dist);
-                                    knn_graph[feature_id].insert(c1);
-                                    if (knn_graph[feature_id].size() > K)
-                                        knn_graph[feature_id].erase(knn_graph[feature_id].begin());
-                                }
-
                             }
                         }
                     }

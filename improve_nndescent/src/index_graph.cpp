@@ -192,22 +192,14 @@ IndexGraph::~IndexGraph() {}
                     float dist = 0;
                     float boundary1 = graph_[i].pool.front().distance;
                     float boundary2 = graph_[j].pool.front().distance;
-//                    if (boundary1 <= boundary2) {
-//                        unsigned tem = i; i = j; j = tem;
-//                        float tem2 = boundary1; boundary1 = boundary2; boundary2 = tem2;
-//                    }
 
                     dist = distance_->compare3(data_ + i * dimension_, data_ + j * dimension_,
-                                               dimension_,boundary1, hasDim);
+                                               dimension_,boundary1,boundary2, hasDim,dimension_/8);
                     if (hasDim > dimension_) {
-                        graph_[i].insert(j, dist);
                         if (dist < boundary2) {
-                            graph_[j].insert(i, dist);
+                            graph_[i].insert(j, dist);
                         }
-                    }
-                    else if (dist<boundary2){
-                        dist += distance_->compare3(data_ + i * dimension_ + hasDim, data_ + j * dimension_ + hasDim, dimension_ - hasDim, boundary2-dist,hasDim);
-                        if (hasDim > dimension_) {
+                        if (dist < boundary2) {
                             graph_[j].insert(i, dist);
                         }
                     }
