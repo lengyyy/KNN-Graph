@@ -109,7 +109,7 @@ int main(int argc, char **argv) {
     if (pl == 0){
         index.RefineGraph(data_load, paras);
     } else if (pl==1){
-        index.RefineGraph(data_load, paras);
+        index.RefineGraph11(data_load, paras);
     }
     auto e = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = e - s;

@@ -146,7 +146,7 @@ IndexGraph::~IndexGraph() {}
       }
     }
 
-void IndexGraph::join3(std::vector<float> &p_square) {
+    void IndexGraph::join3(std::vector<float> &p_square) {
 #pragma omp parallel for default(shared) schedule(dynamic, 100)
   for (unsigned n = 0; n < nd_; n++) {
     graph_[n].join([&](unsigned i, unsigned j) {
@@ -182,7 +182,36 @@ void IndexGraph::join3(std::vector<float> &p_square) {
       }
     }
 
-void IndexGraph::update3(const Parameters &parameters,std::vector<float> &p_square) {
+    void IndexGraph::join11() {
+#pragma omp parallel for default(shared) schedule(dynamic, 100)
+        for (unsigned n = 0; n < nd_; n++) {
+            graph_[n].join([&](unsigned i, unsigned j) {
+
+                if(i != j){
+                    unsigned hasDim = 0;
+                    float dist = 0;
+                    float boundary1 = graph_[i].pool.front().distance;
+                    float boundary2 = graph_[j].pool.front().distance;
+                    if (boundary1 <= boundary2) {
+                        unsigned tem = i; i = j; j = tem;
+                        float tem2 = boundary1; boundary1 = boundary2; boundary2 = tem2;
+                    }
+
+                    dist = distance_->compare3(data_ + i * dimension_, data_ + j * dimension_,
+                                               dimension_,boundary1, hasDim);
+                    if (hasDim > dimension_) {
+                        graph_[i].insert(j, dist);
+                        if (dist < boundary2) {
+                            graph_[j].insert(i, dist);
+                        }
+                    }
+
+                }
+            });
+        }
+    }
+
+    void IndexGraph::update3(const Parameters &parameters,std::vector<float> &p_square) {
   unsigned S = parameters.Get<unsigned>("S");
   unsigned R = parameters.Get<unsigned>("R");
   unsigned L = parameters.Get<unsigned>("L");
@@ -376,6 +405,17 @@ void IndexGraph::NNDescent(const Parameters &parameters) {
       printf("compare_times:%lld\n",compare_times);
   }
 }
+
+    void IndexGraph::NNDescent11(const Parameters &parameters) {
+        unsigned iter = parameters.Get<unsigned>("iter");
+        std::mt19937 rng(rand());;
+        for (unsigned it = 0; it < iter; it++) {
+            join11();
+            update(parameters);
+            std::cout << "iter: " << it << std::endl;
+            printf("compare_times:%lld\n",compare_times);
+        }
+    }
 
     void IndexGraph::NNDescent5(const Parameters &parameters, std:: vector<float > &p_square, std::vector<float> &p_right_size) {
       unsigned iter = parameters.Get<unsigned>("iter");
@@ -582,6 +622,35 @@ void IndexGraph::RefineGraph(const float* data, const Parameters &parameters) {
   has_built = true;
 
 }
+
+    void IndexGraph::RefineGraph11(const float* data, const Parameters &parameters) {
+        data_ = data;
+        assert(initializer_->HasBuilt());
+
+        InitializeGraph_Refine(parameters);
+        NNDescent11(parameters);
+
+        final_graph_.reserve(nd_);
+        std::cout << nd_ << std::endl;
+        unsigned K = parameters.Get<unsigned>("K");
+        for (unsigned i = 0; i < nd_; i++) {
+            std::vector<unsigned> tmp;
+            std::sort(graph_[i].pool.begin(), graph_[i].pool.end());
+            for (unsigned j = 0; j < K; j++) {
+                tmp.push_back(graph_[i].pool[j].id);
+            }
+            tmp.reserve(K);
+            final_graph_.push_back(tmp);
+            std::vector<Neighbor>().swap(graph_[i].pool);
+            std::vector<unsigned>().swap(graph_[i].nn_new);
+            std::vector<unsigned>().swap(graph_[i].nn_old);
+            std::vector<unsigned>().swap(graph_[i].rnn_new);
+            std::vector<unsigned>().swap(graph_[i].rnn_new);
+        }
+        std::vector<nhood>().swap(graph_);
+        has_built = true;
+
+    }
 
     void IndexGraph::RefineGraph5(const float* data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_right_size) {
       data_ = data;
