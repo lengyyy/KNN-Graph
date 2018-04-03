@@ -106,6 +106,7 @@ struct nhood{
       }
     }
   }
+
 };
 
 struct LockNeighbor{

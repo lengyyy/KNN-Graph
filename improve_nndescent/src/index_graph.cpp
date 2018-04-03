@@ -171,6 +171,8 @@ IndexGraph::~IndexGraph() {}
         graph_[n].join([&](unsigned i, unsigned j) {
             if(i != j){
               float dist = distance_->compare(data_ + i * dimension_, data_ + j * dimension_, dimension_);
+                auto it = Euclid_dim.insert({dimension_,1});
+                if(!it.second) it.first->second+=1;
               if (dist < graph_[i].pool.front().distance) {
                 graph_[i].insert(j, dist);
               }
@@ -182,9 +184,10 @@ IndexGraph::~IndexGraph() {}
       }
     }
 
-    void IndexGraph::join11() {
+    void IndexGraph::join11(std::vector<vector<unsigned >> &rank) {
 #pragma omp parallel for default(shared) schedule(dynamic, 100)
         for (unsigned n = 0; n < nd_; n++) {
+            vector<unsigned> q_rank = rank[n];
             graph_[n].join([&](unsigned i, unsigned j) {
 
                 if(i != j){
@@ -193,9 +196,11 @@ IndexGraph::~IndexGraph() {}
                     float boundary1 = graph_[i].pool.front().distance;
                     float boundary2 = graph_[j].pool.front().distance;
 
-                    dist = distance_->compare3(data_ + i * dimension_, data_ + j * dimension_,
-                                               dimension_,boundary1,boundary2, hasDim,dimension_/8);
+                    dist = distance_->compare3_rank(data_ + i * dimension_, data_ + j * dimension_,
+                                               dimension_,boundary1,boundary2, hasDim,dimension_/4,q_rank);
                     if (hasDim > dimension_) {
+                        auto it = Euclid_dim.insert({hasDim,1});
+                        if(!it.second) it.first->second+=1;
                         if (dist < boundary1) {
                             graph_[i].insert(j, dist);
                         }
@@ -203,7 +208,10 @@ IndexGraph::~IndexGraph() {}
                             graph_[j].insert(i, dist);
                         }
                     }
-                    //else cout<<hasDim<<endl;
+                    else {
+                        auto it = Euclid_dim.insert({dimension_,1});
+                        if(!it.second) it.first->second+=1;
+                    }
 
 
                 }
@@ -406,11 +414,11 @@ void IndexGraph::NNDescent(const Parameters &parameters) {
   }
 }
 
-    void IndexGraph::NNDescent11(const Parameters &parameters) {
+    void IndexGraph::NNDescent11(const Parameters &parameters,std::vector<vector<unsigned >> &rank) {
         unsigned iter = parameters.Get<unsigned>("iter");
         std::mt19937 rng(rand());;
         for (unsigned it = 0; it < iter; it++) {
-            join11();
+            join11(rank);
             update(parameters);
             std::cout << "iter: " << it << std::endl;
             printf("compare_times:%lld\n",compare_times);
@@ -623,12 +631,12 @@ void IndexGraph::RefineGraph(const float* data, const Parameters &parameters) {
 
 }
 
-    void IndexGraph::RefineGraph11(const float* data, const Parameters &parameters) {
+    void IndexGraph::RefineGraph11(const float* data, const Parameters &parameters,std::vector<vector<unsigned >> &rank) {
         data_ = data;
         assert(initializer_->HasBuilt());
 
         InitializeGraph_Refine(parameters);
-        NNDescent11(parameters);
+        NNDescent11(parameters,rank);
 
         final_graph_.reserve(nd_);
         std::cout << nd_ << std::endl;

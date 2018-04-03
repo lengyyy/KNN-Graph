@@ -1068,11 +1068,11 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
 	  }
   }
 
-    void IndexKDtree::mergeSubGraphs11(size_t treeid, Node* node) {
+    void IndexKDtree::mergeSubGraphs11(size_t treeid, Node* node, std::vector<vector<unsigned >> &rank) {
 
         if (node->Lchild != NULL && node->Rchild != NULL) {
-            mergeSubGraphs11(treeid, node->Lchild);
-            mergeSubGraphs11(treeid, node->Rchild);
+            mergeSubGraphs11(treeid, node->Lchild,rank);
+            mergeSubGraphs11(treeid, node->Rchild,rank);
 
             size_t numL = node->Lchild->EndIdx - node->Lchild->StartIdx;
             size_t numR = node->Rchild->EndIdx - node->Rchild->StartIdx;
@@ -1093,8 +1093,10 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
 
             if (mynode->Lchild == NULL && mynode->Rchild == NULL) {
                 for (size_t j = start; j < end; j++) {
+                    size_t feature_id = LeafLists[treeid][j];
+                    vector<unsigned > q_rank = rank[feature_id];
                     for (size_t i = j + 1; i < end; i++) {
-                        size_t feature_id = LeafLists[treeid][j];
+
                         size_t tmpfea = LeafLists[treeid][i];
                         unsigned hasDim = 0;
                         float dist = 0;
@@ -1108,8 +1110,8 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                                 Candidate c1(feature_id, dist);
                                 knn_graph[tmpfea].insert(c1);
                             } else {
-                                dist = distance_->compare3(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
-                                                           dimension_, knn_graph[tmpfea].begin()->distance,knn_graph[feature_id].begin()->distance ,hasDim, dimension_/8);
+                                dist = distance_->compare3_rank(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
+                                                           dimension_, knn_graph[tmpfea].begin()->distance,knn_graph[feature_id].begin()->distance ,hasDim, dimension_/4,q_rank);
                                 if (hasDim > dimension_) {
                                     if (dist<knn_graph[tmpfea].begin()->distance){
                                         Candidate c1(feature_id, dist);
@@ -1119,14 +1121,15 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                                     }
 
                                 }
+                                //else printf("%u ",hasDim);
                             }
                         }
                         {
                             LockGuard g(graph_[feature_id].lock);
                             if (knn_graph[feature_id].size() < K) {
                                 if (hasDim <= dimension_) {
-                                    dist+=distance_->compare(data_ + tmpfea * dimension_+hasDim, data_ + feature_id * dimension_+hasDim,
-                                                  dimension_-hasDim);
+                                    dist = distance_->compare(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
+                                                              dimension_);
                                 }
                                 Candidate c1(tmpfea, dist);
                                 knn_graph[feature_id].insert(c1);
@@ -1147,8 +1150,8 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
             }
 
             for (; start < end; start++) {
-
                 size_t feature_id = LeafLists[treeid][start];
+                vector<unsigned > q_rank = rank[feature_id];
                 Node *leaf = SearchToLeaf(root, feature_id);
                 for (size_t i = leaf->StartIdx; i < leaf->EndIdx; i++) {
                     size_t tmpfea = LeafLists[treeid][i];
@@ -1163,8 +1166,8 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                             Candidate c1(feature_id, dist);
                             knn_graph[tmpfea].insert(c1);
                         } else {
-                            dist = distance_->compare3(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
-                                                       dimension_, knn_graph[tmpfea].begin()->distance,knn_graph[feature_id].begin()->distance ,hasDim, dimension_/8);
+                            dist = distance_->compare3_rank(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
+                                                                   dimension_, knn_graph[tmpfea].begin()->distance,knn_graph[feature_id].begin()->distance ,hasDim, dimension_/4,q_rank);
                             if (hasDim > dimension_) {
                                 if (dist<knn_graph[tmpfea].begin()->distance){
                                     Candidate c1(feature_id, dist);
@@ -1180,7 +1183,7 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                         LockGuard g(graph_[feature_id].lock);
                         if (knn_graph[feature_id].size() < K) {
                             if (hasDim <= dimension_) {
-                                dist+=distance_->compare(data_ + tmpfea * dimension_+hasDim, data_ + feature_id * dimension_+hasDim,
+                                dist=distance_->compare(data_ + tmpfea * dimension_+hasDim, data_ + feature_id * dimension_+hasDim,
                                                          dimension_-hasDim);
                             }
                             Candidate c1(tmpfea, dist);
@@ -2133,7 +2136,7 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
 	  has_built = true;
   }
 
-    void IndexKDtree::Build11(size_t n, const float *data, const Parameters &parameters) {
+    void IndexKDtree::Build11(size_t n, const float *data, const Parameters &parameters,std::vector<vector<unsigned >> &rank) {
 
         data_ = data;
         //assert(initializer_->HasBuilt());
@@ -2236,7 +2239,7 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
 
 #pragma omp parallel for
         for(size_t i = 0; i < mlNodeList.size(); i++){
-            mergeSubGraphs11(mlNodeList[i].second, mlNodeList[i].first);
+            mergeSubGraphs11(mlNodeList[i].second, mlNodeList[i].first, rank);
         }
 
         std::cout << "merge tree completed" << std::endl;

@@ -96,12 +96,13 @@ int main(int argc, char **argv) {
     efanna2e::IndexKDtree init_index(dim, points_num, efanna2e::L2, nullptr);
 
 
-
+    vector<vector<unsigned >> rank;
     if (pl == 0){
         init_index.Build(points_num, data_load, paras);
+
     }else if (pl==1){
         auto sort_start = std::chrono::high_resolution_clock::now();
-        vector<vector<unsigned >> rank;
+
         rank.reserve(points_num);
         vector<unsigned > myrank;
         myrank.reserve(dim);
@@ -114,11 +115,16 @@ int main(int argc, char **argv) {
             });
             rank.push_back(myrank);
         }
+//        for (size_t i = 0; i < points_num; i++){
+//            for (auto j:rank[i])printf("%f ",data_load[i*dim+j]);
+//            printf("\n");
+//        }
         auto sort_end = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> sort_time = sort_end - sort_start;
-        std::cout << "Init time : " << sort_time.count() << "s\n";
+        std::cout << "Sort time : " << sort_time.count() << "s\n";
 
-        init_index.Build11(points_num, data_load, paras);
+        init_index.Build11(points_num, data_load, paras, rank);
+
     }
     auto e_init = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff_init = e_init - s_init;
@@ -131,11 +137,16 @@ int main(int argc, char **argv) {
     if (pl == 0){
         index.RefineGraph(data_load, paras);
     } else if (pl==1){
-        index.RefineGraph11(data_load, paras);
+        index.RefineGraph11(data_load, paras,rank);
     }
     auto e = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = e - s;
     std::cout << "Refine time: " << diff.count() << "s\n";
+
+    map<unsigned ,unsigned >::iterator it;
+    for (it=index.Euclid_dim.begin();it!=index.Euclid_dim.end();it++){
+        printf("[%u] : %u times",it->first,it->second);
+    }
 
 
 #ifdef linux

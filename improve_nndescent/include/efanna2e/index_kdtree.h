@@ -73,7 +73,7 @@ class IndexKDtree : public Index {
 
 
   virtual void Build(size_t n, const float *data, const Parameters &parameters) override;
-    void Build11(size_t n, const float *data, const Parameters &parameters);
+    void Build11(size_t n, const float *data, const Parameters &parameters, std::vector<vector<unsigned >> &rank);
     void Build2(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_bar, std::vector<float> &q_bar );
     void Build3(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square );
     void Build4_p(size_t n, const float *data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size  );
@@ -141,7 +141,7 @@ class IndexKDtree : public Index {
   void getMergeLevelNodeList(Node* node, size_t treeid, int deepth);
   Node* SearchToLeaf(Node* node, size_t id);
   void mergeSubGraphs(size_t treeid, Node* node);
-    void mergeSubGraphs11(size_t treeid, Node* node);
+    void mergeSubGraphs11(size_t treeid, Node* node,std::vector<vector<unsigned >> &rank);
     void mergeSubGraphs2(size_t treeid, Node* node, std::vector<float> &p_square, std::vector<float> &p_bar, std::vector<float> &q_bar );
     void mergeSubGraphs3(size_t treeid, Node* node, std::vector<float> &p_square );
     void mergeSubGraphs4_p(size_t treeid, Node* node, std::vector<float> &p_square , std::vector<float> &p_size);

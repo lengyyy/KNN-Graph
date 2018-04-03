@@ -6,6 +6,7 @@
 
 #ifndef EFANNA2E_INDEX_H
 #define EFANNA2E_INDEX_H
+#include <map>
 
 #include <cstddef>
 #include <string>
@@ -39,6 +40,7 @@ class Index {
  public:
     long long purn_times;
     long long ip_times;
+    std::map<unsigned ,unsigned > Euclid_dim;
 
   explicit Index(const size_t dimension, const size_t n, Metric metric);
 
