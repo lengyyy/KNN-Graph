@@ -8,7 +8,7 @@
 #include <x86intrin.h>
 #include <iostream>
 #include <math.h>
-#include <algorithm>
+
 namespace efanna2e{
   enum Metric{
     L2 = 0,
@@ -19,11 +19,11 @@ namespace efanna2e{
     class Distance {
     public:
         virtual float compare(const float* a, const float* b, unsigned length) const = 0;
-        virtual float compare2(const float* a, const float* b, unsigned length) const = 0;
-        virtual float compare3(const float* a, const float* b, unsigned size,float boundary1,float boundary2, unsigned &hasDim,
-                               unsigned delta) const = 0;
-        virtual float compare3_rank(const float* a, const float* b, unsigned size,float boundary1,float boundary2, unsigned &hasDim,
-                               unsigned delta,std::vector<unsigned > &rank) const = 0;
+        virtual float compare2(const float* a, const float* b, unsigned length) {} ;
+        virtual float compare3(const float* a, const float* b, unsigned size,float boundary, unsigned &hasDim,
+                               unsigned delta) {} ;
+        virtual float compare3_rank(const float* a, const float* b, unsigned size,float boundary, unsigned &hasDim,
+                               unsigned delta,std::vector<unsigned > &rank) {} ;
         virtual ~Distance() {}
     };
 
@@ -133,9 +133,8 @@ namespace efanna2e{
 
             return result;
         }
-        float compare2(const float* a, const float* b, unsigned size) const {}
-        float compare3(const float* a, const float* b, unsigned size, float boundary1,float boundary2, unsigned &hasDim,
-                       unsigned delta)const {
+        float compare3(const float* a, const float* b, unsigned size, float boundary, unsigned &hasDim,
+                       unsigned delta) {
             //hasDim是刚好超过boundary的dim,或者如果没有超过boundar就是128+16
             float result = 0;
 
@@ -164,14 +163,13 @@ namespace efanna2e{
             sum = _mm256_loadu_ps(unpack);
 
             hasDim += 16;
-            float maxb=std::max(boundary1,boundary2);
             for (unsigned i = 0; i < DD; i += 16, l += 16, r += 16, hasDim+=16) {
                 AVX_L2SQR(l, r, sum, l0, r0);
                 AVX_L2SQR(l + 8, r + 8, sum, l1, r1);
                 if (hasDim%delta==0){
                     _mm256_storeu_ps(unpack, sum);
                     result = unpack[0] + unpack[1] + unpack[2] + unpack[3] + unpack[4] + unpack[5] + unpack[6] + unpack[7];
-                    if (result>=maxb) return  result;
+                    if (result>=boundary) return  result;
                 }
 
             }
@@ -249,8 +247,8 @@ namespace efanna2e{
 
             return result;
         }
-        float compare3_rank(const float* a, const float* b, unsigned size,float boundary1,float boundary2, unsigned &hasDim,
-                            unsigned delta,std::vector<unsigned > &rank) const {
+        float compare3_rank(const float* a, const float* b, unsigned size,float boundary, unsigned &hasDim,
+                            unsigned delta,std::vector<unsigned > &rank)  {
             //按照rank中的dim数值遍历
             float result = 0;
 
@@ -277,7 +275,6 @@ namespace efanna2e{
             sum = _mm256_loadu_ps(unpack);
 
             hasDim += 8;
-            float maxb=std::max(boundary1,boundary2);
             for (unsigned i = 0; i < D; i += 8, hasDim+=8) {
                 float p[8] __attribute__ ((aligned (32))) = {l[rank[i]],l[rank[i+1]], l[rank[i+2]], l[rank[i+3]], l[rank[i+4]], l[rank[i+5]], l[rank[i+6]], l[rank[i+7]]};
                 float q[8] __attribute__ ((aligned (32))) = {r[rank[i]],r[rank[i+1]], r[rank[i+2]], r[rank[i+3]], r[rank[i+4]], r[rank[i+5]], r[rank[i+6]], r[rank[i+7]]};
@@ -285,7 +282,7 @@ namespace efanna2e{
                 if (hasDim%delta==0){
                     _mm256_storeu_ps(unpack, sum);
                     result = unpack[0] + unpack[1] + unpack[2] + unpack[3] + unpack[4] + unpack[5] + unpack[6] + unpack[7];
-                    if (result>=maxb) return  result;
+                    if (result>=boundary) return  result;
                 }
 
             }
@@ -462,7 +459,7 @@ namespace efanna2e{
       return result;
     }
 
-      float compare2(const float* a, const float* b, unsigned size) const {
+      float compare2(const float* a, const float* b, unsigned size) {
           if (size == 0)
               return 0;
           float result = 0;
@@ -587,10 +584,7 @@ namespace efanna2e{
 #endif
           return result;
       }
-      float compare3(const float* a, const float* b, unsigned size, float boundary1,float boundary2, unsigned &hasDim,
-                     unsigned delta) const {}
-      float compare3_rank(const float* a, const float* b, unsigned size,float boundary1,float boundary2, unsigned &hasDim,
-                          unsigned delta,std::vector<unsigned > &rank) const {}
+
 
 
   };

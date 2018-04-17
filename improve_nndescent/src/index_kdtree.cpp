@@ -7,6 +7,7 @@
 #include <efanna2e/index_kdtree.h>
 #include <efanna2e/exceptions.h>
 #include <efanna2e/parameters.h>
+# define max(a,b) a>b?a:b
 
 
 namespace efanna2e {
@@ -1110,8 +1111,10 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                                 Candidate c1(feature_id, dist);
                                 knn_graph[tmpfea].insert(c1);
                             } else {
-                                dist = distance_->compare3_rank(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
-                                                           dimension_, knn_graph[tmpfea].begin()->distance,knn_graph[feature_id].begin()->distance ,hasDim, dimension_/4,q_rank);
+                                dist = distance_->compare3(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
+                                                           dimension_, max(knn_graph[tmpfea].begin()->distance,knn_graph[feature_id].begin()->distance) ,hasDim, dimension_/8);
+//                                dist = distance_->compare3_rank(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
+//                                                           dimension_, max(knn_graph[tmpfea].begin()->distance,knn_graph[feature_id].begin()->distance) ,hasDim, dimension_/4,q_rank);
                                 if (hasDim > dimension_) {
                                     if (dist<knn_graph[tmpfea].begin()->distance){
                                         Candidate c1(feature_id, dist);
@@ -1127,7 +1130,7 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                         {
                             LockGuard g(graph_[feature_id].lock);
                             if (knn_graph[feature_id].size() < K) {
-                                if (hasDim <= dimension_) {
+                                if (hasDim < dimension_) {
                                     dist = distance_->compare(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
                                                               dimension_);
                                 }
@@ -1166,8 +1169,10 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                             Candidate c1(feature_id, dist);
                             knn_graph[tmpfea].insert(c1);
                         } else {
-                            dist = distance_->compare3_rank(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
-                                                                   dimension_, knn_graph[tmpfea].begin()->distance,knn_graph[feature_id].begin()->distance ,hasDim, dimension_/4,q_rank);
+                            dist = distance_->compare3(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
+                                                       dimension_, max(knn_graph[tmpfea].begin()->distance,knn_graph[feature_id].begin()->distance) ,hasDim, dimension_/8);
+//                            dist = distance_->compare3_rank(data_ + tmpfea * dimension_, data_ + feature_id * dimension_,
+//                                                                   dimension_,max( knn_graph[tmpfea].begin()->distance,knn_graph[feature_id].begin()->distance) ,hasDim, dimension_/4,q_rank);
                             if (hasDim > dimension_) {
                                 if (dist<knn_graph[tmpfea].begin()->distance){
                                     Candidate c1(feature_id, dist);
@@ -1182,7 +1187,7 @@ IndexKDtree::IndexKDtree(const size_t dimension, const size_t n, Metric m, Index
                     {
                         LockGuard g(graph_[feature_id].lock);
                         if (knn_graph[feature_id].size() < K) {
-                            if (hasDim <= dimension_) {
+                            if (hasDim < dimension_) {
                                 dist=distance_->compare(data_ + tmpfea * dimension_+hasDim, data_ + feature_id * dimension_+hasDim,
                                                          dimension_-hasDim);
                             }

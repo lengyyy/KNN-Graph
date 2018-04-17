@@ -26,7 +26,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_executable(Euclid_improve0 Euclid_improve.cpp)
 #target_link_libraries(kdtree_buildall_and_evaluate ${PROJECT_NAME})
-target_link_libraries(Euclid_improve0 ${PROJECT_NAME} -lprofiler -lmysqlclient)
+target_link_libraries(Euclid_improve0 ${PROJECT_NAME} -lprofiler -lmysqlclient -lopenblas)
 
 add_executable(kdtree_buildall_and_evaluate0 kdtree_buildall_and_evaluate.cpp)
 #target_link_libraries(kdtree_buildall_and_evaluate ${PROJECT_NAME})

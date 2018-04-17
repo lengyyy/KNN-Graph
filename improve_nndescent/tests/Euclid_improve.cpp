@@ -1,5 +1,5 @@
 
-
+#include <cblas.h>
 #include <efanna2e/index_graph.h>
 #include <efanna2e/index_random.h>
 #include <efanna2e/util.h>
@@ -64,6 +64,7 @@ int main(int argc, char **argv) {
     unsigned points_num, dim;
     load_data(argv[1], data_load, points_num, dim);
 
+
     char profname[30];
     sprintf(profname,"%s_%s","Euclid_improve",argv[10]);
 #ifdef linux
@@ -90,14 +91,42 @@ int main(int argc, char **argv) {
     paras.Set<unsigned>("nTrees", nTrees);
     paras.Set<unsigned>("mLevel", mLevel);
 
-    data_load = efanna2e::data_align(data_load, points_num, dim);//one must align the data before build
+    float *projection_data = NULL;
+    if (pl==10){
+        //JL降维
+        auto jl_start = std::chrono::high_resolution_clock::now();
+        float e = 0.5;
+        unsigned newd = 20*log10(points_num)/(e*e);
+        std::cout << "newd: " <<newd<< endl;
+        float * projection_matrix = new float[dim * newd];
+        std::default_random_engine generator;
+        std::normal_distribution<float> distribution(0.0, 1.0);
+#pragma omp parallel for
+        for (int i = 0; i < newd * dim; i++) {
+            projection_matrix[i] = distribution(generator);
+        }
+        projection_data = new float[points_num * newd* sizeof(float)];
+        cblas_sgemm(CblasRowMajor, CblasNoTrans,CblasNoTrans, points_num, newd, dim,
+                    1, data_load, dim, projection_matrix, newd, 0, projection_data, newd);
+        delete[] data_load;
+        delete[] projection_matrix;
+        auto jl_end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> jl_time = jl_end - jl_start;
+        std::cout << "JL time : " << jl_time.count() << "s\n";
+
+        dim = newd;
+        projection_data = efanna2e::data_align(projection_data, points_num, dim);//one must align the data before build
+    } else{
+        data_load = efanna2e::data_align(data_load, points_num, dim);//one must align the data before build
+
+    }
 
 
     efanna2e::IndexKDtree init_index(dim, points_num, efanna2e::L2, nullptr);
 
 
     vector<vector<unsigned >> rank;
-    if (pl == 0){
+    if (pl == 0 ){
         init_index.Build(points_num, data_load, paras);
 
     }else if (pl==1){
@@ -125,7 +154,10 @@ int main(int argc, char **argv) {
 
         init_index.Build11(points_num, data_load, paras, rank);
 
+    } else if (pl==10){
+        init_index.Build(points_num, projection_data, paras);
     }
+
     auto e_init = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff_init = e_init - s_init;
     std::cout << "Init time : " << diff_init.count() << "s\n";
@@ -134,10 +166,12 @@ int main(int argc, char **argv) {
     efanna2e::IndexGraph index(dim, points_num, efanna2e::L2, (efanna2e::Index *) (&init_index));
     index.final_graph_ = init_index.final_graph_; //pass the init graph without Save and Load
     auto s = std::chrono::high_resolution_clock::now();
-    if (pl == 0){
+    if (pl == 0 ){
         index.RefineGraph(data_load, paras);
     } else if (pl==1){
         index.RefineGraph11(data_load, paras,rank);
+    } else if (pl==10){
+        index.RefineGraph(projection_data, paras);
     }
     auto e = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = e - s;
@@ -145,7 +179,7 @@ int main(int argc, char **argv) {
 
     map<unsigned ,unsigned >::iterator it;
     for (it=index.Euclid_dim.begin();it!=index.Euclid_dim.end();it++){
-        printf("[%u] : %u times",it->first,it->second);
+        printf("[%u] : %u times\n",it->first,it->second);
     }
 
 

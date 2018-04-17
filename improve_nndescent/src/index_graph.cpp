@@ -9,6 +9,7 @@
 #include <efanna2e/parameters.h>
 #include <omp.h>
 #include <set>
+# define max(a,b) a>b?a:b
 
 namespace efanna2e {
 #define _CONTROL_NUM 100
@@ -196,10 +197,12 @@ IndexGraph::~IndexGraph() {}
                     float boundary1 = graph_[i].pool.front().distance;
                     float boundary2 = graph_[j].pool.front().distance;
 
-                    dist = distance_->compare3_rank(data_ + i * dimension_, data_ + j * dimension_,
-                                               dimension_,boundary1,boundary2, hasDim,dimension_/4,q_rank);
+//                    dist = distance_->compare3_rank(data_ + i * dimension_, data_ + j * dimension_,
+//                                               dimension_,max(boundary1,boundary2),hasDim,dimension_/8,q_rank);
+                    dist = distance_->compare3(data_ + i * dimension_, data_ + j * dimension_,
+                                                    dimension_,max(boundary1,boundary2), hasDim,dimension_/16);
                     if (hasDim > dimension_) {
-                        auto it = Euclid_dim.insert({hasDim,1});
+                        auto it = Euclid_dim.insert({dimension_,1});
                         if(!it.second) it.first->second+=1;
                         if (dist < boundary1) {
                             graph_[i].insert(j, dist);
@@ -209,7 +212,8 @@ IndexGraph::~IndexGraph() {}
                         }
                     }
                     else {
-                        auto it = Euclid_dim.insert({dimension_,1});
+                        printf("%u ",hasDim);
+                        auto it = Euclid_dim.insert({hasDim,1});
                         if(!it.second) it.first->second+=1;
                     }
 
@@ -314,6 +318,8 @@ IndexGraph::~IndexGraph() {}
       unsigned L = parameters.Get<unsigned>("L");
 #pragma omp parallel for
       for (unsigned i = 0; i < nd_; i++) {
+          graph_[i].count_rold=0;
+          graph_[i].count_rnew=0;
         std::vector<unsigned>().swap(graph_[i].nn_new);
         std::vector<unsigned>().swap(graph_[i].nn_old);
         //std::vector<unsigned>().swap(graph_[i].rnn_new);
@@ -352,11 +358,16 @@ IndexGraph::~IndexGraph() {}
           if (nn.flag) {
             nn_new.push_back(nn.id);
             if (nn.distance > nhood_o.pool.back().distance) {
+
               LockGuard guard(nhood_o.lock);
+                nhood_o.count_rnew++;
               if(nhood_o.rnn_new.size() < R)nhood_o.rnn_new.push_back(n);
               else{
-                unsigned int pos = rand() % R;
-                nhood_o.rnn_new[pos] = n;
+//                  if(rand()*nhood_o.count_rnew<R*RAND_MAX){
+                      unsigned int pos = rand() % R;
+                      nhood_o.rnn_new[pos] = n;
+//                  }
+
               }
             }
             nn.flag = false;
@@ -364,10 +375,13 @@ IndexGraph::~IndexGraph() {}
             nn_old.push_back(nn.id);
             if (nn.distance > nhood_o.pool.back().distance) {
               LockGuard guard(nhood_o.lock);
+                nhood_o.count_rold++;
               if(nhood_o.rnn_old.size() < R)nhood_o.rnn_old.push_back(n);
               else{
-                unsigned int pos = rand() % R;
-                nhood_o.rnn_old[pos] = n;
+//                  if(rand()*nhood_o.count_rold<R*RAND_MAX){
+                      unsigned int pos = rand() % R;
+                      nhood_o.rnn_old[pos] = n;
+//                  }
               }
             }
           }

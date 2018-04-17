@@ -36,6 +36,8 @@ struct nhood{
   std::mutex lock;
   std::vector<Neighbor> pool;
   unsigned M;
+    unsigned count_rnew;
+    unsigned count_rold;
 
   std::vector<unsigned> nn_old;
   std::vector<unsigned> nn_new;
@@ -44,6 +46,8 @@ struct nhood{
   
   nhood(){}
   nhood(unsigned l, unsigned s, std::mt19937 &rng, unsigned N){
+    count_rnew=0;
+    count_rold=0;
     M = s;
     nn_new.resize(s * 2);
     GenRandom(rng, &nn_new[0], (unsigned)nn_new.size(), N);
@@ -52,6 +56,8 @@ struct nhood{
   }
 
   nhood(const nhood &other){
+    count_rnew=other.count_rnew;
+    count_rold=other.count_rold;
     M = other.M;
     std::copy(other.nn_new.begin(), other.nn_new.end(), std::back_inserter(nn_new));
     nn_new.reserve(other.nn_new.capacity());
