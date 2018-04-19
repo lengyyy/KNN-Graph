@@ -31,6 +31,22 @@ struct Neighbor {
     }
 };
 
+    struct id_distance {
+        unsigned id;
+        float distance;
+
+        id_distance() = default;
+        id_distance(unsigned id, float distance) : id{id}, distance{distance}{}
+
+        inline bool operator<(const id_distance &other) const {
+          return distance < other.distance;
+        }
+        inline bool operator>(const id_distance &other) const {
+          return distance > other.distance;
+        }
+    };
+
+
 typedef std::lock_guard<std::mutex> LockGuard;
 struct nhood{
   std::mutex lock;
@@ -43,14 +59,19 @@ struct nhood{
   std::vector<unsigned> nn_new;
   std::vector<unsigned> rnn_old;
   std::vector<unsigned> rnn_new;
+
+    std::vector<id_distance> nn_old2;
+    std::vector<id_distance> nn_new2;
+    std::vector<id_distance> rnn_old2;
+    std::vector<id_distance> rnn_new2;
   
   nhood(){}
   nhood(unsigned l, unsigned s, std::mt19937 &rng, unsigned N){
     count_rnew=0;
     count_rold=0;
     M = s;
-    nn_new.resize(s * 2);
-    GenRandom(rng, &nn_new[0], (unsigned)nn_new.size(), N);
+//    nn_new.resize(s * 2);
+//    GenRandom(rng, &nn_new[0], (unsigned)nn_new.size(), N);
     nn_new.reserve(s * 2);
     pool.reserve(l);
   }
@@ -112,6 +133,22 @@ struct nhood{
       }
     }
   }
+
+    template <typename C>
+    void join12 (C callback) const {
+        for (id_distance const i: nn_new2) {
+            for (id_distance const j: nn_new2) {
+                if (i.id < j.id) {
+                    callback(i, j);
+                    compare_times++;
+                }
+            }
+            for (id_distance j: nn_old2) {
+                callback(i, j);
+                compare_times++;
+            }
+        }
+    }
 
 };
 

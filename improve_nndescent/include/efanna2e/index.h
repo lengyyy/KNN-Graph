@@ -41,6 +41,7 @@ class Index {
     long long purn_times;
     long long ip_times;
     std::map<unsigned ,unsigned > Euclid_dim;
+    std::vector<unsigned > calcul_times;
 
   explicit Index(const size_t dimension, const size_t n, Metric metric);
 
@@ -70,6 +71,9 @@ class Index {
 
 
     inline void init_times()  { purn_times=0;ip_times=0;}
+    inline void init_calcul_times()  {
+        calcul_times.resize(nd_);
+    }
     inline void print_times()  {
         printf("purn_times:%lld\nip_times:%lld\n",purn_times,ip_times);
     }

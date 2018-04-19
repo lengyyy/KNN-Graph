@@ -42,6 +42,7 @@ class IndexGraph : public Index {
   void GraphAdd(const float* data, unsigned n, unsigned dim, const Parameters &parameters);
   void RefineGraph(const float* data, const Parameters &parameters);
     void RefineGraph11(const float* data, const Parameters &parameters,std::vector<vector<unsigned >> &rank);
+    void RefineGraph12(const float* data, const Parameters &parameters);
     void RefineGraph3(const float* data, const Parameters &parameters, std::vector<float> &p_square);
     void RefineGraph4_p(const float* data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size);
     void RefineGraph4_purn(const float* data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size);
@@ -65,6 +66,7 @@ private:
 
   void NNDescent(const Parameters &parameters);
     void NNDescent11(const Parameters &parameters,std::vector<vector<unsigned >> &rank);
+    void NNDescent12(const Parameters &parameters);
     void NNDescent3(const Parameters &parameters, std::vector<float> &p_square);
     void NNDescent4_p(const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size);
     void NNDescent4_purn(const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size);
@@ -72,12 +74,14 @@ private:
 
   void join();
     void join11(std::vector<vector<unsigned >> &rank);
+    void join12();
     void join3(std::vector<float> &p_square);
     void join4_p(std::vector<float> &p_square, std::vector<float> &p_size);
     void join4_purn(std::vector<float> &p_square, std::vector<float> &p_size);
     void join5(std::vector<float> &p_square, std::vector<float> &p_right_size);
 
   void update(const Parameters &parameters);
+    void update12(const Parameters &parameters);
     void update3(const Parameters &parameters,std::vector<float> &p_square);
   void generate_control_set(std::vector<unsigned> &c,
                                       std::vector<std::vector<unsigned> > &v,

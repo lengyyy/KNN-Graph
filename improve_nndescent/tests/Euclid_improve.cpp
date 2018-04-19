@@ -9,6 +9,10 @@
 #include<gperftools/profiler.h>
 #endif
 
+//版本0，原版
+//版本1，先预排序，再累计dimension算欧几里得距离，剪枝。因为assign SIMD的寄存器过程太慢，导致不行
+//版本10，先JL处理，维度可以减半，时间差不多减半，但是准确率会上不去
+//版本2，三角不等式，剪枝
 
 void load_data(char *filename, float *&data, unsigned &num, unsigned &dim) {// load data with sift10K pattern
     std::ifstream in(filename, std::ios::binary);
@@ -126,7 +130,7 @@ int main(int argc, char **argv) {
 
 
     vector<vector<unsigned >> rank;
-    if (pl == 0 ){
+    if (pl == 0 || pl==2 ){
         init_index.Build(points_num, data_load, paras);
 
     }else if (pl==1){
@@ -164,6 +168,8 @@ int main(int argc, char **argv) {
 
 
     efanna2e::IndexGraph index(dim, points_num, efanna2e::L2, (efanna2e::Index *) (&init_index));
+    index.init_times();
+    index.init_calcul_times();
     index.final_graph_ = init_index.final_graph_; //pass the init graph without Save and Load
     auto s = std::chrono::high_resolution_clock::now();
     if (pl == 0 ){
@@ -172,7 +178,10 @@ int main(int argc, char **argv) {
         index.RefineGraph11(data_load, paras,rank);
     } else if (pl==10){
         index.RefineGraph(projection_data, paras);
+    }else if (pl==2){
+        index.RefineGraph12(data_load, paras);
     }
+
     auto e = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = e - s;
     std::cout << "Refine time: " << diff.count() << "s\n";
@@ -181,6 +190,10 @@ int main(int argc, char **argv) {
     for (it=index.Euclid_dim.begin();it!=index.Euclid_dim.end();it++){
         printf("[%u] : %u times\n",it->first,it->second);
     }
+    printf("purn_times:%ld\n",index.purn_times);
+//    for (unsigned i=0;i<index.calcul_times.size();i++){
+//        printf("[%u] : %u times\n",i,index.calcul_times[i]);
+//    }
 
 
 #ifdef linux
@@ -204,7 +217,7 @@ int main(int argc, char **argv) {
     float accuracy = 1 - (float) cnt / (points_num * K);
     cout << K << "NN accuracy: " << accuracy << endl;
 
-    if(atoi(argv[11])!=0){
+    if(atoi(argv[11])==1){
         MyDB db;
         db.initDB("120.24.163.35", "lengyue", "123456", "experiment");
         myInfo["type"]=profname;
@@ -217,6 +230,13 @@ int main(int argc, char **argv) {
         myInfo["date"]=tmpBuf;
         myInfo["exp_group"]=argv[10];
         db.addRecord("KNNG_purn2",myInfo);
+    }else if(atoi(argv[11])==2){
+        MyDB db;
+        db.initDB("120.24.163.35", "lengyue", "123456", "experiment");
+        for (unsigned i=0;i<index.calcul_times.size();i++){
+            myInfo[to_string(i)]=to_string(index.calcul_times[i]);
+        }
+        db.addRecord("KNNG_times",myInfo);
     }
     return 0;
 }
