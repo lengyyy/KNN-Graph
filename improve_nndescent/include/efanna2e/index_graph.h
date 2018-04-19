@@ -74,7 +74,7 @@ private:
 
   void join();
     void join11(std::vector<vector<unsigned >> &rank);
-    void join12();
+    void join12();void join12_2();
     void join3(std::vector<float> &p_square);
     void join4_p(std::vector<float> &p_square, std::vector<float> &p_size);
     void join4_purn(std::vector<float> &p_square, std::vector<float> &p_size);

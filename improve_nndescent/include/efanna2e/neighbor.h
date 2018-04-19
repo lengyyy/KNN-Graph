@@ -46,6 +46,21 @@ struct Neighbor {
         }
     };
 
+    struct id_lowbound {
+        unsigned id;
+        float lowbound;
+
+        id_lowbound() = default;
+        id_lowbound(unsigned id, float lowbound) : id{id}, lowbound{lowbound}{}
+
+        inline bool operator<(const id_lowbound &other) const {
+            return lowbound < other.lowbound;
+        }
+        inline bool operator>(const id_lowbound &other) const {
+            return lowbound > other.lowbound;
+        }
+    };
+
 
 typedef std::lock_guard<std::mutex> LockGuard;
 struct nhood{
@@ -64,6 +79,7 @@ struct nhood{
     std::vector<id_distance> nn_new2;
     std::vector<id_distance> rnn_old2;
     std::vector<id_distance> rnn_new2;
+    std::vector<id_lowbound> pool_lb;
   
   nhood(){}
   nhood(unsigned l, unsigned s, std::mt19937 &rng, unsigned N){
@@ -74,6 +90,7 @@ struct nhood{
 //    GenRandom(rng, &nn_new[0], (unsigned)nn_new.size(), N);
     nn_new.reserve(s * 2);
     pool.reserve(l);
+   //   pool_lb.reserve(6000);
   }
 
   nhood(const nhood &other){
@@ -83,6 +100,7 @@ struct nhood{
     std::copy(other.nn_new.begin(), other.nn_new.end(), std::back_inserter(nn_new));
     nn_new.reserve(other.nn_new.capacity());
     pool.reserve(other.pool.capacity());
+     // pool_lb.reserve(other.pool_lb.capacity());
   }
 
     void insert (unsigned id, float dist) {
@@ -99,6 +117,17 @@ struct nhood{
         std::push_heap(pool.begin(), pool.end());
       }
 
+    }
+
+    void insert_lb (unsigned id, float lb) {
+        LockGuard guard(lock);
+        for(unsigned i=0; i<pool_lb.size(); i++){
+            if(id == pool_lb[i].id ){
+                if(lb>pool_lb[i].lowbound) pool_lb[i].lowbound=lb;
+                return;
+            }
+        }
+        pool_lb.push_back(id_lowbound(id, lb));
     }
 
   void insert3 (unsigned id, float dist) {
@@ -140,12 +169,10 @@ struct nhood{
             for (id_distance const j: nn_new2) {
                 if (i.id < j.id) {
                     callback(i, j);
-                    compare_times++;
                 }
             }
             for (id_distance j: nn_old2) {
                 callback(i, j);
-                compare_times++;
             }
         }
     }

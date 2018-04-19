@@ -9,6 +9,8 @@
 #include <efanna2e/parameters.h>
 #include <omp.h>
 #include <set>
+#include <cfloat>
+
 # define max(a,b) a>b?a:b
 # define abs(a,b) a>b?a-b:b-a
 
@@ -236,23 +238,53 @@ IndexGraph::~IndexGraph() {}
                 unsigned jid=j.id;
                 if(i.id != j.id){
                     float lowerbound = abs(i.distance,j.distance);
-                    if (lowerbound>=graph_[iid].pool.front().distance&&lowerbound>=graph_[jid].pool.front().distance) purn_times++;
-                    else{
-                        float dist = distance_->compare(data_ + iid * dimension_, data_ + jid * dimension_, dimension_);
-                        auto it = Euclid_dim.insert({dimension_,1});
-                        if(!it.second) it.first->second+=1;
-                        calcul_times[iid]+=1;
-                        calcul_times[jid]+=1;
-                        if (dist < graph_[iid].pool.front().distance) {
-                            graph_[iid].insert(jid, dist);
-                        }
-                        if (dist< graph_[jid].pool.front().distance){
-                            graph_[jid].insert(iid, dist);
-                        }
-                    }
+                    graph_[iid].insert_lb(jid,lowerbound);
+                    graph_[jid].insert_lb(iid,lowerbound);
+
+//                    if (lowerbound>=graph_[iid].pool.front().distance&&lowerbound>=graph_[jid].pool.front().distance) purn_times++;
+//                    else{
+//                        float dist = distance_->compare(data_ + iid * dimension_, data_ + jid * dimension_, dimension_);
+//                        auto it = Euclid_dim.insert({dimension_,1});
+//                        if(!it.second) it.first->second+=1;
+//                        calcul_times[iid]+=1;
+//                        calcul_times[jid]+=1;
+//                        if (dist < graph_[iid].pool.front().distance) {
+//                            graph_[iid].insert(jid, dist);
+//                        }
+//                        if (dist< graph_[jid].pool.front().distance){
+//                            graph_[jid].insert(iid, dist);
+//                        }
+//
+//                    }
+
 
                 }
             });
+        }
+    }
+
+    void IndexGraph::join12_2() {
+#pragma omp parallel for default(shared) schedule(dynamic, 100)
+        for (unsigned n = 0; n < nd_; n++){
+            auto &nn_lb = graph_[n].pool_lb;
+            std::sort(nn_lb.begin(), nn_lb.end());
+            //printf("%d ",nn_lb.size());fflush(stdout);
+            for (unsigned i=0; i<nn_lb.size(); i++){
+                unsigned id =nn_lb[i].id;
+                if (nn_lb[i].lowbound>=graph_[n].pool.front().distance) break;
+                float dist = distance_->compare(data_ + n * dimension_, data_ + id * dimension_, dimension_);
+                compare_times++;
+//                auto it = Euclid_dim.insert({dimension_,1});
+//                if(!it.second) it.first->second+=1;
+//                calcul_times[n]+=1;
+//                calcul_times[id]+=1;
+                if (dist < graph_[n].pool.front().distance)  graph_[n].insert(id, dist);
+                if (dist< graph_[id].pool.front().distance) graph_[id].insert(n, dist);
+
+                nn_lb[i].lowbound= FLT_MAX;
+                graph_[id].insert_lb(n,FLT_MAX);
+
+            }
         }
     }
 
@@ -571,6 +603,7 @@ void IndexGraph::NNDescent(const Parameters &parameters) {
         for (unsigned it = 0; it < iter; it++) {
             update12(parameters);
             join12();
+            join12_2();
 
             std::cout << "iter: " << it << std::endl;
             printf("compare_times:%lld\n",compare_times);
@@ -831,6 +864,7 @@ void IndexGraph::RefineGraph(const float* data, const Parameters &parameters) {
             tmp.reserve(K);
             final_graph_.push_back(tmp);
             std::vector<Neighbor>().swap(graph_[i].pool);
+            std::vector<id_lowbound>().swap(graph_[i].pool_lb);
             std::vector<id_distance>().swap(graph_[i].nn_new2);
             std::vector<id_distance>().swap(graph_[i].nn_old2);
             std::vector<id_distance>().swap(graph_[i].rnn_new2);
