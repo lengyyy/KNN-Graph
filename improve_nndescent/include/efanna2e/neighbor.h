@@ -11,6 +11,7 @@
 #include <vector>
 #include <mutex>
 #include <efanna2e/index.h>
+#include <set>
 
 namespace efanna2e {
     extern long long compare_times;
@@ -54,9 +55,11 @@ struct Neighbor {
         id_lowbound(unsigned id, float lowbound) : id{id}, lowbound{lowbound}{}
 
         inline bool operator<(const id_lowbound &other) const {
+            if (id==other.id) return false;
             return lowbound < other.lowbound;
         }
         inline bool operator>(const id_lowbound &other) const {
+            if (id==other.id) return false;
             return lowbound > other.lowbound;
         }
     };
@@ -79,7 +82,7 @@ struct nhood{
     std::vector<id_distance> nn_new2;
     std::vector<id_distance> rnn_old2;
     std::vector<id_distance> rnn_new2;
-    std::vector<id_lowbound> pool_lb;
+    std::set<id_lowbound> pool_lb;
   
   nhood(){}
   nhood(unsigned l, unsigned s, std::mt19937 &rng, unsigned N){
@@ -119,16 +122,16 @@ struct nhood{
 
     }
 
-    void insert_lb (unsigned id, float lb) {
-        LockGuard guard(lock);
-        for(unsigned i=0; i<pool_lb.size(); i++){
-            if(id == pool_lb[i].id ){
-                if(lb>pool_lb[i].lowbound) pool_lb[i].lowbound=lb;
-                return;
-            }
-        }
-        pool_lb.push_back(id_lowbound(id, lb));
-    }
+//    void insert_lb (unsigned id, float lb) {
+//        LockGuard guard(lock);
+//        for(unsigned i=0; i<pool_lb.size(); i++){
+//            if(id == pool_lb[i].id ){
+//                if(lb>pool_lb[i].lowbound) pool_lb[i].lowbound=lb;
+//                return;
+//            }
+//        }
+//        pool_lb.push_back(id_lowbound(id, lb));
+//    }
 
   void insert3 (unsigned id, float dist) {
     LockGuard guard(lock);
