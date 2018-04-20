@@ -82,7 +82,7 @@ struct nhood{
     std::vector<id_distance> nn_new2;
     std::vector<id_distance> rnn_old2;
     std::vector<id_distance> rnn_new2;
-    std::set<id_lowbound> pool_lb;
+   // std::set<id_lowbound> pool_lb;
   
   nhood(){}
   nhood(unsigned l, unsigned s, std::mt19937 &rng, unsigned N){
@@ -93,7 +93,6 @@ struct nhood{
 //    GenRandom(rng, &nn_new[0], (unsigned)nn_new.size(), N);
     nn_new.reserve(s * 2);
     pool.reserve(l);
-   //   pool_lb.reserve(6000);
   }
 
   nhood(const nhood &other){
@@ -103,7 +102,6 @@ struct nhood{
     std::copy(other.nn_new.begin(), other.nn_new.end(), std::back_inserter(nn_new));
     nn_new.reserve(other.nn_new.capacity());
     pool.reserve(other.pool.capacity());
-     // pool_lb.reserve(other.pool_lb.capacity());
   }
 
     void insert (unsigned id, float dist) {

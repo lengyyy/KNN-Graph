@@ -57,6 +57,7 @@ class IndexGraph : public Index {
   KNNGraph graph_;
     typedef vector<id_and_square> square_heap2;
     unsigned div;
+   map<pair<unsigned ,unsigned >, float > lowbound_map;
 
 
 private:
