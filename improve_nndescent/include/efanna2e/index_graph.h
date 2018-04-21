@@ -47,6 +47,24 @@ class IndexGraph : public Index {
     void RefineGraph4_p(const float* data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size);
     void RefineGraph4_purn(const float* data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_size);
     void RefineGraph5(const float* data, const Parameters &parameters, std::vector<float> &p_square, std::vector<float> &p_right_size);
+//
+//    struct mapHashFunc {
+//        std::size_t operator()(const pair<unsigned ,unsigned > &key) const {
+//          using std::size_t;
+//          using std::hash;
+//
+//          return ((hash<unsigned>()(key.first) ^ (hash<unsigned >()(key.second) << 1)) >> 1);
+//        }
+//    };
+//
+//    struct EqualKey
+//    {
+//        bool operator () (const pair<unsigned ,unsigned > &lhs, const pair<unsigned ,unsigned > &rhs) const
+//        {
+//          return lhs.first  == rhs.first
+//                 && lhs.second == rhs.second;
+//        }
+//    };
 
  protected:
   typedef std::vector<nhood> KNNGraph;
@@ -57,7 +75,10 @@ class IndexGraph : public Index {
   KNNGraph graph_;
     typedef vector<id_and_square> square_heap2;
     unsigned div;
-   map<pair<unsigned ,unsigned >, float > lowbound_map;
+ //  map<pair<unsigned ,unsigned >, float > lowbound_map;
+ //  unordered_map<pair<unsigned ,unsigned >, float, mapHashFunc, EqualKey> lowbound_map;
+
+
 
 
 private:
@@ -75,7 +96,7 @@ private:
 
   void join();
     void join11(std::vector<vector<unsigned >> &rank);
-    void join12();void join12_2();
+    void join12();void join12_2();void mapinsert(unsigned iid, unsigned jid, float lowerbound);
     void join3(std::vector<float> &p_square);
     void join4_p(std::vector<float> &p_square, std::vector<float> &p_size);
     void join4_purn(std::vector<float> &p_square, std::vector<float> &p_size);

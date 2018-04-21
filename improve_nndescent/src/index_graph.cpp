@@ -11,6 +11,7 @@
 #include <set>
 #include <cfloat>
 #include <efanna2e/neighbor.h>
+#include<gperftools/profiler.h>
 
 # define max(a,b) a>b?a:b
 # define min(a,b) a<b?a:b
@@ -240,57 +241,69 @@ IndexGraph::~IndexGraph() {}
                 unsigned jid=j.id;
                 if(iid != jid){
                     float lowerbound = abs(i.distance,j.distance);
-
-                    auto it = lowbound_map.insert({make_pair(min(iid,jid),max(iid,jid)),lowerbound});
-                    if (!it.second) it.first->second=max(it.first->second,lowerbound);
-
-
-
-//                    if (lowerbound>=graph_[iid].pool.front().distance&&lowerbound>=graph_[jid].pool.front().distance) purn_times++;
-//                    else{
-//                        float dist = distance_->compare(data_ + iid * dimension_, data_ + jid * dimension_, dimension_);
-//                        auto it = Euclid_dim.insert({dimension_,1});
-//                        if(!it.second) it.first->second+=1;
-//                        calcul_times[iid]+=1;
-//                        calcul_times[jid]+=1;
-//                        if (dist < graph_[iid].pool.front().distance) {
-//                            graph_[iid].insert(jid, dist);
-//                        }
-//                        if (dist< graph_[jid].pool.front().distance){
-//                            graph_[jid].insert(iid, dist);
-//                        }
-//
-//                    }
-
+                    mapinsert(iid,jid,lowerbound);
+                    //auto it = lowbound_map.insert({make_pair(min(iid,jid),max(iid,jid)),lowerbound});
+                   // if (!it.second && it.first->second<lowerbound) it.first->second=lowerbound;
 
                 }
             });
         }
     }
 
-    void IndexGraph::join12_2() {
-        unsigned  count=0;
-        //#pragma omp parallel for default(shared) schedule(dynamic, 100)
-        for(auto it=lowbound_map.begin(); it!=lowbound_map.end();it++){
-            unsigned iid=it->first.first;
-            unsigned jid=it->first.second;
-            if (iid>=jid) printf("! ");
-            float lb=it->second;
-            float b1 = graph_[iid].pool.front().distance;
-            float b2 = graph_[jid].pool.front().distance;
-            if (lb>=b1 && lb>=b2) ;
-            else {
-                float dist = distance_->compare(data_ + iid * dimension_, data_ + jid * dimension_, dimension_);
-                compare_times++;
-                if(dist<b1) graph_[iid].insert(jid,dist);
-                if(dist<b2) graph_[jid].insert(iid,dist);
-            }
-            count++;
-        }
-        printf("lowbound map size:%u\n",count);
-        map<pair<unsigned ,unsigned >, float>().swap(lowbound_map);
-
+    void IndexGraph::mapinsert(unsigned iid, unsigned jid, float lowerbound){
+        auto it = graph_[iid].lowbound_map.insert({make_pair(min(iid,jid),max(iid,jid)),lowerbound});
+        if (!it.second && it.first->second<lowerbound) it.first->second=lowerbound;
     }
+
+
+    void IndexGraph::join12_2() {
+#pragma omp parallel for default(shared) schedule(dynamic, 100)
+        for (unsigned n = 0; n < nd_; n++){
+            auto &map_lb = graph_[n].lowbound_map;
+            //printf("%d ",nn_lb.size());fflush(stdout);
+            for (auto it=map_lb.begin(); it!=map_lb.end();it++){
+                unsigned iid=it->first.first;
+                unsigned jid=it->first.second;
+                if (iid>=jid) printf("! ");
+                float lb=it->second;
+                float b1 = graph_[iid].pool.front().distance;
+                float b2 = graph_[jid].pool.front().distance;
+                if (lb>=b1 && lb>=b2) ;
+                else {
+                    float dist = distance_->compare(data_ + iid * dimension_, data_ + jid * dimension_, dimension_);
+                    compare_times++;
+                    if(dist<b1) graph_[iid].insert(jid,dist);
+                    if(dist<b2) graph_[jid].insert(iid,dist);
+                }
+
+            }
+            unordered_map<pair<unsigned ,unsigned >, float,mapHashFunc,EqualKey>().swap(map_lb);
+            //map<pair<unsigned ,unsigned >, float>().swap(map_lb);
+        }
+    }
+
+//        unsigned  count=0;
+//        //#pragma omp parallel for default(shared) schedule(dynamic, 100)
+//        for(auto it=lowbound_map.begin(); it!=lowbound_map.end();it++){
+//            unsigned iid=it->first.first;
+//            unsigned jid=it->first.second;
+//            if (iid>=jid) printf("! ");
+//            float lb=it->second;
+//            float b1 = graph_[iid].pool.front().distance;
+//            float b2 = graph_[jid].pool.front().distance;
+//            if (lb>=b1 && lb>=b2) ;
+//            else {
+//                float dist = distance_->compare(data_ + iid * dimension_, data_ + jid * dimension_, dimension_);
+//                compare_times++;
+//                if(dist<b1) graph_[iid].insert(jid,dist);
+//                if(dist<b2) graph_[jid].insert(iid,dist);
+//            }
+//            count++;
+//        }
+//        printf("lowbound map size:%u\n",count);
+//        unordered_map<pair<unsigned ,unsigned >, float,mapHashFunc,EqualKey>().swap(lowbound_map);
+//
+//    }
 
     void IndexGraph::update3(const Parameters &parameters,std::vector<float> &p_square) {
   unsigned S = parameters.Get<unsigned>("S");
@@ -854,7 +867,15 @@ void IndexGraph::RefineGraph(const float* data, const Parameters &parameters) {
         assert(initializer_->HasBuilt());
 
         InitializeGraph_Refine(parameters);
+
+//#ifdef linux
+//        ProfilerStart("nndescent");
+//#endif
         NNDescent12(parameters);
+
+//#ifdef linux
+//        ProfilerStop();
+//#endif
 
         final_graph_.reserve(nd_);
         std::cout << nd_ << std::endl;

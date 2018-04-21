@@ -64,6 +64,23 @@ struct Neighbor {
         }
     };
 
+    struct mapHashFunc {
+        std::size_t operator()(const pair<unsigned ,unsigned > &key) const {
+            using std::size_t;
+            using std::hash;
+
+            return ((hash<unsigned>()(key.first) ^ (hash<unsigned >()(key.second) << 1)) >> 1);
+        }
+    };
+
+    struct EqualKey
+    {
+        bool operator () (const pair<unsigned ,unsigned > &lhs, const pair<unsigned ,unsigned > &rhs) const
+        {
+            return lhs.first  == rhs.first
+                   && lhs.second == rhs.second;
+        }
+    };
 
 typedef std::lock_guard<std::mutex> LockGuard;
 struct nhood{
@@ -83,6 +100,8 @@ struct nhood{
     std::vector<id_distance> rnn_old2;
     std::vector<id_distance> rnn_new2;
    // std::set<id_lowbound> pool_lb;
+   unordered_map<pair<unsigned ,unsigned >, float, mapHashFunc, EqualKey> lowbound_map;
+ // map<pair<unsigned ,unsigned>, float> lowbound_map;
   
   nhood(){}
   nhood(unsigned l, unsigned s, std::mt19937 &rng, unsigned N){
@@ -166,8 +185,8 @@ struct nhood{
 
     template <typename C>
     void join12 (C callback) const {
-        for (id_distance const i: nn_new2) {
-            for (id_distance const j: nn_new2) {
+        for (id_distance const & i: nn_new2) {
+            for (id_distance const & j: nn_new2) {
                 if (i.id < j.id) {
                     callback(i, j);
                 }
