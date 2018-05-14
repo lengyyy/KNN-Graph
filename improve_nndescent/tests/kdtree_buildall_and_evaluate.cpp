@@ -102,6 +102,8 @@ int main(int argc, char **argv) {
 //    init_index.Save(init_graph_filename);
 
     efanna2e::IndexGraph index(dim, points_num, efanna2e::L2, (efanna2e::Index *) (&init_index));
+    index.init_times();
+    index.init_calcul_times();
     index.final_graph_ = init_index.final_graph_; //pass the init graph without Save and Load
 //    index.Load(init_graph_filename);
     auto s = std::chrono::high_resolution_clock::now();

@@ -64,23 +64,23 @@ struct Neighbor {
         }
     };
 
-    struct mapHashFunc {
-        std::size_t operator()(const pair<unsigned ,unsigned > &key) const {
-            using std::size_t;
-            using std::hash;
-
-            return ((hash<unsigned>()(key.first) ^ (hash<unsigned >()(key.second) << 1)) >> 1);
-        }
-    };
-
-    struct EqualKey
-    {
-        bool operator () (const pair<unsigned ,unsigned > &lhs, const pair<unsigned ,unsigned > &rhs) const
-        {
-            return lhs.first  == rhs.first
-                   && lhs.second == rhs.second;
-        }
-    };
+//    struct mapHashFunc {
+//        std::size_t operator()(const pair<unsigned ,unsigned > &key) const {
+//            using std::size_t;
+//            using std::hash;
+//
+//            return ((hash<unsigned>()(key.first) ^ (hash<unsigned >()(key.second) << 1)) >> 1);
+//        }
+//    };
+//
+//    struct EqualKey
+//    {
+//        bool operator () (const pair<unsigned ,unsigned > &lhs, const pair<unsigned ,unsigned > &rhs) const
+//        {
+//            return lhs.first  == rhs.first
+//                   && lhs.second == rhs.second;
+//        }
+//    };
 
 typedef std::lock_guard<std::mutex> LockGuard;
 struct nhood{
@@ -100,7 +100,7 @@ struct nhood{
     std::vector<id_distance> rnn_old2;
     std::vector<id_distance> rnn_new2;
    // std::set<id_lowbound> pool_lb;
-   unordered_map<pair<unsigned ,unsigned >, float, mapHashFunc, EqualKey> lowbound_map;
+ unordered_map<unsigned  , float> lowbound_map;
  // map<pair<unsigned ,unsigned>, float> lowbound_map;
   
   nhood(){}
@@ -138,6 +138,12 @@ struct nhood{
       }
 
     }
+//    void insert_map (unsigned jid, float lb) {
+//        LockGuard guard(lock);
+//        auto &it = lowbound_map[jid];
+//                    it = max(it,lb);
+//
+//    }
 
 //    void insert_lb (unsigned id, float lb) {
 //        LockGuard guard(lock);

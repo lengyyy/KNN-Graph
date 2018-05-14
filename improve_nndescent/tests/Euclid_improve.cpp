@@ -12,7 +12,9 @@
 //版本0，原版
 //版本1，先预排序，再累计dimension算欧几里得距离，剪枝。因为assign SIMD的寄存器过程太慢，导致不行
 //版本10，先JL处理，维度可以减半，时间差不多减半，但是准确率会上不去
-//版本2，三角不等式，剪枝
+//版本2，三角不等式，剪枝；每个点维护自己的lowerbound的哈希表；并且下界是会更新的
+//版本3， 最naive的三角不等式，剪枝比例太小
+//版本4，布隆过滤器,为实现，先搁置
 
 void load_data(char *filename, float *&data, unsigned &num, unsigned &dim) {// load data with sift10K pattern
     std::ifstream in(filename, std::ios::binary);
@@ -58,6 +60,8 @@ void load_datai(char *filename, int *&data, unsigned &num, unsigned &dim) {// lo
 }
 
 int main(int argc, char **argv) {
+
+
     unordered_map<string,string> myInfo;
 
     if (argc != 12) {
@@ -71,9 +75,9 @@ int main(int argc, char **argv) {
 
     char profname[30];
     sprintf(profname,"%s_%s","Euclid_improve",argv[10]);
-#ifdef linux
-    ProfilerStart(profname);
-#endif
+//#ifdef linux
+//    ProfilerStart(profname);
+//#endif
     auto s_init = std::chrono::high_resolution_clock::now();
 
     char *graph_truth_file = argv[2];
@@ -130,7 +134,7 @@ int main(int argc, char **argv) {
 
 
     vector<vector<unsigned >> rank;
-    if (pl == 0 || pl==2 ){
+    if (pl == 0 || pl==2 ||pl==3){
         init_index.Build(points_num, data_load, paras);
 
     }else if (pl==1){
@@ -180,7 +184,12 @@ int main(int argc, char **argv) {
         index.RefineGraph(projection_data, paras);
     }else if (pl==2){
         index.RefineGraph12(data_load, paras);
+    } else if (pl==3){
+        index.RefineGraph13(data_load, paras);
+    }else if (pl==4){
+        index.RefineGraph14(data_load, paras);
     }
+
 
     auto e = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff = e - s;
@@ -196,9 +205,9 @@ int main(int argc, char **argv) {
 //    }
 
 
-#ifdef linux
-    ProfilerStop();
-#endif
+//#ifdef linux
+//    ProfilerStop();
+//#endif
 
     int *graph_truth = NULL;
     vector<std::vector<unsigned> > &final_result = index.final_graph_;
@@ -219,7 +228,7 @@ int main(int argc, char **argv) {
 
     if(atoi(argv[11])==1){
         MyDB db;
-        db.initDB("120.24.163.35", "lengyue", "123456", "experiment");
+        db.initDB("10.20.13.19", "experiment", "dbs123456", "experiment");
         myInfo["type"]=profname;
         myInfo["init_time"]=to_string(diff_init.count());
         myInfo["refine_time"]=to_string(diff.count());
@@ -232,7 +241,7 @@ int main(int argc, char **argv) {
         db.addRecord("KNNG_purn2",myInfo);
     }else if(atoi(argv[11])==2){
         MyDB db;
-        db.initDB("120.24.163.35", "lengyue", "123456", "experiment");
+        db.initDB("10.20.13.19", "experiment", "dbs123456", "experiment");
         for (unsigned i=0;i<index.calcul_times.size();i++){
             myInfo[to_string(i)]=to_string(index.calcul_times[i]);
         }

@@ -131,7 +131,8 @@ namespace efanna2e{
 #endif
 #endif
 
-            return result;
+            //return result;
+            return sqrt(result);
         }
         float compare3(const float* a, const float* b, unsigned size, float boundary, unsigned &hasDim,
                        unsigned delta) {
