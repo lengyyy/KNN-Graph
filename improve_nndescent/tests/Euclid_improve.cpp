@@ -14,7 +14,7 @@
 //版本10，先JL处理，维度可以减半，时间差不多减半，但是准确率会上不去
 //版本2，三角不等式，剪枝；每个点维护自己的lowerbound的哈希表；并且下界是会更新的
 //版本3， 最naive的三角不等式，剪枝比例太小
-//版本4，布隆过滤器,为实现，先搁置
+//版本4，布隆过滤器,未实现，先搁置
 
 void load_data(char *filename, float *&data, unsigned &num, unsigned &dim) {// load data with sift10K pattern
     std::ifstream in(filename, std::ios::binary);
