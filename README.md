@@ -16,12 +16,9 @@ Our goal is to make some improvements based on the KGraph algorithm in two aspec
 
 
 ### Optimization
-#### Changeable length code of LSH.
-The random project LSH has a critical drawback when finding k nearest neighbors in some specific data set: the distribution of vectors in each buckets is extremely uneven. Therefore, most of vectors are allocated in the same buckets because they are close to each other in the original space, while some buckets only have few vectors in it. This situation reduce the quality of initial KNN graph, and also cost lots of time in distance computation in one large size bucket. Therefore, we put forward a changeable length code of LSH to divide vectors into hash bucket recursively, which guides the even distribution of hash bucket.
-#### The state flag for vector.
-As algorithm runs, fewer and fewer new neighbors can update the graph, so we can set a flag to detect whether a vector need to recalculate its neighbor set to avoid unnecessary calculation.
-#### Euclidean distance pruning.
-There are several ideas about how to save the time in distance computation. First, we can set a distance threshold according to the current nearest neighbors set, and then terminate the distance computation before computing all dimensions. Also, the triangle inequality can help us get the lower bound of a distance before exactly compute it. In addition, Transfer Euclidean distance to inner product is also a way to consider[10].
+- Changeable length code of LSH
+- The state flag for vector
+- Euclidean distance pruning
 
 ## EXPERIMENT
 ### Dataset
@@ -41,3 +38,7 @@ In addition, we also measure the index construction time and index size for KNN 
 
 #### CLSH compared with learning-based Method
 <img src="https://github.com/lengyyy/KNN-Graph/blob/master/pictures/Experiment2.png" width="600">
+
+
+
+Please check [report](https://github.com/lengyyy/KNN-Graph/blob/master/report.pdf) for details.
